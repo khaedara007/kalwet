@@ -1,11 +1,13 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Halaman Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
         <div class="container">
@@ -38,15 +40,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($pending_accounts as $p): ?>
+                        <?php foreach ($pending_accounts as $p): ?>
                             <tr>
                                 <td><?php echo $p->id; ?></td>
                                 <td><?php echo $p->name; ?></td>
                                 <td><?php echo $p->nik; ?></td>
                                 <td><?php echo $p->phone; ?></td>
                                 <td>
-                                    <a href="<?php echo site_url('admin/verify_account/'.$p->id.'?action=approve'); ?>" class="btn btn-success btn-sm">Setujui</a>
-                                    <a href="<?php echo site_url('admin/verify_account/'.$p->id.'?action=reject'); ?>" class="btn btn-danger btn-sm ms-1">Tolak</a>
+                                    <a href="<?php echo site_url('admin/verify_account/' . $p->id . '?action=approve'); ?>" class="btn btn-success btn-sm">Setujui</a>
+                                    <a href="<?php echo site_url('admin/verify_account/' . $p->id . '?action=reject'); ?>" class="btn btn-danger btn-sm ms-1">Tolak</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -60,4 +62,5 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

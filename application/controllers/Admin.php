@@ -1,13 +1,14 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Admin extends CI_Controller {
+class Admin extends CI_Controller
+{
     public function __construct()
     {
         parent::__construct();
-        $this->load->model(array('User_model','Service_model'));
+        $this->load->model(array('User_model', 'Service_model'));
         $this->load->library('session');
-        $this->load->helper(array('url','whatsapp'));
+        $this->load->helper(array('url', 'whatsapp'));
     }
 
     protected function check_admin()
