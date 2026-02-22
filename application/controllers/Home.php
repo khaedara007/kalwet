@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Home extends CI_Controller
+{
     public function __construct()
     {
         parent::__construct();
@@ -14,6 +15,14 @@ class Home extends CI_Controller {
         $data = [];
         $user = $this->session->userdata('user');
         if ($user) $data['user'] = $user;
-        $this->load->view('home/landing', $data);
+        $this->load->view('home/landing2', $data);
+    }
+
+    public function landing()
+    {
+        $data = [];
+        $user = $this->session->userdata('user');
+        if ($user) $data['user'] = $user;
+        $this->load->view('home/landing2', $data);
     }
 }

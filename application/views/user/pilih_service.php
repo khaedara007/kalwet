@@ -63,6 +63,15 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-sm-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Surat Keterangan Belum Memiliki Rumah</h5>
+                                        <p class="card-text">- Surat Pengantar RT RW<br> - KTP dan Kartu Keluarga Pemohon</p>
+                                        <a href="<?php echo site_url('service/submit/skbr'); ?>" class="btn btn-primary">Ajukan Permohonan</a>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <div class="card">
                                     <div class="card-body">
