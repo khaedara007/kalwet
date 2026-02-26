@@ -10869,6 +10869,12 @@ header.masthead h1, header.masthead .h1 {
   }
 }
 
+.awal {
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+}
 .showcase .showcase-text {
   padding: 3rem;
 }
@@ -10917,3 +10923,6 @@ footer.footer {
   padding-top: 4rem;
   padding-bottom: 4rem;
 }
+
+
+        

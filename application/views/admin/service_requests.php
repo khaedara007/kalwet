@@ -46,7 +46,7 @@
                                 <td><?php echo $r->submitted_at; ?></td>
                                 <td>
                                     <?php
-                                    if (in_array($r->service_type, ['sktm', 'skd', 'skpo', 'skbm'])) {
+                                    if (in_array($r->service_type, ['sktm', 'skd', 'skpo', 'skbm', 'skbr', 'sih'])) {
                                     ?>
                                         <?php if ($r->upload_suratrtrw): ?>
                                             <a href="<?php echo base_url('assets/uploads/documents/' . $r->upload_suratrtrw); ?>" target="_blank" class="btn btn-sm btn-info">Surat Pengantar</a>

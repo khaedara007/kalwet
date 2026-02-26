@@ -44,6 +44,8 @@ class Service extends CI_Controller
                     $this->load->view('user/service_form_skbm', $data);
                 } elseif ($jenis_layanan === 'skbr') {
                     $this->load->view('user/service_form_skbr', $data);
+                } elseif ($jenis_layanan === 'sih') {
+                    $this->load->view('user/service_form_sih', $data);
                 } elseif ($jenis_layanan === 'sksn') {
                     $this->load->view('user/service_form_sksn', $data);
                 } else {
@@ -67,7 +69,7 @@ class Service extends CI_Controller
             $payload = [];
 
             $service_type = $this->input->post('service_type');
-            if (in_array($service_type, ['sktm', 'skd', 'skpo', 'skbm', 'skbr'])) {
+            if (in_array($service_type, ['sktm', 'skd', 'skpo', 'skbm', 'skbr', 'sih'])) {
                 $upload_errors = [];
                 $fields = ['upload_suratrtrw', 'upload_kk', 'upload_ktp'];
                 foreach ($fields as $field) {
@@ -123,6 +125,8 @@ class Service extends CI_Controller
             $this->load->view('user/service_form_skbm', $data);
         } elseif ($jenis_layanan === 'skbr') {
             $this->load->view('user/service_form_skbr', $data);
+        } elseif ($jenis_layanan === 'sih') {
+            $this->load->view('user/service_form_sih', $data);
         } elseif ($jenis_layanan === 'sksn') {
             $this->load->view('user/service_form_sksn', $data);
         } else {
