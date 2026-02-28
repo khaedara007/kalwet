@@ -152,7 +152,7 @@
                                 <label for="additional_notes" class="form-label">
                                     <i class="bi bi-chat-left-text-fill"></i>Tujuan Permohonan
                                 </label>
-                                <textarea class="form-control" id="additional_notes" name="additional_notes" rows="2" placeholder="Contoh: Untuk mengajukan KPR, menempati rumah susun, dll"></textarea>
+                                <textarea class="form-control" id="additional_notes" name="additional_notes" rows="2" placeholder="Contoh: Untuk mengurus penggantian dokumen penting yang hilang seperti KTP, KK, Ijasah, dll"></textarea>
                             </div>
 
                             <!-- Upload Dokumen -->

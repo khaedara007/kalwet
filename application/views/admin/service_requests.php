@@ -46,7 +46,7 @@
                                 <td><?php echo $r->submitted_at; ?></td>
                                 <td>
                                     <?php
-                                    if (in_array($r->service_type, ['sktm', 'skd', 'skpo', 'skbm', 'skbr', 'sih'])) {
+                                    if (in_array($r->service_type, ['sktm', 'skd', 'skpo', 'skbm', 'skbr', 'sih', 'skck', 'spkd'])) {
                                     ?>
                                         <?php if ($r->upload_suratrtrw): ?>
                                             <a href="<?php echo base_url('assets/uploads/documents/' . $r->upload_suratrtrw); ?>" target="_blank" class="btn btn-sm btn-info">Surat Pengantar</a>
@@ -56,6 +56,81 @@
                                         <?php endif; ?>
                                         <?php if ($r->upload_ktp): ?>
                                             <a href="<?php echo base_url('assets/uploads/documents/' . $r->upload_ktp); ?>" target="_blank" class="btn btn-sm btn-info ms-1">KTP</a>
+                                        <?php endif; ?>
+                                    <?php
+                                    }
+                                    if (in_array($r->service_type, ['sksn'])) {
+                                    ?>
+                                        <?php if ($r->upload_suratrtrw): ?>
+                                            <a href="<?php echo base_url('assets/uploads/documents/' . $r->upload_suratrtrw); ?>" target="_blank" class="btn btn-sm btn-info">Surat Pengantar</a>
+                                        <?php endif; ?>
+                                        <?php if ($r->upload_kk): ?>
+                                            <a href="<?php echo base_url('assets/uploads/documents/' . $r->upload_kk); ?>" target="_blank" class="btn btn-sm btn-info ms-1">KK</a>
+                                        <?php endif; ?>
+                                        <?php if ($r->upload_ktp): ?>
+                                            <a href="<?php echo base_url('assets/uploads/documents/' . $r->upload_ktp); ?>" target="_blank" class="btn btn-sm btn-info ms-1">KTP</a>
+                                        <?php endif; ?>
+                                        <?php if ($r->upload_aktal): ?>
+                                            <a href="<?php echo base_url('assets/uploads/documents/' . $r->upload_aktal); ?>" target="_blank" class="btn btn-sm btn-info ms-1">Akta Kelahiran</a>
+                                        <?php endif; ?>
+                                        <?php if ($r->upload_aktan): ?>
+                                            <a href="<?php echo base_url('assets/uploads/documents/' . $r->upload_aktan); ?>" target="_blank" class="btn btn-sm btn-info ms-1">Akta Nikah</a>
+                                        <?php endif; ?>
+                                        <?php if ($r->upload_identitaslain): ?>
+                                            <a href="<?php echo base_url('assets/uploads/documents/' . $r->upload_identitaslain); ?>" target="_blank" class="btn btn-sm btn-info ms-1">Berkas Identitas Lain</a>
+                                        <?php endif; ?>
+                                    <?php
+                                    }
+                                    if (in_array($r->service_type, ['skm'])) {
+                                    ?>
+                                        <?php if ($r->upload_suratrtrw): ?>
+                                            <a href="<?php echo base_url('assets/uploads/documents/' . $r->upload_suratrtrw); ?>" target="_blank" class="btn btn-sm btn-info">Surat Pengantar</a>
+                                        <?php endif; ?>
+                                        <?php if ($r->upload_kk): ?>
+                                            <a href="<?php echo base_url('assets/uploads/documents/' . $r->upload_kk); ?>" target="_blank" class="btn btn-sm btn-info ms-1">KK</a>
+                                        <?php endif; ?>
+                                        <?php if ($r->upload_ktp): ?>
+                                            <a href="<?php echo base_url('assets/uploads/documents/' . $r->upload_ktp); ?>" target="_blank" class="btn btn-sm btn-info ms-1">KTP</a>
+                                        <?php endif; ?>
+                                        <?php if ($r->upload_ktpp): ?>
+                                            <a href="<?php echo base_url('assets/uploads/documents/' . $r->upload_ktpp); ?>" target="_blank" class="btn btn-sm btn-info ms-1">KTP Pelapor</a>
+                                        <?php endif; ?>
+                                        <?php if ($r->upload_ktps1): ?>
+                                            <a href="<?php echo base_url('assets/uploads/documents/' . $r->upload_ktps1); ?>" target="_blank" class="btn btn-sm btn-info ms-1">KTP Saksi 1</a>
+                                        <?php endif; ?>
+                                        <?php if ($r->upload_ktps2): ?>
+                                            <a href="<?php echo base_url('assets/uploads/documents/' . $r->upload_ktps2); ?>" target="_blank" class="btn btn-sm btn-info ms-1">KTP Saksi 2</a>
+                                        <?php endif; ?>
+                                        <?php if ($r->upload_suketdok): ?>
+                                            <a href="<?php echo base_url('assets/uploads/documents/' . $r->upload_suketdok); ?>" target="_blank" class="btn btn-sm btn-info ms-1">Surat Ket. Dokter</a>
+                                        <?php endif; ?>
+                                    <?php
+                                    }
+                                    if (in_array($r->service_type, ['skl'])) {
+                                    ?>
+                                        <?php if ($r->upload_suratrtrw): ?>
+                                            <a href="<?php echo base_url('assets/uploads/documents/' . $r->upload_suratrtrw); ?>" target="_blank" class="btn btn-sm btn-info">Surat Pengantar</a>
+                                        <?php endif; ?>
+                                        <?php if ($r->upload_aktan): ?>
+                                            <a href="<?php echo base_url('assets/uploads/documents/' . $r->upload_aktan); ?>" target="_blank" class="btn btn-sm btn-info ms-1">Buku Nikah</a>
+                                        <?php endif; ?>
+                                        <?php if ($r->upload_kk): ?>
+                                            <a href="<?php echo base_url('assets/uploads/documents/' . $r->upload_kk); ?>" target="_blank" class="btn btn-sm btn-info ms-1">KK</a>
+                                        <?php endif; ?>
+                                        <?php if ($r->upload_ktp): ?>
+                                            <a href="<?php echo base_url('assets/uploads/documents/' . $r->upload_ktp); ?>" target="_blank" class="btn btn-sm btn-info ms-1">KTP</a>
+                                        <?php endif; ?>
+                                        <?php if ($r->upload_ktpp): ?>
+                                            <a href="<?php echo base_url('assets/uploads/documents/' . $r->upload_ktpp); ?>" target="_blank" class="btn btn-sm btn-info ms-1">KTP Pelapor</a>
+                                        <?php endif; ?>
+                                        <?php if ($r->upload_ktps1): ?>
+                                            <a href="<?php echo base_url('assets/uploads/documents/' . $r->upload_ktps1); ?>" target="_blank" class="btn btn-sm btn-info ms-1">KTP Saksi 1</a>
+                                        <?php endif; ?>
+                                        <?php if ($r->upload_ktps2): ?>
+                                            <a href="<?php echo base_url('assets/uploads/documents/' . $r->upload_ktps2); ?>" target="_blank" class="btn btn-sm btn-info ms-1">KTP Saksi 2</a>
+                                        <?php endif; ?>
+                                        <?php if ($r->upload_suketdok): ?>
+                                            <a href="<?php echo base_url('assets/uploads/documents/' . $r->upload_suketdok); ?>" target="_blank" class="btn btn-sm btn-info ms-1">Surat Ket. Dokter</a>
                                         <?php endif; ?>
                                     <?php
                                     }

@@ -1,13 +1,14 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Auth extends CI_Controller {
+class Auth extends CI_Controller
+{
     public function __construct()
     {
         parent::__construct();
         $this->load->model('User_model');
-        $this->load->library(array('session','form_validation'));
-        $this->load->helper(array('url','form','whatsapp'));
+        $this->load->library(array('session', 'form_validation'));
+        $this->load->helper(array('url', 'form', 'whatsapp'));
     }
 
     public function index()
@@ -37,12 +38,13 @@ class Auth extends CI_Controller {
         $this->load->view('auth/register');
     }
 
+
     public function do_register()
     {
-        $this->form_validation->set_rules('name','Full Name','required');
-        $this->form_validation->set_rules('nik','NIK','required|exact_length[16]');
-        $this->form_validation->set_rules('phone','Phone','required');
-        $this->form_validation->set_rules('password','Password','required');
+        $this->form_validation->set_rules('name', 'Full Name', 'required');
+        $this->form_validation->set_rules('nik', 'NIK', 'required|exact_length[16]');
+        $this->form_validation->set_rules('phone', 'Phone', 'required');
+        $this->form_validation->set_rules('password', 'Password', 'required');
 
         if ($this->form_validation->run() === FALSE) {
             $this->load->view('auth/register');

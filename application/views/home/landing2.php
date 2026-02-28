@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Landing Page - Start Bootstrap Theme</title>
+    <title>SIMPEL AWET Dashbaord</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Bootstrap icons-->
@@ -15,505 +15,462 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="<?php echo base_url('assets/template1/css/styles.css') ?>" rel="stylesheet" />
-    <style>
-        /* Custom Styles untuk Section Alur Pelayanan */
-        .alur-section {
-            background: linear-gradient(135deg, #114B82 0%, #1e6db5 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .alur-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 500px;
-            height: 500px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 50%;
-        }
-
-        .alur-section::after {
-            content: '';
-            position: absolute;
-            bottom: -30%;
-            left: -5%;
-            width: 300px;
-            height: 300px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 50%;
-        }
-
-        .step-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            padding: 2rem;
-            height: 100%;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .step-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #114B82;
-            margin-bottom: 1rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .benefit-item {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 1.5rem;
-            border-left: 4px solid #ffd700;
-            transition: all 0.3s ease;
-        }
-
-        .benefit-item:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateX(5px);
-        }
-
-        .floating-icon {
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        .pulse-badge {
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7);
-            }
-
-            70% {
-                box-shadow: 0 0 0 10px rgba(255, 215, 0, 0);
-            }
-
-            100% {
-                box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
-            }
-        }
-
-        .connector-line {
-            position: absolute;
-            top: 50%;
-            left: 100%;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, rgba(255, 215, 0, 0.5), transparent);
-            transform: translateY(-50%);
-            z-index: 0;
-        }
-
-        @media (max-width: 991px) {
-            .connector-line {
-                display: none;
-            }
-        }
-
-        .hover-scale {
-            transition: transform 0.3s ease;
-        }
-
-        .hover-scale:hover {
-            transform: scale(1.05);
-        }
-
-        /* Profil & Batas Kelurahan Styles */
-        .profil-section {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            position: relative;
-        }
-
-        .profil-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(17, 75, 130, 0.1);
-            border: 1px solid rgba(17, 75, 130, 0.1);
-            transition: all 0.3s ease;
-            overflow: hidden;
-        }
-
-        .profil-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 60px rgba(17, 75, 130, 0.15);
-        }
-
-        .profil-icon-box {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #114B82 0%, #1e6db5 100%);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .batas-card {
-            background: linear-gradient(135deg, #114B82 0%, #1e6db5 100%);
-            border-radius: 20px;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .batas-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 300px;
-            height: 300px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 50%;
-        }
-
-        .arah-item {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .arah-item:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: scale(1.05);
-        }
-
-        .arah-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 215, 0, 0.9);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #114B82;
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-
-        .stats-box {
-            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
-            border-radius: 20px;
-            padding: 2rem;
-            color: #114B82;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
-        }
-
-        .stats-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            line-height: 1;
-        }
-
-        .image-hover-zoom {
-            overflow: hidden;
-            border-radius: 20px;
-        }
-
-        .image-hover-zoom img {
-            transition: transform 0.5s ease;
-        }
-
-        .image-hover-zoom:hover img {
-            transform: scale(1.1);
-        }
-
-        .section-title {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 2rem;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, #114B82, #ffd700);
-            border-radius: 2px;
-        }
-
-        /* Rating Section Styles */
-        .rating-section {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-        }
-
-        .rating-card {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(17, 75, 130, 0.1);
-            border: none;
-        }
-
-        .star-rating {
-            display: flex;
-            flex-direction: row-reverse;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .star-rating input {
-            display: none;
-        }
-
-        .star-rating label {
-            cursor: pointer;
-            font-size: 3rem;
-            color: #ddd;
-            transition: all 0.2s ease;
-        }
-
-        .star-rating label:hover,
-        .star-rating label:hover~label,
-        .star-rating input:checked~label {
-            color: #ffd700;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-            transform: scale(1.1);
-        }
-
-        .rating-stats {
-            background: linear-gradient(135deg, #114B82 0%, #1e6db5 100%);
-            border-radius: 15px;
-            color: white;
-        }
-
-        .rating-bar {
-            height: 8px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .rating-fill {
-            height: 100%;
-            background: #ffd700;
-            border-radius: 10px;
-            transition: width 0.5s ease;
-        }
-    </style>
+    <!-- Custom CSS SIMPEL AWET -->
+    <link href="<?php echo base_url('assets/template1/css/custom.css') ?>" rel="stylesheet" />
 </head>
 
 <body>
     <!-- Navigation-->
-    <nav class="navbar navbar-dark" style="background-color:#114B82;">
-        <div class="container">
+    <header class="header-modern">
+        <!-- Top Bar -->
+        <div class="container position-relative" style="z-index: 1;">
+            <div class="row align-items-center py-0">
 
-            <img src="<?php echo base_url('assets/logo.png') ?>" style="height:45px;" alt=" ...">
-            <div class="ms-auto">
-                <a class="btn btn-primary me-3" href="<?php echo site_url('login'); ?>">Masuk</a>
-                <a class="btn btn-primary" href="<?php echo site_url('register'); ?>">Daftar</a>
+                <!-- Logo & Title -->
+                <div class="col-lg-8 col-md-8 d-flex align-items-center gap-8">
+                    <a href="<?php echo site_url('/'); ?>">
+                        <img src="<?php echo base_url('assets/logo.png'); ?>" alt="SIMPEL AWET" class="header-logo">
+                    </a>
+                    <div>
+                        <div class="header-subtitle fw-bold">Sistem Informasi Pelayanan</div>
+                        <h1 class="header-title">KELURAHAN KALINYAMAT WETAN</h1>
+                    </div>
+                </div>
+
+
+
+                <!-- Buttons -->
+                <div class="col-lg-4 col-md-4 text-end">
+                    <a href="<?php echo site_url('login'); ?>" class="btn header-btn header-btn-login me-2">
+                        <i class="bi bi-box-arrow-in-right me-1"></i>Masuk
+                    </a>
+                    <a href="<?php echo site_url('register'); ?>" class="btn header-btn header-btn-register">
+                        <i class="bi bi-person-plus me-1"></i>Daftar
+                    </a>
+                </div>
+
             </div>
         </div>
-    </nav>
+
+    </header>
     <!-- Masthead-->
     <header class="masthead">
-        <div class="container position-relative">
-            <div class="row justify-content-center">
-                <div class="col-xl-11">
-                    <div class="text-center text-white">
-                        <!-- Page heading-->
-                        <h1 class="awal">SELAMAT DATANG SISTEM INFORMASI PELAYANAN <br> KELURAHAN KALINYAMAT WETAN</h1>
-                        <!-- Signup form-->
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- * * SB Forms Contact Form * *-->
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- This form is pre-integrated with SB Forms.-->
-                        <!-- To make this form functional, sign up at-->
-                        <!-- https://startbootstrap.com/solution/contact-forms-->
-                        <!-- to get an API token!-->
-                        <form class="form-subscribe" id="contactForm" data-sb-form-api-token="API_TOKEN">
-                            <!-- Email address input-->
+        <div class="masthead-overlay"></div>
+        <div class="container position-relative h-100">
+            <div class="row h-100 justify-content-center align-items-center">
+                <div class="col-xl-10">
+                    <div class="text-center text-white masthead-content">
+                        <!-- Badge/Label -->
+                        <div class="masthead-badge mb-3">
+                            <span class="badge bg-warning text-dark px-4 py-2 rounded-pill fw-bold">
+                                <i class="fas fa-star me-2"></i>Layanan Publik
+                            </span>
+                        </div>
 
-                            <!-- Submit success message-->
-                            <!---->
-                            <!-- This is what your users will see when the form-->
-                            <!-- has successfully submitted-->
-                            <div class="d-none" id="submitSuccessMessage">
-                                <div class="text-center mb-3">
-                                    <div class="fw-bolder">Form submission successful!</div>
-                                    <p>To activate this form, sign up at</p>
-                                    <a class="text-white" href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                                </div>
-                            </div>
-                            <!-- Submit error message-->
-                            <!---->
-                            <!-- This is what your users will see when there is-->
-                            <!-- an error submitting the form-->
-                            <div class="d-none" id="submitErrorMessage">
-                                <div class="text-center text-danger mb-3">Error sending message!</div>
-                            </div>
-                        </form>
+                        <!-- Main Heading dengan Animasi -->
+                        <h1 class="masthead-title display-4 fw-bold mb-4">
+                            SELAMAT DATANG DI<br>
+                            <span class="text-warning">SISTEM INFORMASI PELAYANAN</span><br>
+                            <span class="fs-3 fw-light fw-bold">KELURAHAN KALINYAMAT WETAN</span>
+                        </h1>
+
+                        <!-- Deskripsi -->
+                        <p class="masthead-subtitle lead mb-5 mx-auto" style="max-width: 700px;">
+                            Melayani masyarakat dengan cepat, transparan, dan profesional.
+                            Akses berbagai layanan administrasi kependudukan secara online.
+                        </p>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <!-- Wave Separator -->
+        <div class="curve-separator">
+            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                <path d="M0 120L1440 120L1440 60C1440 60 1320 0 1080 0C840 0 720 60 480 60C240 60 120 30 0 30L0 120Z" fill="white" />
+                <path d="M0 120L1440 120L1440 90C1440 90 1320 30 1080 30C840 30 720 90 480 90C240 90 120 60 0 60L0 120Z" fill="rgba(255,255,255,0.5)" />
+            </svg>
         </div>
     </header>
     <!-- Icons Grid-->
-    <section class="features-icons bg-light text-center py-5">
-        <div class="container">
-            <div class="row">
-                <h1 class="display-5 fw-bold text-dark section-title">LAYANAN DAN PERSYARATAN ADMINISTRASI
-                    <hr>
-                </h1>
-                <!-- SKTM -->
-                <div class="col-lg-4">
-                    <div class="card mx-auto mb-5 mb-lg-0 mb-lg-2">
-                        <!-- Icons -->
-                        <div class="d-flex justify-content-center mb-0">
-                            <i class="bi bi-file-earmark-text" style="font-size: 3rem;" style="font-size: 3rem;"></i>
-                        </div>
-                        <!-- Content -->
-                        <div class="card-body"></i>
-                            <h5 class="card-title">Surat Keterangan Tidak Mampu</h5>
-                            <p class="card-text">
-                                - Surat Pengantar RT RW<br>
-                                - KTP dan Kartu Keluarga Pemohon
-                            </p>
-                            <a href="<?php echo site_url('service/submit/sktm'); ?>" class="btn btn-primary">Ajukan Permohonan</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- SKD -->
-                <div class="col-lg-4">
-                    <div class="card mx-auto mb-5 mb-lg-0 mb-lg-2">
-                        <!-- Icons -->
-                        <div class="d-flex justify-content-center mb-0">
-                            <i class="bi bi-geo-alt" style="font-size: 3rem;" style="font-size: 3rem;"></i>
-                        </div>
-                        <!-- Content -->
-                        <div class="card-body"></i>
-                            <h5 class="card-title">Surat Keterangan Domisili</h5>
-                            <p class="card-text">
-                                - Surat Pengantar RT RW<br>
-                                - KTP dan Kartu Keluarga Pemohon
-                            </p>
-                            <a href="<?php echo site_url('service/submit/skd'); ?>" class="btn btn-primary">Ajukan Permohonan</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- SKPO -->
-                <div class="col-lg-4">
-                    <div class="card mx-auto mb-5 mb-lg-0 mb-lg-2">
-                        <!-- Icons -->
-                        <div class="d-flex justify-content-center mb-0">
-                            <i class="bi bi-cash-stack" style="font-size: 3rem;" style="font-size: 3rem;"></i>
-                        </div>
-                        <!-- Content -->
-                        <div class="card-body"></i>
-                            <h5 class="card-title">Surat Keterangan Penghasilan Orang Tua</h5>
-                            <p class="card-text">
-                                - Surat Pengantar RT RW<br>
-                                - KTP dan Kartu Keluarga Pemohon
-                            </p>
-                            <a href="<?php echo site_url('service/submit/skpo'); ?>" class="btn btn-primary">Ajukan Permohonan</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- SKBM -->
-                <div class="col-lg-4">
-                    <div class="card mx-auto mb-5 mb-lg-0 mb-lg-2">
-                        <!-- Icons -->
-                        <div class="d-flex justify-content-center mb-0">
-                            <i class="bi bi-person" style="font-size: 3rem;" style="font-size: 3rem;"></i>
-                        </div>
-                        <!-- Content -->
-                        <div class="card-body"></i>
-                            <h5 class="card-title">Surat Keterangan Belum Menikah</h5>
-                            <p class="card-text">
-                                - Surat Pengantar RT RW<br>
-                                - KTP dan Kartu Keluarga Pemohon
-                            </p>
-                            <a href="<?php echo site_url('service/submit/skbm'); ?>" class="btn btn-primary">Ajukan Permohonan</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- SKBR -->
-                <div class="col-lg-4">
-                    <div class="card mx-auto mb-5 mb-lg-0 mb-lg-2">
-                        <!-- Icons -->
-                        <div class="d-flex justify-content-center mb-0">
-                            <i class="bi bi-house" style="font-size: 3rem;" style="font-size: 3rem;"></i>
-                        </div>
-                        <!-- Content -->
-                        <div class="card-body"></i>
-                            <h5 class="card-title">Surat Keterangan Belum <br>Memiliki Rumah</h5>
-                            <p class="card-text">
-                                - Surat Pengantar RT RW<br>
-                                - KTP dan Kartu Keluarga Pemohon
-                            </p>
-                            <a href="<?php echo site_url('service/submit/skbr'); ?>" class="btn btn-primary">Ajukan Permohonan</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- SKIH -->
-                <div class="col-lg-4">
-                    <div class="card mx-auto mb-5 mb-lg-0 mb-lg-2">
-                        <!-- Icons -->
-                        <div class="d-flex justify-content-center mb-0">
-                            <i class="bi bi-calendar-event" style="font-size: 3rem;" style="font-size: 3rem;"></i>
-                        </div>
-                        <!-- Content -->
-                        <div class="card-body"></i>
-                            <h5 class="card-title">Surat Izin Hajatan</h5>
-                            <p class="card-text">
-                                - Surat Pengantar RT RW<br>
-                                - KTP dan Kartu Keluarga Pemohon
-                            </p>
-                            <a href="<?php echo site_url('service/submit/sih'); ?>" class="btn btn-primary">Ajukan Permohonan</a>
-                        </div>
-                    </div>
-                </div>
+    <!-- Layanan dan Persyaratan Administrasi -->
+    <section class="layanan-section py-5">
+        <div class="container position-relative" style="z-index: 1;">
+
+            <!-- Header -->
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold text-dark section-title">LAYANAN DAN PERSYARATAN ADMINISTRASI</h2>
+                <br>
+                <span class="layanan-kategori">
+                    <i class="bi bi-grid-3x3-gap-fill me-2"></i>Layanan Online
+                </span>
+                <p class="text-muted">Pilih layanan yang Anda butuhkan, ajukan secara online dengan mudah</p>
             </div>
+
+            <div class="row g-4">
+
+                <!-- SKTM -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="layanan-card p-4">
+                        <span class="layanan-badge">Online</span>
+                        <div class="layanan-icon-wrapper">
+                            <i class="bi bi-file-earmark-text"></i>
+                        </div>
+                        <h5 class="layanan-title">Surat Keterangan Tidak Mampu</h5>
+                        <div class="layanan-syarat">
+                            <div class="layanan-syarat-title">Persyaratan</div>
+                            <ul class="layanan-syarat-list">
+                                <li>Surat Pengantar RT RW</li>
+                                <li>KTP dan Kartu Keluarga Pemohon</li>
+                            </ul>
+                        </div>
+                        <a href="<?php echo site_url('service/submit/sktm'); ?>" class="btn btn-layanan">
+                            <i class="bi bi-send-fill me-2"></i>Ajukan Sekarang
+                        </a>
+                    </div>
+                </div>
+
+                <!-- SKD -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="layanan-card p-4">
+                        <span class="layanan-badge">Online</span>
+                        <div class="layanan-icon-wrapper">
+                            <i class="bi bi-geo-alt"></i>
+                        </div>
+                        <h5 class="layanan-title">Surat Keterangan Domisili</h5>
+                        <div class="layanan-syarat">
+                            <div class="layanan-syarat-title">Persyaratan</div>
+                            <ul class="layanan-syarat-list">
+                                <li>Surat Pengantar RT RW</li>
+                                <li>KTP dan Kartu Keluarga Pemohon</li>
+                            </ul>
+                        </div>
+                        <a href="<?php echo site_url('service/submit/skd'); ?>" class="btn btn-layanan">
+                            <i class="bi bi-send-fill me-2"></i>Ajukan Sekarang
+                        </a>
+                    </div>
+                </div>
+
+                <!-- SKPO -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="layanan-card p-4">
+                        <span class="layanan-badge">Online</span>
+                        <div class="layanan-icon-wrapper">
+                            <i class="bi bi-cash-stack"></i>
+                        </div>
+                        <h5 class="layanan-title">Surat Keterangan Penghasilan Orang Tua</h5>
+                        <div class="layanan-syarat">
+                            <div class="layanan-syarat-title">Persyaratan</div>
+                            <ul class="layanan-syarat-list">
+                                <li>Surat Pengantar RT RW</li>
+                                <li>KTP dan Kartu Keluarga Pemohon</li>
+                            </ul>
+                        </div>
+                        <a href="<?php echo site_url('service/submit/skpo'); ?>" class="btn btn-layanan">
+                            <i class="bi bi-send-fill me-2"></i>Ajukan Sekarang
+                        </a>
+                    </div>
+                </div>
+
+                <!-- SKBM -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="layanan-card p-4">
+                        <span class="layanan-badge">Online</span>
+                        <div class="layanan-icon-wrapper">
+                            <i class="bi bi-person"></i>
+                        </div>
+                        <h5 class="layanan-title">Surat Keterangan Belum Menikah</h5>
+                        <div class="layanan-syarat">
+                            <div class="layanan-syarat-title">Persyaratan</div>
+                            <ul class="layanan-syarat-list">
+                                <li>Surat Pengantar RT RW</li>
+                                <li>KTP dan Kartu Keluarga Pemohon</li>
+                            </ul>
+                        </div>
+                        <a href="<?php echo site_url('service/submit/skbm'); ?>" class="btn btn-layanan">
+                            <i class="bi bi-send-fill me-2"></i>Ajukan Sekarang
+                        </a>
+                    </div>
+                </div>
+
+                <!-- SKBR -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="layanan-card p-4">
+                        <span class="layanan-badge">Online</span>
+                        <div class="layanan-icon-wrapper">
+                            <i class="bi bi-house"></i>
+                        </div>
+                        <h5 class="layanan-title">Surat Keterangan Belum Memiliki Rumah</h5>
+                        <div class="layanan-syarat">
+                            <div class="layanan-syarat-title">Persyaratan</div>
+                            <ul class="layanan-syarat-list">
+                                <li>Surat Pengantar RT RW</li>
+                                <li>KTP dan Kartu Keluarga Pemohon</li>
+                            </ul>
+                        </div>
+                        <a href="<?php echo site_url('service/submit/skbr'); ?>" class="btn btn-layanan">
+                            <i class="bi bi-send-fill me-2"></i>Ajukan Sekarang
+                        </a>
+                    </div>
+                </div>
+
+                <!-- SKIH -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="layanan-card p-4">
+                        <span class="layanan-badge">Online</span>
+                        <div class="layanan-icon-wrapper">
+                            <i class="bi bi-calendar-event"></i>
+                        </div>
+                        <h5 class="layanan-title">Surat Izin Hajatan</h5>
+                        <div class="layanan-syarat">
+                            <div class="layanan-syarat-title">Persyaratan</div>
+                            <ul class="layanan-syarat-list">
+                                <li>Surat Pengantar RT RW</li>
+                                <li>KTP dan Kartu Keluarga Pemohon</li>
+                            </ul>
+                        </div>
+                        <a href="<?php echo site_url('service/submit/sih'); ?>" class="btn btn-layanan">
+                            <i class="bi bi-send-fill me-2"></i>Ajukan Sekarang
+                        </a>
+                    </div>
+                </div>
+
+                <!-- SKCK - BARU -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="layanan-card p-4">
+                        <span class="layanan-badge">Online</span>
+                        <div class="layanan-icon-wrapper">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <h5 class="layanan-title">Surat Pengantar SKCK</h5>
+                        <div class="layanan-syarat">
+                            <div class="layanan-syarat-title">Persyaratan</div>
+                            <ul class="layanan-syarat-list">
+                                <li>Surat Pengantar RT RW</li>
+                                <li>KTP dan Kartu Keluarga Pemohon</li>
+                            </ul>
+                        </div>
+                        <a href="<?php echo site_url('service/submit/skck'); ?>" class="btn btn-layanan">
+                            <i class="bi bi-send-fill me-2"></i>Ajukan Sekarang
+                        </a>
+                    </div>
+                </div>
+
+                <!-- SKSN -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="layanan-card p-4">
+                        <span class="layanan-badge">Online</span>
+                        <div class="layanan-icon-wrapper">
+                            <i class="bi bi-file-earmark-person"></i>
+                        </div>
+                        <h5 class="layanan-title">Surat Keterangan Satu Nama</h5>
+                        <div class="layanan-syarat">
+                            <div class="layanan-syarat-title">Persyaratan</div>
+                            <ul class="layanan-syarat-list">
+                                <li>Surat Pengantar RT RW</li>
+                                <li>KTP dan Kartu Keluarga Pemohon</li>
+                                <li>Akta Kelahiran</li>
+                                <li>Akta Nikah (Jika Sudah Menikah)</li>
+                                <li>Berkas Identitas Yang Berbeda</li>
+                            </ul>
+                        </div>
+                        <a href="<?php echo site_url('service/submit/sksn'); ?>" class="btn btn-layanan">
+                            <i class="bi bi-send-fill me-2"></i>Ajukan Sekarang
+                        </a>
+                    </div>
+                </div>
+
+                <!-- SPKD - BARU -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="layanan-card p-4">
+                        <span class="layanan-badge">Online</span>
+                        <div class="layanan-icon-wrapper">
+                            <i class="bi bi-briefcase"></i>
+                        </div>
+                        <h5 class="layanan-title">Surat Pengantar Kehilangan Dokumen</h5>
+                        <div class="layanan-syarat">
+                            <div class="layanan-syarat-title">Persyaratan</div>
+                            <ul class="layanan-syarat-list">
+                                <li>Surat Pengantar RT RW</li>
+                                <li>KTP dan Kartu Keluarga Pemohon</li>
+                            </ul>
+                        </div>
+                        <a href="<?php echo site_url('service/submit/spkd'); ?>" class="btn btn-layanan">
+                            <i class="bi bi-send-fill me-2"></i>Ajukan Sekarang
+                        </a>
+                    </div>
+                </div>
+
+                <!-- SKM -->
+                <!--
+                <div class="col-lg-6 col-md-6">
+                    <div class="layanan-card p-4">
+                        <span class="layanan-badge">Online</span>
+                        <div class="layanan-icon-wrapper">
+                            <i class="bi bi-person-x"></i>
+                        </div>
+                        <h5 class="layanan-title">Surat Keterangan Kematian</h5>
+                        <div class="layanan-syarat">
+                            <div class="layanan-syarat-title">Persyaratan</div>
+                            <ul class="layanan-syarat-list">
+                                <li>Surat Pengantar RT RW</li>
+                                <li>KTP dan Kartu Keluarga Yang Meninggal</li>
+                                <li>KTP Pelapor</li>
+                                <li>KTP Saksi 2 Orang</li>
+                                <li>Surat Ket. Dokter (Jika di RS)</li>
+                            </ul>
+                        </div>
+                        <a href="<?php echo site_url('service/submit/skm'); ?>" class="btn btn-layanan">
+                            <i class="bi bi-send-fill me-2"></i>Ajukan Sekarang
+                        </a>
+                    </div>
+                </div>
+                -->
+                <!-- SKL -->
+                <!--
+                <div class="col-lg-6 col-md-6">
+                    <div class="layanan-card p-4">
+                        <span class="layanan-badge">Online</span>
+                        <div class="layanan-icon-wrapper">
+                            <i class="bi bi-person-plus"></i>
+                        </div>
+                        <h5 class="layanan-title">Surat Keterangan Kelahiran</h5>
+                        <div class="layanan-syarat">
+                            <div class="layanan-syarat-title">Persyaratan</div>
+                            <ul class="layanan-syarat-list">
+                                <li>Surat Pengantar RT RW</li>
+                                <li>Buku Nikah Orang Tua</li>
+                                <li>KTP dan Kartu Keluarga Orang Tua</li>
+                                <li>KTP Pelapor</li>
+                                <li>KTP Saksi 2 Orang</li>
+                                <li>Surat Ket. Dokter (Jika di RS)</li>
+                            </ul>
+                        </div>
+                        <a href="<?php echo site_url('service/submit/skl'); ?>" class="btn btn-layanan">
+                            <i class="bi bi-send-fill me-2"></i>Ajukan Sekarang
+                        </a>
+                    </div>
+                </div>
+-->
+            </div>
+
+            <!-- Layanan Offline -->
+            <div class="text-center mt-5 mb-6">
+                <span class="layanan-kategori">
+                    <i class="bi bi-building me-0"></i>
+                    <h7>Layanan Offline (Datang ke Kantor)</h7>
+                </span>
+            </div>
+
+            <div class="row g-4 justify-content-center">
+
+                <!-- SKM -->
+                <div class="col-lg-5 col-md-3">
+                    <div class="layanan-card p-4">
+                        <span class="layanan-badge offline">Offline</span>
+                        <div class="layanan-icon-wrapper" style="background: #6c757d;">
+                            <i class="bi bi-pencil-square"></i>
+                        </div>
+                        <h5 class="layanan-title">Surat Keterangan Kematian</h5>
+                        <div class="layanan-syarat">
+                            <div class="layanan-syarat-title">Persyaratan</div>
+                            <ul class="layanan-syarat-list">
+                                <li>Surat Pengantar RT RW</li>
+                                <li>KTP dan Kartu Keluarga Yang Meninggal</li>
+                                <li>KTP Pelapor</li>
+                                <li>KTP Saksi 2 Orang</li>
+                                <li>Surat Ket. Dokter (Jika di Meninggal di Rumah Sakit)</li>
+                            </ul>
+                        </div>
+                        <button class="btn btn-layanan-offline" disabled>
+                            <i class="bi bi-building me-2"></i>Pengajuan di Kantor
+                        </button>
+                    </div>
+                </div>
+                <!-- SKL -->
+                <div class="col-lg-5 col-md-3">
+                    <div class="layanan-card p-4">
+                        <span class="layanan-badge offline">Offline</span>
+                        <div class="layanan-icon-wrapper" style="background: #6c757d;">
+                            <i class="bi bi-pencil-square"></i>
+                        </div>
+                        <h5 class="layanan-title">Surat Keterangan Kelahiran</h5>
+                        <div class="layanan-syarat">
+                            <div class="layanan-syarat-title">Persyaratan</div>
+                            <ul class="layanan-syarat-list">
+                                <li>Surat Pengantar RT RW</li>
+                                <li>Buku Nikah Orang Tua</li>
+                                <li>KTP dan Kartu Keluarga Orang Tua</li>
+                                <li>KTP Pelapor</li>
+                                <li>KTP Saksi 2 Orang</li>
+                                <li>Surat Ket. Dokter (Jika Lahir di Rumah Sakit)</li>
+                            </ul>
+                        </div>
+                        <button class="btn btn-layanan-offline" disabled>
+                            <i class="bi bi-building me-2"></i>Pengajuan di Kantor
+                        </button>
+                    </div>
+                </div>
+                <!-- SKKM -->
+                <div class="col-lg-5 col-md-3">
+                    <div class="layanan-card p-4">
+                        <span class="layanan-badge offline">Offline</span>
+                        <div class="layanan-icon-wrapper" style="background: #6c757d;">
+                            <i class="bi bi-pencil-square"></i>
+                        </div>
+                        <h5 class="layanan-title">Surat Kesaksian Kematian</h5>
+                        <div class="layanan-syarat">
+                            <div class="layanan-syarat-title">Persyaratan</div>
+                            <ul class="layanan-syarat-list">
+                                <li>Surat Pengantar RT RW</li>
+                                <li>KTP / KK Yang Meninggal</li>
+                                <li>KTP Saksi 2 Orang</li>
+                                <li>Kartu Keluarga Saksi</li>
+                                <li>Materai Rp. 10.000</li>
+                            </ul>
+                        </div>
+                        <button class="btn btn-layanan-offline" disabled>
+                            <i class="bi bi-building me-2"></i>Pengajuan di Kantor
+                        </button>
+                    </div>
+                </div>
+
+                <!-- SKKL -->
+                <div class="col-lg-5 col-md-3">
+                    <div class="layanan-card p-4">
+                        <span class="layanan-badge offline">Offline</span>
+                        <div class="layanan-icon-wrapper" style="background: #6c757d;">
+                            <i class="bi bi-pencil-square"></i>
+                        </div>
+                        <h5 class="layanan-title">Surat Kesaksian Kelahiran</h5>
+                        <div class="layanan-syarat">
+                            <div class="layanan-syarat-title">Persyaratan</div>
+                            <ul class="layanan-syarat-list">
+                                <li>Surat Pengantar RT RW</li>
+                                <li>KTP dan KK Pemohon</li>
+                                <li>KTP Saksi 2 Orang</li>
+                                <li>Kartu Keluarga Saksi</li>
+                                <li>Materai Rp. 10.000</li>
+                            </ul>
+                        </div>
+                        <button class="btn btn-layanan-offline" disabled>
+                            <i class="bi bi-building me-2"></i>Pengajuan di Kantor
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
-        <hr>
     </section>
 
     <!-- SECTION BARU: ALUR PELAYANAN INTERAKTIF -->
     <section class="alur-section py-5 text-white">
         <div class="container position-relative" style="z-index: 1;">
+            <div class="alur-logo-container">
+                <div class="logo-ring"></div>
+                <img src="<?php echo base_url('assets/logo.png'); ?>" alt="SIMPEL AWET" class="alur-logo">
+            </div>
             <!-- Header -->
             <div class="text-center mb-5">
                 <div class="d-flex justify-content-center gap-3 mb-3 flex-wrap">
@@ -535,7 +492,7 @@
                 <div class="col-lg-3 col-md-6 position-relative">
                     <div class="step-card text-center">
                         <div class="step-number mx-auto floating-icon">1️⃣</div>
-                        <h5 class="fw-bold mb-2">Akses Website</h5>
+                        <h4 class="fw-bold mb-2">Akses Website</h4>
                         <p class="opacity-100 mb-0">Buka website resmi SIMPEL AWET melalui HP atau komputer Anda.</p>
                     </div>
                     <div class="connector-line d-none d-lg-block"></div>
@@ -545,7 +502,7 @@
                 <div class="col-lg-3 col-md-6 position-relative">
                     <div class="step-card text-center">
                         <div class="step-number mx-auto floating-icon" style="animation-delay: 0.2s;">2️⃣</div>
-                        <h5 class="fw-bold mb-2">Daftar / Login</h5>
+                        <h4 class="fw-bold mb-2">Daftar / Login</h4>
                         <p class="opacity-100 mb-0">Buat akun baru atau login jika sudah terdaftar.</p>
                     </div>
                     <div class="connector-line d-none d-lg-block"></div>
@@ -555,7 +512,7 @@
                 <div class="col-lg-3 col-md-6 position-relative">
                     <div class="step-card text-center">
                         <div class="step-number mx-auto floating-icon" style="animation-delay: 0.4s;">3️⃣</div>
-                        <h5 class="fw-bold mb-2">Verifikasi Akun</h5>
+                        <h4 class="fw-bold mb-2">Verifikasi Akun</h4>
                         <p class="opacity-100 mb-0">Admin memverifikasi data Anda sebagai warga Kelurahan.</p>
                     </div>
                     <div class="connector-line d-none d-lg-block"></div>
@@ -565,7 +522,7 @@
                 <div class="col-lg-3 col-md-6 position-relative">
                     <div class="step-card text-center">
                         <div class="step-number mx-auto floating-icon" style="animation-delay: 0.6s;">4️⃣</div>
-                        <h5 class="fw-bold mb-2">Pilih Layanan</h5>
+                        <h4 class="fw-bold mb-2">Pilih Layanan</h4>
                         <p class="opacity-100 mb-0">Pilih jenis layanan sesuai kebutuhan Anda.</p>
                     </div>
                 </div>
@@ -574,7 +531,7 @@
                 <div class="col-lg-4 col-md-6 position-relative">
                     <div class="step-card text-center">
                         <div class="step-number mx-auto floating-icon" style="animation-delay: 0.8s;">5️⃣</div>
-                        <h5 class="fw-bold mb-2">Isi Form & Upload</h5>
+                        <h4 class="fw-bold mb-2">Isi Form & Upload</h4>
                         <p class="opacity-100 mb-0">Lengkapi formulir dan unggah persyaratan, lalu klik Ajukan.</p>
                     </div>
                 </div>
@@ -583,7 +540,7 @@
                 <div class="col-lg-4 col-md-6 position-relative">
                     <div class="step-card text-center">
                         <div class="step-number mx-auto floating-icon" style="animation-delay: 1s;">6️⃣</div>
-                        <h5 class="fw-bold mb-2">Proses oleh Admin</h5>
+                        <h4 class="fw-bold mb-2">Proses oleh Admin</h4>
                         <p class="opacity-100 mb-0">Permohonan diverifikasi dan diproses oleh petugas.</p>
                     </div>
                 </div>
@@ -592,7 +549,7 @@
                 <div class="col-lg-4 col-md-12 position-relative">
                     <div class="step-card text-center border-warning">
                         <div class="step-number mx-auto floating-icon" style="animation-delay: 1.2s; background: linear-gradient(135deg, #28a745 0%, #20c997 100%); color: white;">7️⃣</div>
-                        <h5 class="fw-bold mb-2">Unduh Hasil</h5>
+                        <h4 class="fw-bold mb-2">Unduh Hasil</h4>
                         <p class="opacity-100 mb-0">Dokumen dapat langsung diunduh dari akun Anda.</p>
                         <i class="bi bi-check-circle-fill text-warning fs-1 mt-2 d-block"></i>
                     </div>
@@ -611,25 +568,33 @@
                             <div class="col-md-6">
                                 <div class="benefit-item d-flex align-items-center gap-3">
                                     <i class="bi bi-check-circle-fill text-warning fs-4"></i>
-                                    <span class="fw-semibold">Tidak perlu datang ke kantor</span>
+                                    <span class="fw-semibold">
+                                        <h4>Tidak perlu datang ke kantor</h4>
+                                    </span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="benefit-item d-flex align-items-center gap-3">
                                     <i class="bi bi-check-circle-fill text-warning fs-4"></i>
-                                    <span class="fw-semibold">Bisa diakses 24 jam</span>
+                                    <span class="fw-semibold">
+                                        <h4>Bisa diakses 24 jam</h4>
+                                    </span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="benefit-item d-flex align-items-center gap-3">
                                     <i class="bi bi-check-circle-fill text-warning fs-4"></i>
-                                    <span class="fw-semibold">Proses transparan</span>
+                                    <span class="fw-semibold">
+                                        <h4>Proses transparan</h4>
+                                    </span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="benefit-item d-flex align-items-center gap-3">
                                     <i class="bi bi-check-circle-fill text-warning fs-4"></i>
-                                    <span class="fw-semibold">Hemat waktu & biaya</span>
+                                    <span class="fw-semibold">
+                                        <h4>Hemat waktu & biaya</h4>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -643,6 +608,39 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sambutan Lurah -->
+    <section class="sambutan-section py-5">
+        <div class="container position-relative" style="z-index: 1;">
+            <div class="row align-items-center g-5">
+
+                <!-- Kolom Foto -->
+                <div class="col-lg-5 text-center position-relative">
+                    <div class="foto-ring"></div>
+                    <img src="<?php echo base_url('assets/lurah.jpeg'); ?>" alt="Kepala Lurah Kalinyamat Wetan" class="foto-lurah">
+                </div>
+
+                <!-- Kolom Teks -->
+                <div class="col-lg-7">
+                    <div class="sambutan-content">
+                        <h2 class="sambutan-title">Sambutan Lurah Kalinyamat Wetan</h2>
+                        <h2 class="sambutan-nama">MARI, S.AP</h2>
+
+                        <div class="sambutan-text position-relative">
+                            <i class="bi bi-quote quote-icon"></i>
+                            <p class="mb-0">
+                                Assalamu'alaikum Wr. Wb.<br><br>
+                                Puji syukur kami panjatkan kehadirat Allah SWT atas karunia dan nikmat-Nya sehingga website SIMPEL AWET dapat hadir sebagai wujud komitmen kami dalam melayani masyarakat Kelurahan Kalinyamat Wetan. Sistem Informasi Pelayanan ini kami bangun untuk memudahkan warga dalam mengurus administrasi kependudukan dan pelayanan lainnya secara online, tanpa perlu datang ke kantor kelurahan.
+                                Kami berharap pelayanan menjadi lebih <strong>mudah, cepat, transparan, dan akuntabel</strong>. Kami terus berupaya meningkatkan kualitas pelayanan demi kepuasan masyarakat. Silakan manfaatkan fasilitas ini dengan sebaik-baiknya.<br><br>
+                                Wassalamu'alaikum Wr. Wb.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -663,7 +661,7 @@
                 <!-- Kolom Kiri: Gambar -->
                 <div class="col-lg-6">
                     <div class="image-hover-zoom h-100">
-                        <img src="assets/slide2.jpeg" class="w-100 h-100 object-fit-cover" style="min-height: 400px; object-fit: cover;" alt="Kelurahan Kalinyamat Wetan">
+                        <img src="assets/kelurahan.jpeg" class="w-100 h-100 object-fit-cover" style="min-height: 400px; object-fit: cover;" alt="Kelurahan Kalinyamat Wetan">
                     </div>
                 </div>
 
@@ -957,50 +955,26 @@
                 </div>
             </div>
         </section>
-        <!-- Call to Action-->
-        <section class="call-to-action text-white text-center" id="signup">
-            <div class="container position-relative">
-                <div class="row justify-content-center">
-                    <div class="col-xl-6">
-                        <h2 class="mb-4">Ready to get started? Sign up now!</h2>
-                        <!-- Signup form-->
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- * * SB Forms Contact Form * *-->
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- This form is pre-integrated with SB Forms.-->
-                        <!-- To make this form functional, sign up at-->
-                        <!-- https://startbootstrap.com/solution/contact-forms-->
-                        <!-- to get an API token!-->
-                        <form class="form-subscribe" id="contactFormFooter" data-sb-form-api-token="API_TOKEN">
-                            <!-- Email address input-->
-                            <div class="row">
-                                <div class="col">
-                                    <input class="form-control form-control-lg" id="emailAddressBelow" type="email" placeholder="Email Address" data-sb-validations="required,email" />
-                                    <div class="invalid-feedback text-white" data-sb-feedback="emailAddressBelow:required">Email Address is required.</div>
-                                    <div class="invalid-feedback text-white" data-sb-feedback="emailAddressBelow:email">Email Address Email is not valid.</div>
-                                </div>
-                                <div class="col-auto"><button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">Submit</button></div>
+        <!-- Menu Pencarian -->
+        <section class="search-section py-5 text-white text-center">
+            <div class="container">
+                <h3 class="mb-4 fw-bold">Cari Layanan atau Informasi</h3>
+
+                <form action="<?php echo site_url('search'); ?>" method="GET">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8 col-lg-6">
+                            <div class="search-box">
+                                <input type="text" name="keyword" class="search-input" placeholder="Ketik nama layanan, dokumen, atau informasi..." required>
+                                <button type="submit" class="search-btn">
+                                    <i class="bi bi-search me-2"></i>Cari
+                                </button>
                             </div>
-                            <!-- Submit success message-->
-                            <!---->
-                            <!-- This is what your users will see when the form-->
-                            <!-- has successfully submitted-->
-                            <div class="d-none" id="submitSuccessMessage">
-                                <div class="text-center mb-3">
-                                    <div class="fw-bolder">Form submission successful!</div>
-                                    <p>To activate this form, sign up at</p>
-                                    <a class="text-white" href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                                </div>
-                            </div>
-                            <!-- Submit error message-->
-                            <!---->
-                            <!-- This is what your users will see when there is-->
-                            <!-- an error submitting the form-->
-                            <div class="d-none" id="submitErrorMessage">
-                                <div class="text-center text-danger mb-3">Error sending message!</div>
-                            </div>
-                        </form>
+                        </div>
                     </div>
+                </form>
+
+                <div class="mt-3 small opacity-75">
+                    Contoh: SKTM, Surat Domisili, Izin Hajatan
                 </div>
             </div>
         </section>

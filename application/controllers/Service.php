@@ -48,6 +48,14 @@ class Service extends CI_Controller
                     $this->load->view('user/service_form_sih', $data);
                 } elseif ($jenis_layanan === 'sksn') {
                     $this->load->view('user/service_form_sksn', $data);
+                } elseif ($jenis_layanan === 'skm') {
+                    $this->load->view('user/service_form_skm', $data);
+                } elseif ($jenis_layanan === 'skl') {
+                    $this->load->view('user/service_form_skl', $data);
+                } elseif ($jenis_layanan === 'skck') {
+                    $this->load->view('user/service_form_skck', $data);
+                } elseif ($jenis_layanan === 'spkd') {
+                    $this->load->view('user/service_form_spkd', $data);
                 } else {
                     show_404();
                 }
@@ -69,9 +77,75 @@ class Service extends CI_Controller
             $payload = [];
 
             $service_type = $this->input->post('service_type');
-            if (in_array($service_type, ['sktm', 'skd', 'skpo', 'skbm', 'skbr', 'sih'])) {
+            if (in_array($service_type, ['sktm', 'skd', 'skpo', 'skbm', 'skbr', 'sih', 'skck', 'spkd'])) {
                 $upload_errors = [];
                 $fields = ['upload_suratrtrw', 'upload_kk', 'upload_ktp'];
+                foreach ($fields as $field) {
+                    if (!empty($_FILES[$field]['name'])) {
+                        $ext = pathinfo($_FILES[$field]['name'], PATHINFO_EXTENSION);
+                        $rand = mt_rand(100000, 999999);
+                        $new_name = 'documents_' . $service_type . '_' . $rand . '_' . $field . '.' . $ext;
+                        $config['file_name'] = $new_name;
+                        $this->upload->initialize($config);
+                        if ($this->upload->do_upload($field)) {
+                            $data_file = $this->upload->data();
+                            $payload[$field] = isset($data_file['file_name']) ? $data_file['file_name'] : null;
+                        } else {
+                            $upload_errors[$field] = $this->upload->display_errors('', '');
+                            $payload[$field] = null;
+                        }
+                    } else {
+                        $payload[$field] = null;
+                    }
+                }
+            }
+            if (in_array($service_type, ['sksn'])) {
+                $upload_errors = [];
+                $fields = ['upload_suratrtrw', 'upload_kk', 'upload_ktp', 'upload_aktal', 'upload_aktan', 'upload_identitaslain'];
+                foreach ($fields as $field) {
+                    if (!empty($_FILES[$field]['name'])) {
+                        $ext = pathinfo($_FILES[$field]['name'], PATHINFO_EXTENSION);
+                        $rand = mt_rand(100000, 999999);
+                        $new_name = 'documents_' . $service_type . '_' . $rand . '_' . $field . '.' . $ext;
+                        $config['file_name'] = $new_name;
+                        $this->upload->initialize($config);
+                        if ($this->upload->do_upload($field)) {
+                            $data_file = $this->upload->data();
+                            $payload[$field] = isset($data_file['file_name']) ? $data_file['file_name'] : null;
+                        } else {
+                            $upload_errors[$field] = $this->upload->display_errors('', '');
+                            $payload[$field] = null;
+                        }
+                    } else {
+                        $payload[$field] = null;
+                    }
+                }
+            }
+            if (in_array($service_type, ['skm'])) {
+                $upload_errors = [];
+                $fields = ['upload_suratrtrw', 'upload_kk', 'upload_ktp', 'upload_ktpp', 'upload_ktps1', 'upload_ktps2', 'upload_suketdok'];
+                foreach ($fields as $field) {
+                    if (!empty($_FILES[$field]['name'])) {
+                        $ext = pathinfo($_FILES[$field]['name'], PATHINFO_EXTENSION);
+                        $rand = mt_rand(100000, 999999);
+                        $new_name = 'documents_' . $service_type . '_' . $rand . '_' . $field . '.' . $ext;
+                        $config['file_name'] = $new_name;
+                        $this->upload->initialize($config);
+                        if ($this->upload->do_upload($field)) {
+                            $data_file = $this->upload->data();
+                            $payload[$field] = isset($data_file['file_name']) ? $data_file['file_name'] : null;
+                        } else {
+                            $upload_errors[$field] = $this->upload->display_errors('', '');
+                            $payload[$field] = null;
+                        }
+                    } else {
+                        $payload[$field] = null;
+                    }
+                }
+            }
+            if (in_array($service_type, ['skl'])) {
+                $upload_errors = [];
+                $fields = ['upload_suratrtrw', 'upload_aktan', 'upload_kk', 'upload_ktp', 'upload_ktpp', 'upload_ktps1', 'upload_ktps2', 'upload_suketdok'];
                 foreach ($fields as $field) {
                     if (!empty($_FILES[$field]['name'])) {
                         $ext = pathinfo($_FILES[$field]['name'], PATHINFO_EXTENSION);
@@ -109,7 +183,7 @@ class Service extends CI_Controller
             ];
 
             $this->Service_model->create_request($payload);
-            $this->load->view('user/service_form', ['success' => 'Request submitted.']);
+            $this->load->view('user/sukses', ['success' => 'Request submitted.']);
             return;
         }
 
@@ -129,6 +203,14 @@ class Service extends CI_Controller
             $this->load->view('user/service_form_sih', $data);
         } elseif ($jenis_layanan === 'sksn') {
             $this->load->view('user/service_form_sksn', $data);
+        } elseif ($jenis_layanan === 'skm') {
+            $this->load->view('user/service_form_skm', $data);
+        } elseif ($jenis_layanan === 'skl') {
+            $this->load->view('user/service_form_skl', $data);
+        } elseif ($jenis_layanan === 'skck') {
+            $this->load->view('user/service_form_skck', $data);
+        } elseif ($jenis_layanan === 'spkd') {
+            $this->load->view('user/service_form_spkd', $data);
         } else {
             show_404();
         }
