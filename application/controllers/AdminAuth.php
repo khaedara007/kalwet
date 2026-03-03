@@ -1,13 +1,14 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class AdminAuth extends CI_Controller {
+class AdminAuth extends CI_Controller
+{
     public function __construct()
     {
         parent::__construct();
         $this->load->model('User_model');
-        $this->load->library(array('session','form_validation'));
-        $this->load->helper(array('url','form'));
+        $this->load->library(array('session', 'form_validation'));
+        $this->load->helper(array('url', 'form'));
     }
 
     public function index()

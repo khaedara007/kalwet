@@ -63,3 +63,4 @@ $route['admin'] = 'admin/dashboard';
 $route['admin/login'] = 'adminauth';
 $route['admin/do_login'] = 'adminauth/do_login';
 $route['admin/logout'] = 'adminauth/logout';
+$route['service/revise/(:num)'] = 'service/revise/$1';

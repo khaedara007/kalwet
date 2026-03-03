@@ -216,6 +216,100 @@ class Service extends CI_Controller
         }
     }
 
+    public function revise($id)
+    {
+        $user = $this->session->userdata('user');
+        if (!$user) {
+            redirect('login');
+        }
+
+        // Ambil data permohonan
+        $this->db->where('id', $id);
+        $this->db->where('user_id', $user->id);
+        $request = $this->db->get('service_requests')->row();
+
+        if (!$request) {
+            $this->session->set_flashdata('error', 'Permohonan tidak ditemukan!');
+            redirect('dashboard');
+        }
+        $layanan_mapping = [
+            'sktm' => 'Surat Keterangan Tidak Mampu',
+            'skbr' => 'Surat Keterangan Belum Memiliki Rumah',
+            'skd' => 'Surat Keterangan Domisili',
+            'sksn' => 'Surat Keterangan Satu Nama',
+            'skpo' => 'Surat Keterangan Penghasilan Orang Tua',
+            'skck' => 'Surat Keterangan Catatan Kepolisian',
+            'skbm' => 'Surat Keterangan Belum Menikah',
+            'sih' => 'Surat Izin Hajatan',
+            'skm' => 'Surat Keterangan Kematian',
+            'skl' => 'Surat Keterangan Kelahiran',
+            'spkd' => 'Surat Pengantar Kehilangan Dokumen',
+            // tambahkan lainnya sesuai kebutuhan
+        ];
+
+        // Tambahkan property baru untuk nama layanan lengkap
+        $request->service_name_display = isset($layanan_mapping[$request->service_type])
+            ? $layanan_mapping[$request->service_type]
+            : $request->service_type;
+
+        // Proses jika POST
+        if ($this->input->method() === 'post') {
+
+            // Update data pribadi
+            $data_update = array(
+                'name' => $this->input->post('name'),
+                'nik' => $this->input->post('nik'),
+                'kk_number' => $this->input->post('kk_number'),
+                'phone' => $this->input->post('phone'),
+                'date_of_birth' => $this->input->post('date_of_birth'),
+                'address' => $this->input->post('address'),
+                'additional_notes' => $this->input->post('additional_notes'),
+                'status' => 'under_review',
+                'rejection_reason' => null,
+                'updated_at' => date('Y-m-d H:i:s')
+            );
+
+            // Update dokumen jika ada file baru
+            $upload_fields = array(
+                'upload_suratrtrw',
+                'upload_kk',
+                'upload_ktp',
+                'upload_aktal',
+                'upload_aktan',
+                'upload_identitaslain',
+                'upload_ktpp',
+                'upload_ktps1',
+                'upload_ktps2',
+                'upload_suketdok'
+            );
+
+            $config['upload_path'] = './assets/uploads/documents/';
+            $config['allowed_types'] = 'pdf|jpg|jpeg|png';
+            $config['max_size'] = 2048;
+
+            $this->load->library('upload', $config);
+
+            foreach ($upload_fields as $field) {
+                if (!empty($_FILES[$field]['name'])) {
+                    if ($this->upload->do_upload($field)) {
+                        $upload_data = $this->upload->data();
+                        $data_update[$field] = $upload_data['file_name'];
+                    }
+                }
+            }
+
+            // Update database
+            $this->db->where('id', $id);
+            $this->db->update('service_requests', $data_update);
+
+            $this->session->set_flashdata('success', 'Permohonan berhasil direvisi dan dikirim ulang!');
+            redirect('user/landing');
+        }
+
+        $data['request'] = $request;
+        $this->load->view('user/revise', $data);
+    }
+
     public function pilih_service()
     {
         $this->load->view('user/pilih_service');

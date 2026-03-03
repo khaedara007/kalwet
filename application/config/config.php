@@ -466,7 +466,10 @@ $config['csrf_token_name'] = 'koperasi_csrf_token';
 $config['csrf_cookie_name'] = 'koperasi_csrf_token';
 $config['csrf_expire'] = 7200;
 $config['csrf_regenerate'] = TRUE;
-$config['csrf_exclude_uris'] = array();
+$config['csrf_exclude_uris'] = array(
+    'admin/reject_request/[0-9]+',
+    'admin/upload_completed/[0-9]+'
+);
 
 /*
 |--------------------------------------------------------------------------

@@ -6,9 +6,12 @@ class Admin extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model(array('User_model', 'Service_model'));
+        $this->load->model(array('User_model', 'Service_model', 'Rating_model'));
         $this->load->library('session');
         $this->load->helper(array('url', 'whatsapp'));
+
+        // Load database untuk method reset_all_ratings
+        $this->load->database();
     }
 
     protected function check_admin()
@@ -26,20 +29,77 @@ class Admin extends CI_Controller
         $this->load->view('admin/dashboard', $data);
     }
 
-    public function verify_account($id)
+    public function delete_user($id)
     {
         $this->check_admin();
-        $action = $this->input->get('action'); // approve or reject
-        if ($action === 'approve') {
-            $this->User_model->update_status($id, 'active');
-            $user = $this->User_model->get_by_id($id);
-            send_whatsapp($user->phone, 'Your account has been verified and activated. You can now login.');
-        } else {
-            $this->User_model->update_status($id, 'rejected');
-            $user = $this->User_model->get_by_id($id);
-            send_whatsapp($user->phone, 'Your account registration has been rejected.');
+
+        // Cek apakah user ada
+        $user = $this->User_model->get_by_id($id);
+
+        if (!$user) {
+            $this->session->set_flashdata('error', 'User tidak ditemukan!');
+            redirect('admin/users');
         }
-        redirect('admin');
+
+        // Cegah admin menghapus dirinya sendiri
+        $current_user = $this->session->userdata('user');
+        if ($user->id == $current_user->id) {
+            $this->session->set_flashdata('error', 'Anda tidak dapat menghapus akun sendiri!');
+            redirect('admin/users');
+        }
+
+        // Hapus user
+        if ($this->User_model->delete($id)) {
+            $this->session->set_flashdata('success', "Akun {$user->name} berhasil dihapus!");
+        } else {
+            $this->session->set_flashdata('error', 'Gagal menghapus akun!');
+        }
+
+        redirect('admin/users');
+    }
+
+    /**
+     * Halaman kelola rating
+     */
+    public function ratings()
+    {
+        $this->check_admin();
+
+        // Ambil semua rating dengan info user
+        $data['ratings'] = $this->Rating_model->getAllRatings(100);
+
+        // Ambil statistik
+        $data['stats'] = $this->Rating_model->getRatingStats();
+
+        $this->load->view('admin/ratings', $data);
+    }
+
+    /**
+     * Reset semua rating (truncate table)
+     */
+    public function reset_all_ratings()
+    {
+        $this->check_admin();
+
+        // Truncate tabel ratings
+        $this->db->truncate('ratings');
+
+        $this->session->set_flashdata('success', 'Semua rating berhasil direset!');
+        redirect('admin/ratings');
+    }
+
+    /**
+     * Hapus rating tertentu
+     */
+    public function delete_rating($id)
+    {
+        $this->check_admin();
+
+        $this->db->where('id', $id);
+        $this->db->delete('ratings');
+
+        $this->session->set_flashdata('success', 'Rating berhasil dihapus!');
+        redirect('admin/ratings');
     }
 
     public function requests()
@@ -54,39 +114,6 @@ class Admin extends CI_Controller
         $this->check_admin();
         $data['users'] = $this->User_model->get_all();
         $this->load->view('admin/users', $data);
-    }
-
-    public function approve_request($id)
-    {
-        $this->check_admin();
-        $this->Service_model->update_status($id, 'in_process');
-        redirect('admin/requests');
-    }
-
-    public function reject_request($id)
-    {
-        $this->check_admin();
-        $reason = $this->input->post('reason') ?: 'Rejected by admin';
-        $this->Service_model->update_status($id, 'needs_revision', $reason);
-        redirect('admin/requests');
-    }
-
-    public function upload_completed($id)
-    {
-        $this->check_admin();
-        if ($this->input->method() === 'post') {
-            $config['upload_path'] = './assets/uploads/completed/';
-            $config['allowed_types'] = 'pdf';
-            $config['max_size'] = 2048;
-            $this->load->library('upload', $config);
-
-            if ($this->upload->do_upload('completed_document')) {
-                $file = $this->upload->data('file_name');
-                $this->Service_model->update_completed($id, $file);
-                $this->Service_model->update_status($id, 'completed');
-            }
-        }
-        redirect('admin/requests');
     }
 
     public function logout()

@@ -36,12 +36,19 @@
                         <div class="card-body">
                             <h6 class="fw-bold">Layanan yang tersedia:</h6>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Surat Keterangan Tidak Mampu (SKTM)</li>
-                                <li class="list-group-item">Surat Keterangan Domisili (SKD)</li>
-                                <li class="list-group-item">Surat Keterangan Penghasilan Orang Tua (SKPO)</li>
-                                <li class="list-group-item">Surat Keterangan Belum Menikah (SKBM)</li>
-                                <li class="list-group-item">Surat Keterangan Belum Memiliki Rumah (SKBR)</li>
-                                <li class="list-group-item">Surat Izin Hajatan (SKIH)</li>
+                                <li class="list-group-item">Surat Keterangan Tidak Mampu</li>
+                                <li class="list-group-item">Surat Keterangan Domisili</li>
+                                <li class="list-group-item">Surat Keterangan Penghasilan Orang Tua</li>
+                                <li class="list-group-item">Surat Keterangan Belum Menikah</li>
+                                <li class="list-group-item">Surat Keterangan Belum Memiliki Rumah</li>
+                                <li class="list-group-item">Surat Izin Hajatan</li>
+                                <li class="list-group-item">Surat Pengantar SKCK</li>
+                                <li class="list-group-item">Surat Keterangan Satu Nama</li>
+                                <li class="list-group-item">Surat Pengantar Kehilangan Dokumen</li>
+                                <li class="list-group-item">Surat Keterangan Kematian (Offline)</li>
+                                <li class="list-group-item">Surat Keterangan Kelahiran (Offline)</li>
+                                <li class="list-group-item">Surat Kesaksian Kematian (Offline)</li>
+                                <li class="list-group-item">Surat Kesaksian Kelahiran (Offline)</li>
                             </ul>
                         </div>
                     </div>

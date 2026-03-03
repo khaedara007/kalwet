@@ -27,7 +27,7 @@
             <div class="row align-items-center py-0">
 
                 <!-- Logo & Title -->
-                <div class="col-lg-8 col-md-8 d-flex align-items-center gap-8">
+                <div class="col-lg-7 col-md-7 d-flex align-items-center gap-8">
                     <a href="<?php echo site_url('/'); ?>">
                         <img src="<?php echo base_url('assets/logo.png'); ?>" alt="SIMPEL AWET" class="header-logo">
                     </a>
@@ -37,21 +37,36 @@
                     </div>
                 </div>
 
-
-
                 <!-- Buttons -->
-                <div class="col-lg-4 col-md-4 text-end">
-                    <a href="<?php echo site_url('login'); ?>" class="btn header-btn header-btn-login me-2">
-                        <i class="bi bi-box-arrow-in-right me-1"></i>Masuk
-                    </a>
-                    <a href="<?php echo site_url('register'); ?>" class="btn header-btn header-btn-register">
-                        <i class="bi bi-person-plus me-1"></i>Daftar
-                    </a>
+                <div class="col-lg-5 col-md-5 text-end">
+                    <?php if ($this->session->userdata('user')): ?>
+                        <!-- Jika sudah login -->
+                        <?php $user = $this->session->userdata('user'); ?>
+
+                        <span class="me-3 fw-bold text-light">
+                            <i class="bi bi-person-circle me-1"></i>Halo, <?php echo $user->name; ?>
+                        </span>
+
+                        <a href="<?php echo site_url('dashboard'); ?>" class="btn header-btn header-btn-register me-2">
+                            <i class="bi bi-file-text me-1"></i>Permohonan Saya
+                        </a>
+                        <a href="<?php echo site_url('logout'); ?>" class="btn header-btn header-btn-login">
+                            <i class="bi bi-box-arrow-right me-1"></i>Keluar
+                        </a>
+
+                    <?php else: ?>
+                        <!-- Jika belum login -->
+                        <a href="<?php echo site_url('login'); ?>" class="btn header-btn header-btn-login me-2">
+                            <i class="bi bi-box-arrow-in-right me-1"></i>Masuk
+                        </a>
+                        <a href="<?php echo site_url('register'); ?>" class="btn header-btn header-btn-register">
+                            <i class="bi bi-person-plus me-1"></i>Daftar
+                        </a>
+                    <?php endif; ?>
                 </div>
 
             </div>
         </div>
-
     </header>
     <!-- Masthead-->
     <header class="masthead">
@@ -99,7 +114,7 @@
 
             <!-- Header -->
             <div class="text-center mb-5">
-                <h2 class="display-5 fw-bold text-dark section-title">LAYANAN DAN PERSYARATAN ADMINISTRASI</h2>
+                <h2 class="display-5 fw-bold text-dark section-title" style="font-size: 2rem !important;">LAYANAN DAN PERSYARATAN ADMINISTRASI</h2>
                 <br>
                 <span class="layanan-kategori">
                     <i class="bi bi-grid-3x3-gap-fill me-2"></i>Layanan Online
@@ -652,7 +667,7 @@
 
             <!-- Header -->
             <div class="text-center mb-5">
-                <h2 class="display-5 fw-bold text-dark section-title">PROFIL KELURAHAN</h2>
+                <h2 class="display-5 fw-bold text-dark section-title" style="font-size: 2rem !important;">PROFIL KELURAHAN</h2>
                 <p class="text-muted">Mengenal Lebih Dekat Kalinyamat Wetan</p>
             </div>
 
@@ -733,7 +748,7 @@
                 <div class="batas-card p-4 p-lg-5">
 
                     <div class="text-center mb-4 position-relative">
-                        <h2 class="fw-bold mb-2">BATAS WILAYAH</h2>
+                        <h2 class="display-5 fw-bold text-light section-title" style="font-size: 2rem !important;">BATAS WILAYAH</h2>
                         <p class="opacity-100 mb-0">
                         <h5>Letak Geografis Kelurahan Kalinyamat Wetan</h5>
                         </p>
@@ -817,7 +832,7 @@
             <!-- Peta Lokasi -->
             <div class="mt-5">
                 <div class="text-center mb-4">
-                    <h3 class="fw-bold section-title">PETA LOKASI</h3>
+                    <h3 class="display-5 fw-bold text-dark section-title" style="font-size: 2rem !important;">PETA LOKASI</h3>
                 </div>
                 <div class="rounded-4 shadow overflow-hidden">
                     <iframe
@@ -834,16 +849,36 @@
         </div>
 
         <!-- Rating Pelayanan Section -->
-        <section class="rating-section py-5">
+        <section class="rating-section py-5" id="rating">
             <div class="container">
 
+                <!-- FLASH MESSAGES - TAMBAHKAN INI DI ATAS -->
+                <div class="row justify-content-center mb-4">
+                    <div class="col-lg-8">
+                        <?php if ($this->session->flashdata('success')): ?>
+                            <div class="alert alert-success alert-dismissible fade show shadow-sm" role="alert">
+                                <i class="bi bi-check-circle-fill me-2"></i>
+                                <?php echo $this->session->flashdata('success'); ?>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if ($this->session->flashdata('error')): ?>
+                            <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+                                <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                                <?php echo $this->session->flashdata('error'); ?>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+
                 <div class="text-center mb-5">
-                    <h2 class="display-5 fw-bold text-dark section-title">PENILAIAN PELAYANAN</h2>
+                    <h2 class="display-5 fw-bold text-dark section-title" style="font-size: 2rem !important;">PENILAIAN PELAYANAN</h2>
                     <p class="text-muted">Beri rating untuk pelayanan SIMPEL AWET</p>
                 </div>
 
                 <div class="row g-4 justify-content-center">
-
                     <!-- Form Rating (Hanya untuk user yang login) -->
                     <div class="col-lg-6">
                         <div class="rating-card p-4 p-lg-5 h-100">
@@ -852,46 +887,58 @@
                                 Beri Rating Anda
                             </h4>
 
-                            <?php if ($this->session->userdata('logged_in')): ?>
-                                <!-- User sudah login -->
-                                <form action="<?php echo site_url('rating/submit'); ?>" method="POST" id="ratingForm">
-                                    <div class="text-center mb-4">
-                                        <div class="star-rating">
-                                            <input type="radio" id="star5" name="rating" value="5" required>
-                                            <label for="star5"><i class="bi bi-star-fill"></i></label>
+                            <?php
+                            // Cek login - sesuaikan dengan struktur session Anda
+                            $user = $this->session->userdata('user');
+                            $is_logged_in = !empty($user);
 
-                                            <input type="radio" id="star4" name="rating" value="4">
-                                            <label for="star4"><i class="bi bi-star-fill"></i></label>
+                            if ($is_logged_in):
+                            ?>
+                                <?php if (!empty($sudah_rating) && $sudah_rating): ?>
+                                    <!-- Sudah pernah rating -->
+                                    <div class="alert alert-success text-center py-4">
+                                        <i class="bi bi-check-circle-fill fs-1 d-block mb-2"></i>
+                                        <h5>Terima kasih!</h5>
+                                        <p class="mb-0">Anda sudah memberikan rating untuk pelayanan kami.</p>
+                                    </div>
+                                <?php else: ?>
+                                    <!-- Form Rating -->
+                                    <form action="<?php echo site_url('rating/submit'); ?>" method="POST" id="ratingForm">
+                                        <?php if ($this->security->get_csrf_token_name()): ?>
+                                            <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>"
+                                                value="<?php echo $this->security->get_csrf_hash(); ?>">
+                                        <?php endif; ?>
+                                        <div class="text-center mb-4">
+                                            <div class="star-rating">
+                                                <input type="radio" id="star5" name="rating" value="5" required>
+                                                <label for="star5"><i class="bi bi-star-fill"></i></label>
 
-                                            <input type="radio" id="star3" name="rating" value="3">
-                                            <label for="star3"><i class="bi bi-star-fill"></i></label>
+                                                <input type="radio" id="star4" name="rating" value="4">
+                                                <label for="star4"><i class="bi bi-star-fill"></i></label>
 
-                                            <input type="radio" id="star2" name="rating" value="2">
-                                            <label for="star2"><i class="bi bi-star-fill"></i></label>
+                                                <input type="radio" id="star3" name="rating" value="3">
+                                                <label for="star3"><i class="bi bi-star-fill"></i></label>
 
-                                            <input type="radio" id="star1" name="rating" value="1">
-                                            <label for="star1"><i class="bi bi-star-fill"></i></label>
+                                                <input type="radio" id="star2" name="rating" value="2">
+                                                <label for="star2"><i class="bi bi-star-fill"></i></label>
+
+                                                <input type="radio" id="star1" name="rating" value="1">
+                                                <label for="star1"><i class="bi bi-star-fill"></i></label>
+                                            </div>
+                                            <small class="text-muted d-block mt-2">Klik bintang untuk memberi nilai</small>
+                                            <div id="rating-text" class="fw-bold text-primary mt-1"></div>
                                         </div>
-                                        <small class="text-muted d-block mt-2">Klik bintang untuk memberi nilai</small>
-                                    </div>
 
-                                    <div class="mb-3">
-                                        <textarea name="komentar" class="form-control rounded-3" rows="3" placeholder="Komentar anda (opsional)..." maxlength="500"></textarea>
-                                    </div>
+                                        <div class="mb-3">
+                                            <textarea name="komentar" class="form-control rounded-3" rows="3"
+                                                placeholder="Komentar anda (opsional)..." maxlength="500"></textarea>
+                                        </div>
 
-                                    <button type="submit" class="btn btn-primary w-100 py-3 fw-bold rounded-3">
-                                        <i class="bi bi-send-fill me-2"></i>Kirim Rating
-                                    </button>
-                                </form>
-
-                                <!-- Notifikasi sudah pernah rating -->
-                                <?php if ($this->session->userdata('sudah_rating')): ?>
-                                    <div class="alert alert-success mt-3 text-center">
-                                        <i class="bi bi-check-circle-fill me-2"></i>
-                                        Terima kasih! Anda sudah memberi rating.
-                                    </div>
+                                        <button type="submit" class="btn btn-primary w-100 py-3 fw-bold rounded-3">
+                                            <i class="bi bi-send-fill me-2"></i>Kirim Rating
+                                        </button>
+                                    </form>
                                 <?php endif; ?>
-
                             <?php else: ?>
                                 <!-- User belum login -->
                                 <div class="text-center py-4">
@@ -913,48 +960,100 @@
                                 Statistik Rating
                             </h4>
 
-                            <?php
-                            // Data dummy - nanti diambil dari database
-                            $total_rating = 128;
-                            $avg_rating = 4.2;
-                            $distribusi = [
-                                5 => 85,
-                                4 => 25,
-                                3 => 10,
-                                2 => 5,
-                                1 => 3
-                            ];
-                            ?>
-
                             <div class="text-center mb-4">
-                                <div class="display-1 fw-bold text-warning"><?php echo number_format($avg_rating, 1); ?></div>
+                                <div class="display-1 fw-bold text-warning">
+                                    <?php echo number_format($rating_stats['average'] ?? 0, 1); ?>
+                                </div>
                                 <div class="mb-2">
-                                    <?php for ($i = 1; $i <= 5; $i++): ?>
-                                        <i class="bi bi-star-fill <?php echo $i <= round($avg_rating) ? 'text-warning' : 'text-white-50'; ?> fs-4"></i>
+                                    <?php
+                                    $avg = round($rating_stats['average'] ?? 0);
+                                    for ($i = 1; $i <= 5; $i++):
+                                    ?>
+                                        <i class="bi bi-star-fill <?php echo $i <= $avg ? 'text-warning' : 'text-secondary'; ?> fs-4"></i>
                                     <?php endfor; ?>
                                 </div>
-                                <div class="opacity-75">dari <?php echo $total_rating; ?> pengguna</div>
+                                <div class="opacity-75">dari <?php echo $rating_stats['total'] ?? 0; ?> pengguna</div>
                             </div>
 
                             <!-- Progress bar per bintang -->
-                            <?php for ($i = 5; $i >= 1; $i--):
-                                $persen = ($total_rating > 0) ? ($distribusi[$i] / $total_rating) * 100 : 0;
+                            <?php
+                            $total = $rating_stats['total'] ?? 0;
+                            for ($i = 5; $i >= 1; $i--):
+                                $count = $rating_stats['distribusi'][$i] ?? 0;
+                                $persen = ($total > 0) ? ($count / $total) * 100 : 0;
                             ?>
                                 <div class="d-flex align-items-center mb-2">
-                                    <span class="me-2 small" style="width: 60px;"><?php echo $i; ?> <i class="bi bi-star-fill small"></i></span>
-                                    <div class="flex-grow-1 rating-bar">
-                                        <div class="rating-fill" style="width: <?php echo $persen; ?>%"></div>
+                                    <span class="me-2 small" style="width: 60px;">
+                                        <?php echo $i; ?> <i class="bi bi-star-fill small"></i>
+                                    </span>
+                                    <div class="flex-grow-1 rating-bar bg-light rounded">
+                                        <div class="rating-fill bg-warning rounded" style="width: <?php echo $persen; ?>%; height: 20px;"></div>
                                     </div>
-                                    <span class="ms-2 small" style="width: 40px; text-align: right;"><?php echo $distribusi[$i]; ?></span>
+                                    <span class="ms-2 small" style="width: 40px; text-align: right;">
+                                        <?php echo $count; ?>
+                                    </span>
                                 </div>
                             <?php endfor; ?>
-
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
+
+        <style>
+            .star-rating {
+                display: flex;
+                flex-direction: row-reverse;
+                justify-content: center;
+                gap: 5px;
+            }
+
+            .star-rating input {
+                display: none;
+            }
+
+            .star-rating label {
+                cursor: pointer;
+                font-size: 2.5rem;
+                color: #ddd;
+                transition: color 0.2s;
+            }
+
+            .star-rating input:checked~label,
+            .star-rating label:hover,
+            .star-rating label:hover~label {
+                color: #ffc107;
+            }
+
+            .rating-bar {
+                height: 20px;
+                background-color: #e9ecef;
+                border-radius: 10px;
+                overflow: hidden;
+            }
+
+            .rating-fill {
+                height: 100%;
+                background-color: #ffc107;
+                transition: width 0.3s ease;
+            }
+        </style>
+
+        <script>
+            // Tambahkan teks deskripsi saat memilih bintang
+            document.querySelectorAll('.star-rating input').forEach(star => {
+                star.addEventListener('change', function() {
+                    const texts = {
+                        1: 'Sangat Buruk',
+                        2: 'Buruk',
+                        3: 'Cukup',
+                        4: 'Baik',
+                        5: 'Sangat Baik'
+                    };
+                    document.getElementById('rating-text').textContent = texts[this.value];
+                });
+            });
+        </script>
         <!-- Menu Pencarian -->
         <section class="search-section py-5 text-white text-center">
             <div class="container">

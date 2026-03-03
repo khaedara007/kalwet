@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>User Dashboard</title>
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
     <!-- Custom CSS SIMPEL AWET -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url('assets/template1/css/custom.css') ?>" rel="stylesheet" />
@@ -16,7 +18,7 @@
         <div class="row align-items-center py-0">
 
             <!-- Logo & Title -->
-            <div class="col-lg-8 col-md-8 d-flex align-items-center gap-8">
+            <div class="col-lg-7 col-md-6 d-flex align-items-center gap-8">
                 <a href="<?php echo site_url('/'); ?>">
                     <img src="<?php echo base_url('assets/logo.png'); ?>" alt="SIMPEL AWET" class="header-logo">
                 </a>
@@ -29,7 +31,10 @@
 
 
             <!-- Buttons -->
-            <div class="col-lg-4 col-md-4 text-end">
+            <div class="col-lg-5 col-md-6 text-end">
+                <a href="<?php echo site_url('home'); ?>" class="btn header-btn header-btn-register">
+                    <i class="bi bi-box-arrow-in-right me-1"></i>Dashboard
+                </a>
                 <a href="<?php echo site_url('service/pilih_service'); ?>" class="btn header-btn header-btn-register">
                     <i class="bi bi-box-arrow-in-right me-1"></i>Ajukan Permohonan
                 </a>
@@ -48,6 +53,12 @@
 
         <!-- Header -->
         <div class="page-header">
+            <?php $user = $this->session->userdata('user'); ?>
+
+            <span class="me-3 fw-bold text-light">
+                <i class="bi bi-person-circle me-1"></i>Halo, <?php echo $user->name; ?>
+            </span>
+            <hr>
             <h2 class="page-title"><i class="bi bi-folder-check me-2"></i>Permohonan Layanan Saya</h2>
             <p class="page-subtitle">Kelola dan pantau status permohonan administrasi Anda</p>
         </div>
@@ -185,11 +196,12 @@
                                             <a href="<?php echo site_url('service/revise/' . $r->id); ?>" class="btn-action btn-revise">
                                                 <i class="bi bi-pencil-square"></i>Perbaiki
                                             </a>
-                                            <div class="revision-note mt-2">
-                                                <i class="bi bi-exclamation-circle me-1"></i>
-                                                <?php echo $r->revision_notes; ?>
-                                            </div>
-                                        <?php else: ?>
+                                            <?php if (!empty($r->rejection_reason)): ?>
+                                                <div class="revision-note mt-2">
+                                                    <i class="bi bi-exclamation-circle me-1"></i>
+                                                    <?php echo $r->rejection_reason; ?>
+                                                </div>
+                                            <?php endif; ?>
                                             <span class="text-muted"><i class="bi bi-clock me-1"></i>Proses...</span>
                                         <?php endif; ?>
                                     </td>
@@ -215,6 +227,48 @@
             </div>
 
         <?php endif; ?>
+        <!-- Rating Section (Hanya muncul jika belum rating) -->
+        <?php if (!$sudah_rating): ?>
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <h5 class="fw-bold mb-2">
+                                        <i class="bi bi-star-fill text-warning me-2"></i>
+                                        Bagaimana pelayanan kami?
+                                    </h5>
+                                    <p class="text-muted mb-0">Bantu kami meningkatkan kualitas pelayanan dengan memberikan rating dan ulasan.</p>
+                                </div>
+                                <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                                    <a href="<?php echo site_url('/'); ?>#rating" class="btn btn-warning btn-lg fw-bold">
+                                        <i class="bi bi-star me-2"></i>Beri Rating
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php else: ?>
+            <!-- Sudah rating - Tampilkan terima kasih -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="alert alert-success border-0 shadow-sm mb-0">
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-check-circle-fill fs-4 me-3"></i>
+                            <div>
+                                <h6 class="fw-bold mb-1">Terima kasih atas penilaian Anda!</h6>
+                                <p class="mb-0 small">Anda telah memberikan rating untuk pelayanan SIMPEL AWET.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+
+    </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
