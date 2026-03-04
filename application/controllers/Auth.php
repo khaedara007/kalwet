@@ -51,6 +51,20 @@ class Auth extends CI_Controller
             return;
         }
 
+        $nik = $this->input->post('nik', TRUE);
+        $phone = $this->input->post('phone', TRUE);
+        $existing_nik = $this->User_model->get_by_nik($nik);
+        if ($existing_nik) {
+            $data['error'] = 'NIK sudah terdaftar! Silakan login atau gunakan NIK lain.';
+            $this->load->view('auth/register', $data);
+            return;
+        }
+        $existing_phone = $this->User_model->get_by_phone($phone);
+        if ($existing_phone) {
+            $data['error'] = 'Nomor telepon sudah terdaftar! Silakan login atau gunakan nomor lain.';
+            $this->load->view('auth/register', $data);
+            return;
+        }
         $data = array(
             'name' => $this->input->post('name'),
             'nik' => $this->input->post('nik'),

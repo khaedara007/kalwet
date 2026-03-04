@@ -21,6 +21,11 @@ class User_model extends CI_Model
         return $this->db->where('phone', $phone)->get($this->table)->row();
     }
 
+    public function get_by_nik($nik)
+    {
+        return $this->db->where('nik', $nik)->get($this->table)->row();
+    }
+
     public function get_by_id($id)
     {
         return $this->db->where('id', $id)->get($this->table)->row();
