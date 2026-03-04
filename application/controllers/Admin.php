@@ -55,6 +55,130 @@ class Admin extends CI_Controller
         redirect('admin/dashboard'); // atau halaman sebelumnya
     }
 
+    public function approve_request($id = null)
+    {
+        $this->check_admin();
+
+        if ($id === null) {
+            show_404();
+        }
+
+        $request = $this->Service_model->get_by_id($id);
+
+        if (!$request) {
+            $this->session->set_flashdata('error', 'Data permohonan tidak ditemukan!');
+            redirect('admin/dashboard');
+        }
+
+        // Cek status harus under_review
+        if ($request->status !== 'under_review') {
+            $this->session->set_flashdata('error', 'Status permohonan tidak valid untuk disetujui!');
+            redirect('admin/dashboard');
+        }
+
+        // Update status menjadi in_process
+        $this->Service_model->update_status($id, 'in_process');
+
+        // Kirim notifikasi WA ke user (opsional)
+        // send_whatsapp($request->phone, 'Permohonan Anda telah disetujui dan sedang diproses.');
+
+        $this->session->set_flashdata('success', 'Permohonan disetujui! Status sekarang: Dalam Proses.');
+        redirect('admin/requests');
+    }
+
+    public function reject_request($id = null)
+    {
+        $this->check_admin();
+
+        if ($id === null) {
+            show_404();
+        }
+
+        // Ambil data request/service berdasarkan ID
+        $request = $this->Service_model->get_by_id($id);
+
+        if (!$request) {
+            $this->session->set_flashdata('error', 'Data permohonan tidak ditemukan!');
+            redirect('admin/dashboard');
+        }
+
+        $revision_notes = $this->input->post('revision_notes'); // Ambil alasan dari form admin
+
+        $this->Service_model->update_status($id, 'needs_revision', $revision_notes);
+
+        // Optional: Kirim notifikasi WA ke user bahwa permohonan ditolak
+        // $user = $this->User_model->get_by_id($request->user_id);
+        // send_whatsapp($user->phone, 'Maaf, permohonan Anda ditolak.');
+
+        $this->session->set_flashdata('success', 'Permohonan berhasil ditolak!');
+
+        redirect('admin/requests');
+    }
+
+    public function upload_completed($id = null)
+    {
+        $this->check_admin();
+
+        if ($id === null) {
+            show_404();
+        }
+
+        // Ambil data permohonan
+        $request = $this->Service_model->get_by_id($id);
+
+        if (!$request) {
+            $this->session->set_flashdata('error', 'Data permohonan tidak ditemukan!');
+            redirect('admin/dashboard');
+        }
+
+        // Cek status harus in_process
+        if ($request->status !== 'in_process') {
+            $this->session->set_flashdata('error', 'Status permohonan tidak valid untuk upload! Status saat ini: ' . $request->status);
+            redirect('admin/dashboard');
+        }
+
+        // Konfigurasi upload
+        $config['upload_path'] = './assets/uploads/completed/';
+        $config['allowed_types'] = 'pdf';
+        $config['max_size'] = 5120; // 5MB
+        $config['file_name'] = 'completed_' . $id . '_' . time();
+        $config['overwrite'] = FALSE;
+
+        // Buat folder jika belum ada
+        if (!is_dir($config['upload_path'])) {
+            mkdir($config['upload_path'], 0777, TRUE);
+        }
+
+        $this->load->library('upload', $config);
+
+        // Proses upload
+        if (!$this->upload->do_upload('completed_document')) {
+            // Upload gagal
+            $error = $this->upload->display_errors('', '');
+            $this->session->set_flashdata('error', 'Gagal upload file: ' . $error);
+            redirect('admin/dashboard');
+        } else {
+            // Upload berhasil
+            $upload_data = $this->upload->data();
+            $file_name = $upload_data['file_name'];
+
+            // Update database: simpan file dan ubah status jadi completed
+            $this->Service_model->update_completed($id, $file_name);
+
+            // Update status menjadi completed
+            $this->Service_model->update_status($id, 'completed');
+
+            // Kirim notifikasi WA ke user (opsional)
+            // if (function_exists('send_whatsapp')) {
+            //     $message = "Halo {$request->name},\n\nPermohonan layanan Anda telah selesai diproses.\nSilakan login ke aplikasi untuk mengunduh dokumen hasil.\n\nTerima kasih.";
+            //     send_whatsapp($request->phone, $message);
+            // }
+
+            $this->session->set_flashdata('success', 'Dokumen berhasil diupload! Permohonan #' . $id . ' telah selesai.');
+            redirect('admin/requests');
+        }
+    }
+
     public function delete_user($id)
     {
         $this->check_admin();
