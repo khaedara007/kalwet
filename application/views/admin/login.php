@@ -18,7 +18,7 @@
                     </div>
                     <div class="card-body">
                         <?php if (!empty($error)) echo '<div class="alert alert-danger">' . $error . '</div>'; ?>
-                        <form method="post" action="<?php echo site_url('adminauth/do_login'); ?>">
+                        <form method="post" action="<?php echo site_url('admin/do_login'); ?>">
                             <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
                             <div class="mb-3">
                                 <label for="phone" class="form-label">Nomor Telepon</label>

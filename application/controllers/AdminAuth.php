@@ -29,7 +29,7 @@ class AdminAuth extends CI_Controller
             redirect('admin');
         }
         $data['error'] = 'Invalid admin credentials or account not active.';
-        $this->load->view('admin/login', $data);
+        $this->load->view('admin/dashboard', $data);
     }
 
     public function logout()
