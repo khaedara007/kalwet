@@ -17,7 +17,7 @@ class Admin extends CI_Controller
     protected function check_admin()
     {
         $user = $this->session->userdata('user');
-        if (!$user || $user->role !== 'admin') redirect('adminAuth');
+        if (!$user || $user->role !== 'admin') redirect('adminauth');
         return $user;
     }
 
