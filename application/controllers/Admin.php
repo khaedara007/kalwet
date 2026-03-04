@@ -29,6 +29,32 @@ class Admin extends CI_Controller
         $this->load->view('admin/dashboard', $data);
     }
 
+    public function verify_account($id = null)
+    {
+        if ($id === null) {
+            show_404();
+        }
+
+        $action = $this->input->get('action');
+
+        if ($action === 'approve') {
+            // Proses approve akun
+            $this->load->model('User_model');
+
+            // Update status user
+            $this->User_model->update_status($id, 'active');
+
+            // Kirim notifikasi WA (jika ada)
+            // $this->send_wa_notification($id);
+
+            $this->session->set_flashdata('success', 'Akun berhasil disetujui!');
+        } else {
+            $this->session->set_flashdata('error', 'Aksi tidak valid!');
+        }
+
+        redirect('admin/dashboard'); // atau halaman sebelumnya
+    }
+
     public function delete_user($id)
     {
         $this->check_admin();
