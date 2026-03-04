@@ -221,7 +221,7 @@
                 </div>
                 <h4 class="empty-title">Belum Ada Permohonan</h4>
                 <p class="empty-text">Anda belum mengajukan layanan administrasi apapun.<br>Silakan buat permohonan pertama Anda sekarang.</p>
-                <a href="<?php echo site_url('services'); ?>" class="btn-new-request">
+                <a href="<?php echo site_url('service/pilih_service'); ?>" class="btn-new-request">
                     <i class="bi bi-plus-lg"></i>Ajukan Permohonan Baru
                 </a>
             </div>
