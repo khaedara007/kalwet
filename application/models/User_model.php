@@ -45,4 +45,23 @@ class User_model extends CI_Model
     {
         return $this->db->order_by('created_at', 'desc')->get($this->table)->result();
     }
+
+    /**
+     * Update user by ID (umum - bisa update field apa saja)
+     */
+    public function update($id, $data)
+    {
+        return $this->db->where('id', $id)->update($this->table, $data);
+    }
+
+    /**
+     * Update password saja
+     */
+    public function update_password($id, $hashed_password)
+    {
+        return $this->db->where('id', $id)->update($this->table, [
+            'password' => $hashed_password,
+            'updated_at' => date('Y-m-d H:i:s')
+        ]);
+    }
 }

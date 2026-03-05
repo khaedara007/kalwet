@@ -65,6 +65,12 @@ class Auth extends CI_Controller
             $this->load->view('auth/register', $data);
             return;
         }
+        $password = $this->input->post('password');
+        if (strlen($password) < 6) {
+            $data['error'] = 'Password minimal 6 karakter.';
+            $this->load->view('auth/register', $data);
+            return;
+        }
         $data = array(
             'name' => $this->input->post('name'),
             'nik' => $this->input->post('nik'),
@@ -76,6 +82,68 @@ class Auth extends CI_Controller
         );
         $this->User_model->create_user($data);
         $this->load->view('auth/register', ['success' => 'Pendaftaran Akun telah di ajukan.']);
+    }
+
+    public function forgot_password()
+    {
+        $this->load->view('auth/forgot_password');
+    }
+
+    public function reset_password()
+    {
+        $phone = $this->input->post('phone');
+        $new_password = $this->input->post('new_password');
+        $confirm_password = $this->input->post('confirm_password');
+
+        // Validasi input tidak boleh kosong
+        if (empty($phone) || empty($new_password) || empty($confirm_password)) {
+            $data['error'] = 'Semua field wajib diisi.';
+            $this->load->view('auth/forgot_password', $data);
+            return;
+        }
+
+        // Cek apakah nomor telepon terdaftar
+        $user = $this->User_model->get_by_phone($phone);
+
+        if (!$user) {
+            $data['error'] = 'Nomor telepon tidak terdaftar.';
+            $this->load->view('auth/forgot_password', $data);
+            return;
+        }
+
+        // Validasi password match
+        if ($new_password !== $confirm_password) {
+            $data['error'] = 'Password baru dan konfirmasi password tidak cocok.';
+            $this->load->view('auth/forgot_password', $data);
+            return;
+        }
+
+        // Validasi minimal panjang password
+        if (strlen($new_password) < 6) {
+            $data['error'] = 'Password minimal 6 karakter.';
+            $this->load->view('auth/forgot_password', $data);
+            return;
+        }
+
+        // Hash password baru
+        $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
+
+        // Update password di database
+        $update_data = array(
+            'password' => $hashed_password,
+            'updated_at' => date('Y-m-d H:i:s')
+        );
+
+        $this->load->model('User_model');
+        $update = $this->User_model->update($user->id, $update_data);
+
+        if ($update) {
+            $data['success'] = 'Password berhasil diubah. Silakan login dengan password baru.';
+        } else {
+            $data['error'] = 'Gagal mengubah password. Silakan coba lagi.';
+        }
+
+        $this->load->view('auth/forgot_password', $data);
     }
 
     public function logout()

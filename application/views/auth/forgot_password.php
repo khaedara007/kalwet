@@ -2,20 +2,21 @@
 <html lang="id">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login - SIMPEL AWET</title>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lupa Password - SIMPEL AWET</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
-            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
+            font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #114B82 0%, #1e6db5 50%, #0d3a5c 100%);
             min-height: 100vh;
             display: flex;
@@ -63,7 +64,7 @@
             }
         }
 
-        .login-container {
+        .reset-container {
             width: 100%;
             max-width: 420px;
             position: relative;
@@ -90,7 +91,7 @@
             display: block;
         }
 
-        .login-card {
+        .reset-card {
             background: rgba(255, 255, 255, 0.98);
             border-radius: 25px;
             border: none;
@@ -98,14 +99,14 @@
             overflow: hidden;
         }
 
-        .login-header {
+        .reset-header {
             background: linear-gradient(135deg, #114B82 0%, #1e6db5 100%);
             padding: 3.5rem 2rem 2rem;
             text-align: center;
             position: relative;
         }
 
-        .login-header::before {
+        .reset-header::before {
             content: '';
             position: absolute;
             top: -50%;
@@ -116,7 +117,7 @@
             border-radius: 50%;
         }
 
-        .login-header h3 {
+        .reset-header h3 {
             color: white;
             font-weight: 700;
             margin: 0;
@@ -124,14 +125,14 @@
             position: relative;
         }
 
-        .login-header p {
+        .reset-header p {
             color: rgba(255, 255, 255, 0.85);
             margin: 0.5rem 0 0;
             font-size: 0.9rem;
             position: relative;
         }
 
-        .login-body {
+        .reset-body {
             padding: 2rem;
         }
 
@@ -184,7 +185,7 @@
             color: #114B82;
         }
 
-        .btn-login {
+        .btn-reset {
             background: linear-gradient(135deg, #114B82 0%, #1e6db5 100%);
             color: white;
             border: none;
@@ -200,7 +201,7 @@
             gap: 0.5rem;
         }
 
-        .btn-login:hover {
+        .btn-reset:hover {
             transform: translateY(-3px);
             box-shadow: 0 15px 35px rgba(17, 75, 130, 0.3);
         }
@@ -225,27 +226,6 @@
             padding: 0 1rem;
         }
 
-        .btn-register {
-            background: white;
-            color: #114B82;
-            border: 2px solid #114B82;
-            border-radius: 15px;
-            padding: 0.875rem;
-            font-weight: 600;
-            width: 100%;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            text-decoration: none;
-        }
-
-        .btn-register:hover {
-            background: #114B82;
-            color: white;
-        }
-
         .btn-back {
             background: #f8f9fa;
             color: #6c757d;
@@ -260,7 +240,6 @@
             justify-content: center;
             gap: 0.5rem;
             text-decoration: none;
-            margin-top: 0.75rem;
         }
 
         .btn-back:hover {
@@ -301,47 +280,28 @@
             color: #ffd700;
             margin-right: 0.5rem;
         }
-
-        /* Link Lupa Password */
-        .forgot-password {
-            text-align: left;
-            margin: -1rem 0 1rem 0;
-        }
-
-        .forgot-password a {
-            color: #114B82;
-            text-decoration: none;
-            font-size: 0.90rem;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .forgot-password a:hover {
-            color: #1e6db5;
-            text-decoration: underline;
-        }
     </style>
 </head>
 
 <body>
-    <div class="login-container">
+    <div class="reset-container">
 
-        <!-- Logo Container - Background menyesuaikan ukuran logo -->
+        <!-- Logo -->
         <div class="logo-container">
             <img src="<?php echo base_url('assets/logo.png'); ?>" alt="SIMPEL AWET">
         </div>
 
-        <!-- Login Card -->
-        <div class="login-card">
+        <!-- Reset Card -->
+        <div class="reset-card">
 
             <!-- Header -->
-            <div class="login-header">
-                <h3>Selamat Datang</h3>
-                <p>Masuk ke akun SIMPEL AWET Anda</p>
+            <div class="reset-header">
+                <h3>Lupa Password?</h3>
+                <p>Masukkan nomor telepon dan password baru Anda</p>
             </div>
 
             <!-- Body -->
-            <div class="login-body">
+            <div class="reset-body">
 
                 <?php if (!empty($error)): ?>
                     <div class="alert alert-danger">
@@ -357,7 +317,7 @@
                     </div>
                 <?php endif; ?>
 
-                <form method="post" action="<?php echo site_url('auth/do_login'); ?>">
+                <form method="post" action="<?php echo site_url('auth/reset_password'); ?>">
                     <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
 
                     <!-- Phone Input -->
@@ -367,17 +327,25 @@
                         <label for="phone">Nomor Telepon</label>
                     </div>
 
-                    <!-- Password Input -->
+                    <!-- New Password -->
                     <div class="form-floating">
                         <i class="bi bi-lock-fill input-icon"></i>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Kata Sandi" required>
-                        <label for="password">Kata Sandi</label>
-                        <i class="bi bi-eye-slash password-toggle" onclick="togglePassword()"></i>
+                        <input type="password" class="form-control" id="new_password" name="new_password" placeholder="Password Baru" required>
+                        <label for="new_password">Password Baru</label>
+                        <i class="bi bi-eye-slash password-toggle" onclick="togglePassword('new_password', this)"></i>
                     </div>
 
-                    <!-- Login Button -->
-                    <button type="submit" class="btn btn-login">
-                        <i class="bi bi-box-arrow-in-right"></i>Masuk
+                    <!-- Confirm Password -->
+                    <div class="form-floating">
+                        <i class="bi bi-lock-fill input-icon"></i>
+                        <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Konfirmasi Password" required>
+                        <label for="confirm_password">Konfirmasi Password</label>
+                        <i class="bi bi-eye-slash password-toggle" onclick="togglePassword('confirm_password', this)"></i>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn-reset">
+                        <i class="bi bi-check-lg"></i>Ubah Password
                     </button>
 
                 </form>
@@ -387,23 +355,9 @@
                     <span>atau</span>
                 </div>
 
-                <!-- Lupa Password -->
-                <div class="forgot-password">
-                    <a href="<?php echo site_url('auth/forgot_password'); ?>">Lupa Password?</a>
-                </div>
-
-                <button type="submit" class="btn btn-login">
-                    <i class="bi bi-box-arrow-in-right"></i>Masuk
-                </button>
-
-                <!-- Register Button -->
-                <a href="<?php echo site_url('register'); ?>" class="btn-register">
-                    <i class="bi bi-person-plus"></i>Buat Akun Baru
-                </a>
-
-                <!-- Back Link -->
-                <a href="<?php echo site_url('home'); ?>" class="btn-back">
-                    <i class="bi bi-arrow-left"></i>Kembali ke Beranda
+                <!-- Back to Login -->
+                <a href="<?php echo site_url('login'); ?>" class="btn-back">
+                    <i class="bi bi-arrow-left"></i>Kembali ke Login
                 </a>
 
             </div>
@@ -421,9 +375,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        function togglePassword() {
-            const passwordInput = document.getElementById('password');
-            const toggleIcon = document.querySelector('.password-toggle');
+        function togglePassword(inputId, toggleIcon) {
+            const passwordInput = document.getElementById(inputId);
 
             if (passwordInput.type === 'password') {
                 passwordInput.type = 'text';
