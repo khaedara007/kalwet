@@ -7,6 +7,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>SIMPEL AWET Dashbaord</title>
+    <link rel="icon" href="<?php echo base_url('assets/logoico.ico'); ?>" type="image/x-icon">
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Bootstrap icons-->
