@@ -28,43 +28,41 @@
             <div class="row align-items-center py-0">
 
                 <!-- Logo & Title -->
-                <div class="col-lg-7 col-md-7 col-12 d-flex align-items-center gap-2 gap-md-3">
+                <div class="col-lg-7 col-md-7 d-flex align-items-center gap-8">
                     <a href="<?php echo site_url('/'); ?>">
                         <img src="<?php echo base_url('assets/logo.png'); ?>" alt="SIMPEL AWET" class="header-logo">
                     </a>
-                    <div class="text-start text-md-start">
+                    <div>
                         <div class="header-subtitle fw-bold">Sistem Informasi Pelayanan</div>
                         <h1 class="header-title">KELURAHAN KALINYAMAT WETAN</h1>
                     </div>
                 </div>
 
                 <!-- Buttons -->
-                <div class="col-lg-5 col-md-5 col-12 text-end">
+                <div class="col-lg-5 col-md-5 text-end">
                     <?php if ($this->session->userdata('user')): ?>
                         <!-- Jika sudah login -->
                         <?php $user = $this->session->userdata('user'); ?>
 
-                        <span class="me-md-3 fw-bold text-light d-block d-md-inline mb-2 mb-md-0">
+                        <span class="me-3 fw-bold text-light">
                             <i class="bi bi-person-circle me-1"></i>Halo, <?php echo $user->name; ?>
                         </span>
-                        <div class="d-flex flex-column flex-md-row gap-2">
-                            <a href="<?php echo site_url('dashboard'); ?>" class="btn header-btn header-btn-register me-2">
-                                <i class="bi bi-file-text me-1"></i>Permohonan Saya
-                            </a>
-                            <a href="<?php echo site_url('logout'); ?>" class="btn header-btn header-btn-login">
-                                <i class="bi bi-box-arrow-right me-1"></i>Keluar
-                            </a>
-                        </div>
+
+                        <a href="<?php echo site_url('dashboard'); ?>" class="btn header-btn header-btn-register me-2">
+                            <i class="bi bi-file-text me-1"></i>Permohonan Saya
+                        </a>
+                        <a href="<?php echo site_url('logout'); ?>" class="btn header-btn header-btn-login">
+                            <i class="bi bi-box-arrow-right me-1"></i>Keluar
+                        </a>
+
                     <?php else: ?>
                         <!-- Jika belum login -->
-                        <div class="d-flex flex-column flex-md-row gap-2">
-                            <a href="<?php echo site_url('login'); ?>" class="btn header-btn header-btn-login me-2">
-                                <i class="bi bi-box-arrow-in-right me-1"></i>Masuk
-                            </a>
-                            <a href="<?php echo site_url('register'); ?>" class="btn header-btn header-btn-register">
-                                <i class="bi bi-person-plus me-1"></i>Daftar
-                            </a>
-                        </div>
+                        <a href="<?php echo site_url('login'); ?>" class="btn header-btn header-btn-login me-2">
+                            <i class="bi bi-box-arrow-in-right me-1"></i>Masuk
+                        </a>
+                        <a href="<?php echo site_url('register'); ?>" class="btn header-btn header-btn-register">
+                            <i class="bi bi-person-plus me-1"></i>Daftar
+                        </a>
                     <?php endif; ?>
                 </div>
 
