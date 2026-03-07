@@ -1098,13 +1098,13 @@
                     <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
                         <ul class="list-inline mb-0">
                             <li class="list-inline-item me-4">
-                                <a href="https://www.youtube.com/@KalinyamatWetanGalsel"><i class="bi-youtube fs-3"></i></a>
+                                <a href="https://www.youtube.com/@KalinyamatWetanGalsel"><i class="bi-youtube fs-2"></i></a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="https://www.instagram.com/kalinyamat_wetan" class="btn btn-sm btn-outline-primary me-2"><i class="bi bi-instagram"></i> Instagram</a>
+                                <a href="https://www.instagram.com/kalinyamat_wetan"><i class="bi bi-instagram fs-3 me-3"></i></a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="https://wa.me/628812637866" class="btn btn-sm btn-outline-success"><i class="bi bi-whatsapp"></i> Whatsapp</a>
+                                <a href="https://wa.me/628812637866"><i class=" bi bi-whatsapp fs-3"></i></a>
                             </li>
                         </ul>
                     </div>
