@@ -52,7 +52,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header text-center mb-8">
-                        <h2 class="fw-bold text-dark section-title">PILIH PERMOHONAN LAYANAN</h2>
+                        <h2 class="display-5 fw-bold text-dark section-title" style="font-size: 2rem !important;">PILIH PERMOHONAN LAYANAN</h2>
                     </div>
                     <!-- Layanan dan Persyaratan Administrasi -->
                     <section class="layanan-section py-5">

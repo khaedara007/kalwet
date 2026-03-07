@@ -733,7 +733,7 @@
                                         <div class="mt-2">
                                             <a href="https://www.youtube.com/@KalinyamatWetanGalsel" class="btn btn-sm btn-outline-danger me-2"><i class="bi bi-youtube"></i> YouTube</a>
                                             <a href="https://www.instagram.com/kalinyamat_wetan" class="btn btn-sm btn-outline-primary me-2"><i class="bi bi-instagram"></i> Instagram</a>
-                                            <a href="https://wa.me/08812673866" class="btn btn-sm btn-outline-success"><i class="bi bi-whatsapp"></i> Whatsapp</a>
+                                            <a href="https://wa.me/628812637866" class="btn btn-sm btn-outline-success"><i class="bi bi-whatsapp"></i> Whatsapp</a>
                                         </div>
                                     </div>
                                 </div>
@@ -1101,7 +1101,10 @@
                                 <a href="https://www.youtube.com/@KalinyamatWetanGalsel"><i class="bi-youtube fs-3"></i></a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwiAyL-FsO2SAxXNhlYBHb9iMLQQFnoECB8QAQ&url=https%3A%2F%2Fwww.instagram.com%2Fkalinyamat_wetan%2F&usg=AOvVaw3p7TjiCnask5We5c67wDBA&opi=89978449"><i class="bi-instagram fs-3"></i></a>
+                                <a href="https://www.instagram.com/kalinyamat_wetan" class="btn btn-sm btn-outline-primary me-2"><i class="bi bi-instagram"></i> Instagram</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://wa.me/628812637866" class="btn btn-sm btn-outline-success"><i class="bi bi-whatsapp"></i> Whatsapp</a>
                             </li>
                         </ul>
                     </div>

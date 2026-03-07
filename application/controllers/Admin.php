@@ -41,11 +41,11 @@ class Admin extends CI_Controller
         $message = "✅ *AKUN SIMPEL AWET DISETUJUI*\n\n";
         $message .= "Halo *{$user->name}*,\n\n";
         $message .= "Selamat! Pendaftaran akun Anda telah *DISETUJUI* oleh admin.\n\n";
-        $message .= "*Detail Akun:*\n";
-        $message .= "• Nama: {$user->name}\n";
-        $message .= "• NIK: {$user->nik}\n";
-        $message .= "• NIK: {$user->phone}\n";
-        $message .= "• Status: AKTIF\n\n";
+        $message .= "*Detail Akun :*\n";
+        $message .= "• Nama : {$user->name}\n";
+        $message .= "• NIK : {$user->nik}\n";
+        $message .= "• Nomor Telepon : {$user->phone}\n";
+        $message .= "• Status : AKTIF\n\n";
         $message .= "Silakan login ke aplikasi dengan Nomor HP dan password yang telah didaftarkan.\n\n";
         $message .= "Terima kasih telah mendaftar! 🎉";
 

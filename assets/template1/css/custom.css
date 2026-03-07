@@ -1,114 +1,125 @@
  
  /* Header Modern Styles */
-        .header-modern {
-            background: linear-gradient(135deg, #ffffff 0%, #1e6db5 45%, #0d3a5c 100%);
-            position: relative;
-            overflow: hidden;
-            padding: 1rem 0;
-        }
-        
-        .header-modern::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 400px;
-            height: 400px;
-            background: rgba(255, 215, 0, 0.1);
-            border-radius: 50%;
-            animation: pulse-glow 4s ease-in-out infinite;
-        }
-        
-        .header-modern::after {
-            content: '';
-            position: absolute;
-            bottom: -30%;
-            left: -5%;
-            width: 300px;
-            height: 300px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 50%;
-        }
-        
-        @keyframes pulse-glow {
-            0%, 100% { transform: scale(1); opacity: 0.1; }
-            50% { transform: scale(1.1); opacity: 0.2; }
-        }
-        
-        .header-logo {
-            height: 70px;
-            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
-            transition: all 0.3s ease;
-        }
-        
-        .header-logo:hover {
-            transform: scale(1.05);
-        }
-        
-        .header-title {
-            color: white;
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin: 0;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-        
-        .header-subtitle {
-            color: rgba(255, 215, 0, 0.9);
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-        
-        .header-btn {
-            border-radius: 50px;
-            padding: 0.6rem 1.5rem;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-        
-        .header-btn-login {
-            background: transparent;
-            color: white;
-            border-color: rgba(255,255,255,0.5);
-        }
-        
-        .header-btn-login:hover {
-            background: white;
-            color: #114B82;
-            border-color: white;
-        }
-        
-        .header-btn-register {
-            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
-            color: #114B82;
-            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
-        }
-        
-        .header-btn-register:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
-        }
-        
-        
-        @keyframes marquee {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-        }
-        
-        .header-contact {
-            color: rgba(255,255,255,0.8);
-            font-size: 0.85rem;
-        }
-        
-        .header-contact i {
-            color: #ffd700;
-            margin-right: 0.5rem;
-        }
+        /* ============================================
+   RESPONSIVE HEADER - MOBILE FIX
+   ============================================ */
 
+/* Tablet (max-width: 991px) */
+@media (max-width: 991px) {
+    .header-modern {
+        padding: 0.8rem 0;
+    }
+    
+    .header-logo {
+        height: 50px; /* Lebih kecil di tablet */
+    }
+    
+    .header-title {
+        font-size: 1rem;
+    }
+    
+    .header-subtitle {
+        font-size: 0.7rem;
+        letter-spacing: 0.5px;
+    }
+    
+    .header-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* Mobile (max-width: 767px) */
+@media (max-width: 767px) {
+    .header-modern {
+        padding: 0.6rem 0;
+    }
+    
+    /* Logo dan title di atas, button di bawah */
+    .header-modern .row {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    
+    .header-modern .col-lg-7,
+    .header-modern .col-lg-5 {
+        width: 100%;
+        text-align: center !important;
+    }
+    
+    /* Logo lebih kecil */
+    .header-logo {
+        height: 45px;
+    }
+    
+    /* Title stack vertical */
+    .header-modern .d-flex {
+        flex-direction: column;
+        gap: 0.3rem !important;
+    }
+    
+    .header-title {
+        font-size: 0.95rem;
+        line-height: 1.2;
+    }
+    
+    .header-subtitle {
+        font-size: 0.65rem;
+    }
+    
+    /* Button full width dan stack */
+    .header-btn {
+        display: block;
+        width: 100%;
+        margin-bottom: 0.5rem;
+        padding: 0.6rem;
+        font-size: 0.85rem;
+    }
+    
+    .header-btn:last-child {
+        margin-bottom: 0;
+    }
+    
+    /* Hapus margin me-2 di mobile */
+    .header-btn.me-2 {
+        margin-right: 0 !important;
+    }
+    
+    /* Nama user di atas button */
+    .text-end span {
+        display: block;
+        margin-bottom: 0.5rem;
+        margin-right: 0 !important;
+    }
+}
+
+/* Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+    .header-logo {
+        height: 40px;
+    }
+    
+    .header-title {
+        font-size: 0.85rem;
+    }
+    
+    .header-subtitle {
+        font-size: 0.6rem;
+    }
+    
+    .header-btn {
+        font-size: 0.8rem;
+        padding: 0.5rem;
+    }
+}
+
+/* Animasi di mobile dimatikan untuk performa */
+@media (max-width: 767px) {
+    .header-modern::before,
+    .header-modern::after {
+        display: none;
+    }
+}
 /* Masthead Modern */
       
 .masthead {
