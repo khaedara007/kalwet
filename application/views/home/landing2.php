@@ -733,7 +733,7 @@
                                         <div class="mt-2">
                                             <a href="https://www.youtube.com/@KalinyamatWetanGalsel" class="btn btn-sm btn-outline-danger me-2"><i class="bi bi-youtube"></i> YouTube</a>
                                             <a href="https://www.instagram.com/kalinyamat_wetan" class="btn btn-sm btn-outline-primary me-2"><i class="bi bi-instagram"></i> Instagram</a>
-                                            <a href="https://www.instagram.com/kalinyamat_wetan" class="btn btn-sm btn-outline-success"><i class="bi bi-whatsapp"></i> Whatsapp</a>
+                                            <a href="https://wa.me/08812673866" class="btn btn-sm btn-outline-success"><i class="bi bi-whatsapp"></i> Whatsapp</a>
                                         </div>
                                     </div>
                                 </div>
