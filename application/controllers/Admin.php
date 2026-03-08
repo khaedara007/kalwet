@@ -46,7 +46,7 @@ class Admin extends CI_Controller
         $message .= "• NIK : {$user->nik}\n";
         $message .= "• Nomor Telepon : {$user->phone}\n";
         $message .= "• Status : AKTIF\n\n";
-        $message .= "Silakan login ke aplikasi dengan Nomor HP dan password yang telah didaftarkan.\n\n";
+        $message .= "Silakan login ke website dengan Nomor HP dan password yang telah didaftarkan.\n\n";
         $message .= "Terima kasih telah mendaftar! 🎉";
 
         // Kirim ke Fonnte
@@ -210,10 +210,38 @@ class Admin extends CI_Controller
             $this->Service_model->update_status($id, 'completed');
 
             // Kirim notifikasi WA ke user (opsional)
-            // if (function_exists('send_whatsapp')) {
-            //     $message = "Halo {$request->name},\n\nPermohonan layanan Anda telah selesai diproses.\nSilakan login ke aplikasi untuk mengunduh dokumen hasil.\n\nTerima kasih.";
-            //     send_whatsapp($request->phone, $message);
-            // }
+            // Load helper Fonnte
+            $this->load->helper('fonnte');
+
+            // Ambil data user
+            $user = $this->User_model->get_by_id($request->user_id);
+
+            if ($user && !empty($user->phone)) {
+
+                $phone = format_phone_wa($user->phone);
+
+                $message = "✅ *PERMOHONAN SELESAI - SIMPEL AWET*\n\n"
+                    . "Halo *" . $user->name . "*,\n\n"
+                    . "Permohonan Anda telah *SELESAI* diproses! 🎉\n\n"
+                    . "📋 *Detail:*\n"
+                    . "• Layanan: " . $request->service_name . "\n"
+                    . "• Tanggal: " . date('d M Y H:i') . "\n\n"
+                    . "📄 Dokumen siap diunduh di dashboard Anda.\n\n"
+                    . "🔗 simpelawet.my.id \n\n"
+                    . "Terima kasih! 🙏";
+
+                // Kirim WA
+                $wa_response = send_wa_fonnte($phone, $message);
+
+                // Log hasil (opsional)
+                if (isset($wa_response['status']) && $wa_response['status'] === true) {
+                    log_message('info', 'WA terkirim ke ' . $phone . ' untuk permohonan #' . $id);
+                } else {
+                    log_message('error', 'WA gagal: ' . json_encode($wa_response));
+                }
+            }
+
+            // ============================================================
 
             $this->session->set_flashdata('success', 'Dokumen berhasil diupload! Permohonan #' . $id . ' telah selesai.');
             redirect('admin/requests');

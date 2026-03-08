@@ -37,8 +37,8 @@
                 <a href="<?php echo site_url('dashboard'); ?>" class="btn header-btn header-btn-register">
                     <i class="bi bi-box-arrow-in-right me-1"></i>Kembali
                 </a>
-                <a href="<?php echo site_url('auth/logout'); ?>" class="btn header-btn header-btn-register">
-                    <i class="bi bi-person-plus me-1"></i>Keluar
+                <a href="<?php echo site_url('logout'); ?>" class="btn header-btn header-btn-login">
+                    <i class="bi bi-box-arrow-right"></i> Keluar
                 </a>
             </div>
 

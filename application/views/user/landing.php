@@ -14,36 +14,34 @@
 </head>
 <!-- Navigation-->
 <header class="header-modern">
-    <!-- Top Bar -->
-    <div class="container position-relative" style="z-index: 1;">
-        <div class="row align-items-center py-0">
+    <div class="container">
+        <div class="row align-items-center">
 
             <!-- Logo & Title -->
-            <div class="col-lg-7 col-md-6 d-flex align-items-center gap-8">
+            <div class="col-lg-6 col-md-6 d-flex align-items-center gap-3">
                 <a href="<?php echo site_url('/'); ?>">
                     <img src="<?php echo base_url('assets/logo.png'); ?>" alt="SIMPEL AWET" class="header-logo">
                 </a>
                 <div>
-                    <div class="header-subtitle fw-bold">Sistem Informasi Pelayanan</div>
+                    <div class="header-subtitle">Sistem Informasi Pelayanan</div>
                     <h1 class="header-title">KELURAHAN KALINYAMAT WETAN</h1>
                 </div>
             </div>
 
-
-
             <!-- Buttons -->
-            <div class="col-lg-5 col-md-6 text-end">
-                <a href="<?php echo site_url('home'); ?>" class="btn header-btn header-btn-register">
-                    <i class="bi bi-box-arrow-in-right me-1"></i>Dashboard
-                </a>
-                <a href="<?php echo site_url('service/pilih_service'); ?>" class="btn header-btn header-btn-register">
-                    <i class="bi bi-box-arrow-in-right me-1"></i>Ajukan Permohonan
-                </a>
-                <a href="<?php echo site_url('auth/logout'); ?>" class="btn header-btn header-btn-register">
-                    <i class="bi bi-person-plus me-1"></i>Keluar
-                </a>
+            <div class="col-lg-6 col-md-6">
+                <div class="d-flex justify-content-end gap-2 flex-wrap">
+                    <a href="<?php echo site_url('home'); ?>" class="btn header-btn header-btn-register">
+                        <i class="bi bi-speedometer2 me-1"></i>Dashboard
+                    </a>
+                    <a href="<?php echo site_url('service/pilih_service'); ?>" class="btn header-btn header-btn-register">
+                        <i class="bi bi-file-earmark-plus me-1"></i>Ajukan Permohonan
+                    </a>
+                    <a href="<?php echo site_url('logout'); ?>" class="btn header-btn header-btn-login">
+                        <i class="bi bi-box-arrow-right"></i> Keluar
+                    </a>
+                </div>
             </div>
-
         </div>
     </div>
 

@@ -23,45 +23,45 @@
 <body>
     <!-- Navigation-->
     <header class="header-modern">
-        <!-- Top Bar -->
-        <div class="container position-relative" style="z-index: 1;">
-            <div class="row align-items-center py-0">
+        <div class="container">
+            <div class="row align-items-center">
 
                 <!-- Logo & Title -->
-                <div class="col-lg-7 col-md-7 d-flex align-items-center gap-8">
+                <div class="col-lg-6 col-md-6 d-flex align-items-center gap-3">
                     <a href="<?php echo site_url('/'); ?>">
                         <img src="<?php echo base_url('assets/logo.png'); ?>" alt="SIMPEL AWET" class="header-logo">
                     </a>
                     <div>
-                        <div class="header-subtitle fw-bold">Sistem Informasi Pelayanan</div>
+                        <div class="header-subtitle">Sistem Informasi Pelayanan</div>
                         <h1 class="header-title">KELURAHAN KALINYAMAT WETAN</h1>
                     </div>
                 </div>
 
                 <!-- Buttons -->
-                <div class="col-lg-5 col-md-5 text-end">
+                <div class="col-lg-6 col-md-6 text-lg-end text-md-end">
                     <?php if ($this->session->userdata('user')): ?>
                         <!-- Jika sudah login -->
                         <?php $user = $this->session->userdata('user'); ?>
 
-                        <span class="me-3 fw-bold text-light">
-                            <i class="bi bi-person-circle me-1"></i>Halo, <?php echo $user->name; ?>
+                        <span class="user-greeting me-lg-2 d-block d-lg-inline">
+                            <i class="bi bi-person-circle"></i>
+                            Halo, <?php echo $user->name; ?>
                         </span>
 
-                        <a href="<?php echo site_url('dashboard'); ?>" class="btn header-btn header-btn-register me-2">
-                            <i class="bi bi-file-text me-1"></i>Permohonan Saya
+                        <a href="<?php echo site_url('dashboard'); ?>" class="btn header-btn header-btn-register">
+                            <i class="bi bi-file-text"></i> Permohonan
                         </a>
                         <a href="<?php echo site_url('logout'); ?>" class="btn header-btn header-btn-login">
-                            <i class="bi bi-box-arrow-right me-1"></i>Keluar
+                            <i class="bi bi-box-arrow-right"></i> Keluar
                         </a>
 
                     <?php else: ?>
                         <!-- Jika belum login -->
-                        <a href="<?php echo site_url('login'); ?>" class="btn header-btn header-btn-login me-2">
-                            <i class="bi bi-box-arrow-in-right me-1"></i>Masuk
+                        <a href="<?php echo site_url('login'); ?>" class="btn header-btn header-btn-login">
+                            <i class="bi bi-box-arrow-in-right"></i> Masuk
                         </a>
                         <a href="<?php echo site_url('register'); ?>" class="btn header-btn header-btn-register">
-                            <i class="bi bi-person-plus me-1"></i>Daftar
+                            <i class="bi bi-person-plus"></i> Daftar
                         </a>
                     <?php endif; ?>
                 </div>
@@ -480,151 +480,189 @@
         </div>
     </section>
 
-    <!-- SECTION BARU: ALUR PELAYANAN INTERAKTIF -->
+    <!-- SECTION: ALUR PELAYANAN INTERAKTIF -->
     <section class="alur-section py-5 text-white">
         <div class="container position-relative" style="z-index: 1;">
-            <div class="alur-logo-container">
-                <div class="logo-ring"></div>
+
+            <!-- Logo di Tengah -->
+            <div class="alur-logo-container mb-4">
+                <div class="logo-pulse"></div>
                 <img src="<?php echo base_url('assets/logo.png'); ?>" alt="SIMPEL AWET" class="alur-logo">
             </div>
+
             <!-- Header -->
             <div class="text-center mb-5">
-                <div class="d-flex justify-content-center gap-3 mb-3 flex-wrap">
-                    <span class="badge bg-warning text-dark px-3 py-2 fs-6 pulse-badge">✨ Mudah</span>
-                    <span class="badge bg-info text-dark px-3 py-2 fs-6 pulse-badge">⚡ Cepat</span>
-                    <span class="badge bg-success px-3 py-2 fs-6 pulse-badge">🔍 Transparan</span>
-                    <span class="badge bg-primary px-3 py-2 fs-6 pulse-badge">💻 Online</span>
+                <div class="d-flex justify-content-center gap-2 mb-3 flex-wrap">
+                    <span class="badge bg-warning text-dark px-3 py-2 fs-6 pulse-badge">
+                        <i class="bi bi-stars me-1"></i>Mudah
+                    </span>
+                    <span class="badge bg-info text-dark px-3 py-2 fs-6 pulse-badge">
+                        <i class="bi bi-lightning-charge me-1"></i>Cepat
+                    </span>
+                    <span class="badge bg-success px-3 py-2 fs-6 pulse-badge">
+                        <i class="bi bi-eye me-1"></i>Transparan
+                    </span>
+                    <span class="badge bg-primary px-3 py-2 fs-6 pulse-badge">
+                        <i class="bi bi-laptop me-1"></i>Online
+                    </span>
                 </div>
                 <h2 class="display-5 fw-bold mb-2">ALUR PELAYANAN SIMPEL AWET</h2>
-                <hr>
-                <p class="lead opacity-100">
-                <h3> 7 Langkah Mudah Mengurus Administrasi </h3>
+                <div class="divider mx-auto"></div>
+                <p class="lead mt-3">
+                    <span class="badge bg-white text-primary px-3 py-2 fs-5">7 Langkah Mudah Mengurus Administrasi</span>
                 </p>
             </div>
 
-            <!-- Steps Grid -->
-            <div class="row g-4 mb-5">
-                <!-- Step 1 -->
-                <div class="col-lg-3 col-md-6 position-relative">
-                    <div class="step-card text-center">
-                        <div class="step-number mx-auto floating-icon">1️⃣</div>
-                        <h4 class="fw-bold mb-2">Akses Website</h4>
-                        <p class="opacity-100 mb-0">Buka website resmi SIMPEL AWET melalui HP atau komputer Anda.</p>
+            <!-- Steps Timeline -->
+            <div class="steps-timeline mb-5">
+                <div class="row g-4">
+
+                    <!-- Step 1 -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="step-card">
+                            <div class="step-icon-wrapper">
+                                <i class="bi bi-globe step-icon"></i>
+                                <div class="step-badge">1</div>
+                            </div>
+                            <h5 class="fw-bold mt-3 mb-2">Akses Website</h5>
+                            <p class="mb-0 small">Buka website resmi SIMPEL AWET melalui HP atau komputer Anda.</p>
+                        </div>
                     </div>
-                    <div class="connector-line d-none d-lg-block"></div>
+
+                    <!-- Step 2 -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="step-card">
+                            <div class="step-icon-wrapper" style="animation-delay: 0.2s;">
+                                <i class="bi bi-person-plus step-icon"></i>
+                                <div class="step-badge">2</div>
+                            </div>
+                            <h5 class="fw-bold mt-3 mb-2">Daftar / Login</h5>
+                            <p class="mb-0 small">Buat akun baru atau login jika sudah terdaftar sebelumnya.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="step-card">
+                            <div class="step-icon-wrapper" style="animation-delay: 0.4s;">
+                                <i class="bi bi-shield-check step-icon"></i>
+                                <div class="step-badge">3</div>
+                            </div>
+                            <h5 class="fw-bold mt-3 mb-2">Verifikasi Akun</h5>
+                            <p class="mb-0 small">Admin memverifikasi data Anda sebagai warga Kelurahan.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="step-card">
+                            <div class="step-icon-wrapper" style="animation-delay: 0.6s;">
+                                <i class="bi bi-hand-index-thumb step-icon"></i>
+                                <div class="step-badge">4</div>
+                            </div>
+                            <h5 class="fw-bold mt-3 mb-2">Pilih Layanan</h5>
+                            <p class="mb-0 small">Pilih jenis layanan sesuai kebutuhan administrasi Anda.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div class="col-lg-4 col-md-6 offset-lg-0">
+                        <div class="step-card">
+                            <div class="step-icon-wrapper" style="animation-delay: 0.8s;">
+                                <i class="bi bi-cloud-upload step-icon"></i>
+                                <div class="step-badge">5</div>
+                            </div>
+                            <h5 class="fw-bold mt-3 mb-2">Isi Form & Upload</h5>
+                            <p class="mb-0 small">Lengkapi formulir dan unggah persyaratan yang diperlukan.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 6 -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="step-card">
+                            <div class="step-icon-wrapper" style="animation-delay: 1s;">
+                                <i class="bi bi-gear-wide-connected step-icon"></i>
+                                <div class="step-badge">6</div>
+                            </div>
+                            <h5 class="fw-bold mt-3 mb-2">Proses oleh Admin</h5>
+                            <p class="mb-0 small">Permohonan diverifikasi dan diproses oleh petugas kami.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 7 -->
+                    <div class="col-lg-4 col-md-12">
+                        <div class="step-card">
+                            <div class="step-icon-wrapper final" style="animation-delay: 1.2s;">
+                                <i class="bi bi-cloud-download step-icon"></i>
+                                <div class="step-badge bg-success">7</div>
+                            </div>
+                            <h5 class="fw-bold mt-3 mb-2">Unduh Hasil</h5>
+                            <p class="mb-0 small">Dokumen siap diunduh langsung dari akun Anda.</p>
+                            <i class="bi bi-check-circle-fill fs-2 mt-2"></i>
+                        </div>
+                    </div>
+
                 </div>
 
-                <!-- Step 2 -->
-                <div class="col-lg-3 col-md-6 position-relative">
-                    <div class="step-card text-center">
-                        <div class="step-number mx-auto floating-icon" style="animation-delay: 0.2s;">2️⃣</div>
-                        <h4 class="fw-bold mb-2">Daftar / Login</h4>
-                        <p class="opacity-100 mb-0">Buat akun baru atau login jika sudah terdaftar.</p>
-                    </div>
-                    <div class="connector-line d-none d-lg-block"></div>
-                </div>
-
-                <!-- Step 3 -->
-                <div class="col-lg-3 col-md-6 position-relative">
-                    <div class="step-card text-center">
-                        <div class="step-number mx-auto floating-icon" style="animation-delay: 0.4s;">3️⃣</div>
-                        <h4 class="fw-bold mb-2">Verifikasi Akun</h4>
-                        <p class="opacity-100 mb-0">Admin memverifikasi data Anda sebagai warga Kelurahan.</p>
-                    </div>
-                    <div class="connector-line d-none d-lg-block"></div>
-                </div>
-
-                <!-- Step 4 -->
-                <div class="col-lg-3 col-md-6 position-relative">
-                    <div class="step-card text-center">
-                        <div class="step-number mx-auto floating-icon" style="animation-delay: 0.6s;">4️⃣</div>
-                        <h4 class="fw-bold mb-2">Pilih Layanan</h4>
-                        <p class="opacity-100 mb-0">Pilih jenis layanan sesuai kebutuhan Anda.</p>
-                    </div>
-                </div>
-
-                <!-- Step 5 -->
-                <div class="col-lg-4 col-md-6 position-relative">
-                    <div class="step-card text-center">
-                        <div class="step-number mx-auto floating-icon" style="animation-delay: 0.8s;">5️⃣</div>
-                        <h4 class="fw-bold mb-2">Isi Form & Upload</h4>
-                        <p class="opacity-100 mb-0">Lengkapi formulir dan unggah persyaratan, lalu klik Ajukan.</p>
-                    </div>
-                </div>
-
-                <!-- Step 6 -->
-                <div class="col-lg-4 col-md-6 position-relative">
-                    <div class="step-card text-center">
-                        <div class="step-number mx-auto floating-icon" style="animation-delay: 1s;">6️⃣</div>
-                        <h4 class="fw-bold mb-2">Proses oleh Admin</h4>
-                        <p class="opacity-100 mb-0">Permohonan diverifikasi dan diproses oleh petugas.</p>
-                    </div>
-                </div>
-
-                <!-- Step 7 -->
-                <div class="col-lg-4 col-md-12 position-relative">
-                    <div class="step-card text-center border-warning">
-                        <div class="step-number mx-auto floating-icon" style="animation-delay: 1.2s; background: linear-gradient(135deg, #28a745 0%, #20c997 100%); color: white;">7️⃣</div>
-                        <h4 class="fw-bold mb-2">Unduh Hasil</h4>
-                        <p class="opacity-100 mb-0">Dokumen dapat langsung diunduh dari akun Anda.</p>
-                        <i class="bi bi-check-circle-fill text-warning fs-1 mt-2 d-block"></i>
-                    </div>
-                </div>
+                <!-- Connecting Line (Desktop) -->
+                <div class="timeline-line d-none d-lg-block"></div>
             </div>
 
             <!-- Benefits Section -->
             <div class="row justify-content-center">
                 <div class="col-lg-10">
-                    <div class="bg-white bg-opacity-10 rounded-4 p-4 p-lg-5 backdrop-blur">
-                        <h3 class="text-center mb-4 fw-bold">
+                    <div class="benefits-card">
+                        <h3 class="text-center mb-4 fw-bold text-white">
                             <i class="bi bi-lightbulb-fill text-warning me-2"></i>
                             Kenapa Pakai SIMPEL AWET?
                         </h3>
-                        <div class="row g-3">
+
+                        <div class="row g-3 mb-4">
                             <div class="col-md-6">
-                                <div class="benefit-item d-flex align-items-center gap-3">
-                                    <i class="bi bi-check-circle-fill text-warning fs-4"></i>
-                                    <span class="fw-semibold">
-                                        <h4>Tidak perlu datang ke kantor</h4>
-                                    </span>
+                                <div class="benefit-item">
+                                    <div class="benefit-icon">
+                                        <i class="bi bi-house-door"></i>
+                                    </div>
+                                    <span class="fw-semibold">Tidak perlu datang ke kantor</span>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="benefit-item d-flex align-items-center gap-3">
-                                    <i class="bi bi-check-circle-fill text-warning fs-4"></i>
-                                    <span class="fw-semibold">
-                                        <h4>Bisa diakses 24 jam</h4>
-                                    </span>
+                                <div class="benefit-item">
+                                    <div class="benefit-icon">
+                                        <i class="bi bi-clock-history"></i>
+                                    </div>
+                                    <span class="fw-semibold">Bisa diakses 24 jam</span>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="benefit-item d-flex align-items-center gap-3">
-                                    <i class="bi bi-check-circle-fill text-warning fs-4"></i>
-                                    <span class="fw-semibold">
-                                        <h4>Proses transparan</h4>
-                                    </span>
+                                <div class="benefit-item">
+                                    <div class="benefit-icon">
+                                        <i class="bi bi-search"></i>
+                                    </div>
+                                    <span class="fw-semibold">Proses transparan</span>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="benefit-item d-flex align-items-center gap-3">
-                                    <i class="bi bi-check-circle-fill text-warning fs-4"></i>
-                                    <span class="fw-semibold">
-                                        <h4>Hemat waktu & biaya</h4>
-                                    </span>
+                                <div class="benefit-item">
+                                    <div class="benefit-icon">
+                                        <i class="bi bi-cash-coin"></i>
+                                    </div>
+                                    <span class="fw-semibold">Hemat waktu & biaya</span>
                                 </div>
                             </div>
                         </div>
 
                         <!-- CTA Button -->
-                        <div class="text-center mt-4">
+                        <div class="text-center">
                             <a href="<?php echo site_url('register'); ?>" class="btn btn-warning btn-lg fw-bold px-5 py-3 rounded-pill shadow-lg hover-scale">
                                 <i class="bi bi-rocket-takeoff me-2"></i>
-                                Mulai Sekarang
+                                Mulai Sekarang - Gratis!
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 

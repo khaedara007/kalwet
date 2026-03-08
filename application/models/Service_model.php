@@ -43,9 +43,10 @@ class Service_model extends CI_Model
 
     public function get_by_id($id)
     {
-        $this->db->select('service_requests.*, users.name, users.phone, users.id as user_id');
+        $this->db->select('service_requests.*, users.name, users.phone, users.id as user_id, service_types.service_name');
         $this->db->from('service_requests');
         $this->db->join('users', 'users.id = service_requests.user_id');
+        $this->db->join('service_types', 'service_types.service_code = service_requests.service_type', 'left');
         $this->db->where('service_requests.id', $id);
         return $this->db->get()->row();
     }
