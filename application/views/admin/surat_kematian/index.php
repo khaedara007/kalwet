@@ -644,8 +644,8 @@
                                                 <i class="fas fa-file-pdf"></i> PDF
                                             </a>
                                             <a href="<?php echo base_url('admin/suratkematian/edit/' . $row->id); ?>"
-                                                class="btn-table btn-edit" title="Edit Surat">
-                                                <i class="fas fa-edit"></i>
+                                                class="btn-table btn-view" title="Edit Surat">
+                                                <i class="fas fa-edit"></i>Edit
                                             </a>
                                             <button class="btn-table btn-view"
                                                 onclick="showDetail('<?php echo $row->nama_meninggal; ?>', '<?php echo $row->alamat; ?>', '<?php echo $row->tempat_meninggal; ?>', '<?php echo $row->penyebab_kematian; ?>')">
