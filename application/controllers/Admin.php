@@ -228,7 +228,7 @@ class Admin extends CI_Controller
                     . "• Tanggal: " . date('d M Y H:i') . "\n\n"
                     . "📄 Dokumen siap diunduh di dashboard Anda.\n\n"
                     . "🔗 simpelawet.my.id \n\n"
-                    . "Terima kasih! 🙏";
+                    . "Terima kasih! 🙏 ";
 
                 // Kirim WA
                 $wa_response = send_wa_fonnte($phone, $message);
