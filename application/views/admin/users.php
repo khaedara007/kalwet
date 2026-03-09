@@ -18,7 +18,7 @@
             <a class="navbar-brand" href="#"><i class="bi bi-shield-check me-2"></i>Admin Panel</a>
             <div class="navbar-nav ms-auto">
                 <a class="nav-link" href="<?php echo site_url('admin'); ?>">Dashboard</a>
-                <a class="nav-link" href="<?php echo site_url('admin/requests'); ?>">Permohonan Layanan</a>
+                <a class="nav-link" href="<?php echo site_url('admin/requests'); ?>">Permohonan</a>
                 <a class="nav-link" href="<?php echo site_url('admin/logout'); ?>">Keluar</a>
             </div>
         </div>

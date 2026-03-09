@@ -28,6 +28,10 @@
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <div class="navbar-nav ms-auto align-items-center">
+                    <a class="nav-link" href="<?php echo base_url('admin/suratkematian'); ?>">
+                        <i class="bi bi-folder-check me-1"></i>
+                        <span>Surat Kematian</span>
+                    </a>
                     <a class="nav-link" href="<?php echo site_url('admin/requests'); ?>">
                         <i class="bi bi-folder-check me-1"></i>Permohonan
                     </a>
@@ -97,6 +101,9 @@
 
         <!-- MENU BUTTONS -->
         <div class="mb-4">
+            <a href="<?php echo site_url('admin/suratkematian'); ?>" class="btn btn-primary btn-action me-2">
+                <i class="bi bi-folder-check me-2"></i>Surat Kematian
+            </a>
             <a href="<?php echo site_url('admin/requests'); ?>" class="btn btn-primary btn-action me-2">
                 <i class="bi bi-folder-check me-2"></i>Kelola Permohonan
             </a>

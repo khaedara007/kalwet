@@ -65,3 +65,8 @@ $route['dashboard'] = 'user/landing';
 $route['landing'] = 'home/landing2';
 $route['service/submit'] = 'service/submit';
 $route['service/revise/(:num)'] = 'service/revise/$1';
+// Surat Kematian Routes
+$route['admin/suratkematian'] = 'suratkematian/index';
+$route['admin/suratkematian/create'] = 'suratkematian/create';
+$route['admin/suratkematian/store'] = 'suratkematian/store';
+$route['admin/suratkematian/pdf/(:num)'] = 'suratkematian/pdf/$1';
