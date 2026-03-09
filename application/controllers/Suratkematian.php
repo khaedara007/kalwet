@@ -106,6 +106,89 @@ class Suratkematian extends CI_Controller
         }
     }
 
+    public function edit($id = NULL)
+    {
+        $this->check_admin();
+
+        if ($id === NULL) {
+            show_404();
+        }
+
+        $surat = $this->Suratkematian_model->get_by_id($id);
+
+        if (!$surat) {
+            $this->session->set_flashdata('error', 'Data surat tidak ditemukan!');
+            redirect('admin/suratkematian');
+        }
+
+        $data['title'] = 'Edit Surat Kematian';
+        $data['surat'] = $surat;
+        $data['penandatangan'] = $this->Penandatangan_model->get_all();
+        $data['is_edit'] = true;
+
+        $this->load->view('admin/surat_kematian/create', $data);
+    }
+
+    public function update($id = NULL)
+    {
+        $this->check_admin();
+
+        if ($id === NULL) {
+            show_404();
+        }
+
+        $this->form_validation->set_rules('nama_meninggal', 'Nama Almarhum', 'required');
+        $this->form_validation->set_rules('nik_meninggal', 'NIK Almarhum', 'required');
+        $this->form_validation->set_rules('jenis_kelamin', 'Jenis Kelamin', 'required');
+        $this->form_validation->set_rules('umur', 'Umur', 'required|numeric');
+        $this->form_validation->set_rules('agama', 'Agama', 'required');
+        $this->form_validation->set_rules('alamat', 'Alamat', 'required');
+        $this->form_validation->set_rules('hari_meninggal', 'Hari Meninggal', 'required');
+        $this->form_validation->set_rules('tanggal_meninggal', 'Tanggal Meninggal', 'required');
+        $this->form_validation->set_rules('tempat_meninggal', 'Tempat Meninggal', 'required');
+        $this->form_validation->set_rules('penyebab_kematian', 'Penyebab Kematian', 'required');
+        $this->form_validation->set_rules('nama_pelapor', 'Nama Pelapor', 'required');
+        $this->form_validation->set_rules('nik_pelapor', 'NIK Pelapor', 'required');
+        $this->form_validation->set_rules('umur_pelapor', 'Umur Pelapor', 'required|numeric');
+        $this->form_validation->set_rules('pekerjaan_pelapor', 'Pekerjaan Pelapor', 'required');
+        $this->form_validation->set_rules('alamat_pelapor', 'Alamat Pelapor', 'required');
+        $this->form_validation->set_rules('hubungan_pelapor', 'Hubungan Pelapor', 'required');
+        $this->form_validation->set_rules('penandatangan_id', 'Penandatangan', 'required|numeric');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->session->set_flashdata('error', validation_errors());
+            redirect('admin/suratkematian/edit/' . $id);
+        }
+
+        $data = array(
+            'nama_meninggal' => $this->input->post('nama_meninggal'),
+            'nik_meninggal' => $this->input->post('nik_meninggal'),
+            'jenis_kelamin' => $this->input->post('jenis_kelamin'),
+            'umur' => $this->input->post('umur'),
+            'agama' => $this->input->post('agama'),
+            'alamat' => $this->input->post('alamat'),
+            'hari_meninggal' => $this->input->post('hari_meninggal'),
+            'tanggal_meninggal' => $this->input->post('tanggal_meninggal'),
+            'tempat_meninggal' => $this->input->post('tempat_meninggal'),
+            'penyebab_kematian' => $this->input->post('penyebab_kematian'),
+            'nama_pelapor' => $this->input->post('nama_pelapor'),
+            'nik_pelapor' => $this->input->post('nik_pelapor'),
+            'umur_pelapor' => $this->input->post('umur_pelapor'),
+            'pekerjaan_pelapor' => $this->input->post('pekerjaan_pelapor'),
+            'alamat_pelapor' => $this->input->post('alamat_pelapor'),
+            'hubungan_pelapor' => $this->input->post('hubungan_pelapor'),
+            'penandatangan_id' => $this->input->post('penandatangan_id')
+        );
+
+        if ($this->Suratkematian_model->update($id, $data)) {
+            $this->session->set_flashdata('success', 'Surat berhasil diupdate!');
+            redirect('admin/suratkematian/pdf/' . $id);
+        } else {
+            $this->session->set_flashdata('error', 'Gagal mengupdate data!');
+            redirect('admin/suratkematian/edit/' . $id);
+        }
+    }
+
     public function pdf($id = NULL)
     {
         $this->check_admin();

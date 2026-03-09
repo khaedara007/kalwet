@@ -69,4 +69,7 @@ $route['service/revise/(:num)'] = 'service/revise/$1';
 $route['admin/suratkematian'] = 'suratkematian/index';
 $route['admin/suratkematian/create'] = 'suratkematian/create';
 $route['admin/suratkematian/store'] = 'suratkematian/store';
+$route['admin/suratkematian/edit/(:num)'] = 'suratkematian/edit/$1';
+$route['admin/suratkematian/update/(:num)'] = 'suratkematian/update/$1';
 $route['admin/suratkematian/pdf/(:num)'] = 'suratkematian/pdf/$1';
+$route['admin/suratkematian/delete/(:num)'] = 'suratkematian/delete/$1';

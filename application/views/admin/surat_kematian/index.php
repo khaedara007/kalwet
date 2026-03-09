@@ -643,6 +643,10 @@
                                                 class="btn-table btn-pdf" target="_blank">
                                                 <i class="fas fa-file-pdf"></i> PDF
                                             </a>
+                                            <a href="<?php echo base_url('admin/suratkematian/edit/' . $row->id); ?>"
+                                                class="btn-table btn-edit" title="Edit Surat">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
                                             <button class="btn-table btn-view"
                                                 onclick="showDetail('<?php echo $row->nama_meninggal; ?>', '<?php echo $row->alamat; ?>', '<?php echo $row->tempat_meninggal; ?>', '<?php echo $row->penyebab_kematian; ?>')">
                                                 <i class="fas fa-eye"></i>

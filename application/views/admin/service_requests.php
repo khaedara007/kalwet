@@ -16,8 +16,9 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="<?php echo site_url('admin'); ?>">
-                <i class="bi bi-shield-check me-2"></i>Admin Panel
+            <a class="navbar-brand d-flex" href="<?php echo site_url('admin'); ?>">
+                <i class="bi bi-shield-check me-2"></i>
+                Admin Panel
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>

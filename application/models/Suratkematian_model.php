@@ -34,6 +34,12 @@ class Suratkematian_model extends CI_Model
         return $this->db->insert_id();
     }
 
+    public function update($id, $data)
+    {
+        $this->db->where('id', $id);
+        return $this->db->update('tabel_surat_kematian', $data);
+    }
+
     public function generate_nomor_surat()
     {
         $tahun = date('Y');

@@ -17,7 +17,7 @@
     <!-- Navbar Modern -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="<?php echo site_url('admin'); ?>">
+            <a class="navbar-brand d-flex" href="<?php echo site_url('admin'); ?>">
                 <i class="bi bi-shield-check me-2"></i>
                 Admin Panel
             </a>

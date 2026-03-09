@@ -388,14 +388,15 @@
         </ul>
     </nav>
 
-    <!-- Main Content -->
     <div class="main-content">
 
         <!-- Page Header -->
         <div class="page-header">
             <div>
-                <h1 class="page-title">Buat Surat Kematian</h1>
-                <p class="page-subtitle">Isi formulir dengan data yang benar dan lengkap</p>
+                <h1 class="page-title"><?php echo $title; ?></h1>
+                <p class="page-subtitle">
+                    <?php echo isset($is_edit) && $is_edit ? 'Perbarui data surat yang sudah ada' : 'Isi formulir dengan data yang benar dan lengkap'; ?>
+                </p>
             </div>
             <a href="<?php echo base_url('admin/suratkematian'); ?>" class="btn-back">
                 <i class="fas fa-arrow-left"></i> Kembali ke Daftar
@@ -414,20 +415,30 @@
         <div class="info-card">
             <i class="fas fa-file-signature"></i>
             <div class="info-content">
-                <h4>Nomor Surat yang Akan Dibuat</h4>
-                <div class="nomor-surat"><?php echo $nomor_surat; ?></div>
+                <h4>Nomor Surat</h4>
+                <div class="nomor-surat">
+                    <?php
+                    if (isset($is_edit) && $is_edit && isset($surat)) {
+                        echo $surat->nomor_surat;
+                    } else {
+                        echo $nomor_surat;
+                    }
+                    ?>
+                </div>
             </div>
         </div>
 
         <!-- Form Container -->
         <div class="form-container">
             <div class="form-header">
-                <h2><i class="fas fa-edit"></i> Formulir Surat Keterangan Kematian</h2>
+                <h2><i class="fas fa-edit"></i> <?php echo isset($is_edit) && $is_edit ? 'Form Edit Surat' : 'Formulir Surat Keterangan Kematian'; ?></h2>
                 <p>Silakan lengkapi semua data dengan informasi yang akurat</p>
             </div>
 
             <div class="form-body">
-                <form action="<?php echo base_url('admin/suratkematian/store'); ?>" method="POST">
+                <!-- Form Action: Create atau Update -->
+                <form action="<?php echo isset($is_edit) && $is_edit ? base_url('admin/suratkematian/update/' . $surat->id) : base_url('admin/suratkematian/store'); ?>" method="POST">
+
                     <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
 
                     <!-- Data Almarhum -->
@@ -441,14 +452,18 @@
                             <div class="form-group full-width">
                                 <label>Nama Lengkap <span class="required">*</span></label>
                                 <div class="input-icon">
-                                    <input type="text" name="nama_meninggal" value="<?php echo set_value('nama_meninggal'); ?>" placeholder="Masukkan nama lengkap" required>
+                                    <input type="text" name="nama_meninggal"
+                                        value="<?php echo isset($surat) ? $surat->nama_meninggal : set_value('nama_meninggal'); ?>"
+                                        placeholder="Masukkan nama lengkap" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label>NIK <span class="required">*</span></label>
                                 <div class="input-icon">
-                                    <input type="text" name="nik_meninggal" value="<?php echo set_value('nik_meninggal'); ?>" placeholder="16 digit NIK" required>
+                                    <input type="text" name="nik_meninggal"
+                                        value="<?php echo isset($surat) ? $surat->nik_meninggal : set_value('nik_meninggal'); ?>"
+                                        placeholder="16 digit NIK" required>
                                 </div>
                             </div>
 
@@ -457,8 +472,8 @@
                                 <div class="input-icon">
                                     <select name="jenis_kelamin" required>
                                         <option value="">Pilih Jenis Kelamin</option>
-                                        <option value="Laki-laki" <?php echo set_select('jenis_kelamin', 'Laki-laki'); ?>>Laki-laki</option>
-                                        <option value="Perempuan" <?php echo set_select('jenis_kelamin', 'Perempuan'); ?>>Perempuan</option>
+                                        <option value="Laki-laki" <?php echo (isset($surat) && $surat->jenis_kelamin == 'Laki-laki') || set_select('jenis_kelamin', 'Laki-laki') ? 'selected' : ''; ?>>Laki-laki</option>
+                                        <option value="Perempuan" <?php echo (isset($surat) && $surat->jenis_kelamin == 'Perempuan') || set_select('jenis_kelamin', 'Perempuan') ? 'selected' : ''; ?>>Perempuan</option>
                                     </select>
                                 </div>
                             </div>
@@ -466,7 +481,9 @@
                             <div class="form-group">
                                 <label>Umur (Tahun) <span class="required">*</span></label>
                                 <div class="input-icon">
-                                    <input type="number" name="umur" value="<?php echo set_value('umur'); ?>" placeholder="Umur dalam tahun" required>
+                                    <input type="number" name="umur"
+                                        value="<?php echo isset($surat) ? $surat->umur : set_value('umur'); ?>"
+                                        placeholder="Umur dalam tahun" required>
                                 </div>
                             </div>
 
@@ -477,7 +494,7 @@
                                         <option value="">Pilih Agama</option>
                                         <?php $agama_list = ['Islam', 'Kristen', 'Katolik', 'Hindu', 'Buddha', 'Konghucu']; ?>
                                         <?php foreach ($agama_list as $a): ?>
-                                            <option value="<?php echo $a; ?>" <?php echo set_select('agama', $a); ?>><?php echo $a; ?></option>
+                                            <option value="<?php echo $a; ?>" <?php echo (isset($surat) && $surat->agama == $a) || set_select('agama', $a) ? 'selected' : ''; ?>><?php echo $a; ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
@@ -485,7 +502,7 @@
 
                             <div class="form-group full-width">
                                 <label>Alamat Lengkap <span class="required">*</span></label>
-                                <textarea name="alamat" placeholder="Masukkan alamat lengkap" required><?php echo set_value('alamat'); ?></textarea>
+                                <textarea name="alamat" placeholder="Masukkan alamat lengkap" required><?php echo isset($surat) ? $surat->alamat : set_value('alamat'); ?></textarea>
                             </div>
                         </div>
                     </div>
@@ -493,6 +510,7 @@
                     <!-- Data Kematian -->
                     <div class="form-section">
                         <div class="section-title orange">
+                            <i class="fas fa-calendar-alt"></i>
                             <span>Data Kematian</span>
                         </div>
 
@@ -500,7 +518,9 @@
                             <div class="form-group">
                                 <label>Hari <span class="required">*</span></label>
                                 <div class="input-icon">
-                                    <input type="text" name="hari_meninggal" id="hari" value="<?php echo set_value('hari_meninggal'); ?>" placeholder="Otomatis dari tanggal" required>
+                                    <input type="text" name="hari_meninggal" id="hari"
+                                        value="<?php echo isset($surat) ? $surat->hari_meninggal : set_value('hari_meninggal'); ?>"
+                                        placeholder="Otomatis dari tanggal" required>
                                 </div>
                                 <p class="hint"><i class="fas fa-info-circle"></i> Otomatis terisi, bisa diubah</p>
                             </div>
@@ -508,21 +528,27 @@
                             <div class="form-group">
                                 <label>Tanggal Meninggal <span class="required">*</span></label>
                                 <div class="input-icon">
-                                    <input type="date" name="tanggal_meninggal" id="tgl" value="<?php echo set_value('tanggal_meninggal'); ?>" required>
+                                    <input type="date" name="tanggal_meninggal" id="tgl"
+                                        value="<?php echo isset($surat) ? $surat->tanggal_meninggal : set_value('tanggal_meninggal'); ?>"
+                                        required>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label>Tempat Meninggal <span class="required">*</span></label>
                                 <div class="input-icon">
-                                    <input type="text" name="tempat_meninggal" value="<?php echo set_value('tempat_meninggal'); ?>" placeholder="Rumah Sakit/Rumah" required>
+                                    <input type="text" name="tempat_meninggal"
+                                        value="<?php echo isset($surat) ? $surat->tempat_meninggal : set_value('tempat_meninggal'); ?>"
+                                        placeholder="Rumah Sakit/Rumah" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label>Penyebab Kematian <span class="required">*</span></label>
                                 <div class="input-icon">
-                                    <input type="text" name="penyebab_kematian" value="<?php echo set_value('penyebab_kematian'); ?>" placeholder="Sakit/kecelakaan/etc" required>
+                                    <input type="text" name="penyebab_kematian"
+                                        value="<?php echo isset($surat) ? $surat->penyebab_kematian : set_value('penyebab_kematian'); ?>"
+                                        placeholder="Sakit/kecelakaan/etc" required>
                                 </div>
                             </div>
                         </div>
@@ -531,6 +557,7 @@
                     <!-- Data Pelapor -->
                     <div class="form-section">
                         <div class="section-title green">
+                            <i class="fas fa-user-friends"></i>
                             <span>Data Pelapor</span>
                         </div>
 
@@ -538,41 +565,51 @@
                             <div class="form-group full-width">
                                 <label>Nama Lengkap Pelapor <span class="required">*</span></label>
                                 <div class="input-icon">
-                                    <input type="text" name="nama_pelapor" value="<?php echo set_value('nama_pelapor'); ?>" placeholder="Nama lengkap pelapor" required>
+                                    <input type="text" name="nama_pelapor"
+                                        value="<?php echo isset($surat) ? $surat->nama_pelapor : set_value('nama_pelapor'); ?>"
+                                        placeholder="Nama lengkap pelapor" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label>NIK Pelapor <span class="required">*</span></label>
                                 <div class="input-icon">
-                                    <input type="text" name="nik_pelapor" value="<?php echo set_value('nik_pelapor'); ?>" placeholder="16 digit NIK" required>
+                                    <input type="text" name="nik_pelapor"
+                                        value="<?php echo isset($surat) ? $surat->nik_pelapor : set_value('nik_pelapor'); ?>"
+                                        placeholder="16 digit NIK" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label>Umur Pelapor <span class="required">*</span></label>
                                 <div class="input-icon">
-                                    <input type="number" name="umur_pelapor" value="<?php echo set_value('umur_pelapor'); ?>" placeholder="Umur dalam tahun" required>
+                                    <input type="number" name="umur_pelapor"
+                                        value="<?php echo isset($surat) ? $surat->umur_pelapor : set_value('umur_pelapor'); ?>"
+                                        placeholder="Umur dalam tahun" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label>Pekerjaan <span class="required">*</span></label>
                                 <div class="input-icon">
-                                    <input type="text" name="pekerjaan_pelapor" value="<?php echo set_value('pekerjaan_pelapor'); ?>" placeholder="Pekerjaan" required>
+                                    <input type="text" name="pekerjaan_pelapor"
+                                        value="<?php echo isset($surat) ? $surat->pekerjaan_pelapor : set_value('pekerjaan_pelapor'); ?>"
+                                        placeholder="Pekerjaan" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label>Hubungan <span class="required">*</span></label>
                                 <div class="input-icon">
-                                    <input type="text" name="hubungan_pelapor" value="<?php echo set_value('hubungan_pelapor'); ?>" placeholder="Contoh: Anak Kandung" required>
+                                    <input type="text" name="hubungan_pelapor"
+                                        value="<?php echo isset($surat) ? $surat->hubungan_pelapor : set_value('hubungan_pelapor'); ?>"
+                                        placeholder="Contoh: Anak Kandung" required>
                                 </div>
                             </div>
 
                             <div class="form-group full-width">
                                 <label>Alamat Pelapor <span class="required">*</span></label>
-                                <textarea name="alamat_pelapor" placeholder="Masukkan alamat lengkap pelapor" required><?php echo set_value('alamat_pelapor'); ?></textarea>
+                                <textarea name="alamat_pelapor" placeholder="Masukkan alamat lengkap pelapor" required><?php echo isset($surat) ? $surat->alamat_pelapor : set_value('alamat_pelapor'); ?></textarea>
                             </div>
                         </div>
                     </div>
@@ -588,10 +625,11 @@
                             <div class="form-group full-width">
                                 <label>Pilih Penandatangan <span class="required">*</span></label>
                                 <div class="input-icon">
+                                    <i class="fas fa-user-tie"></i>
                                     <select name="penandatangan_id" required>
                                         <option value="">-- Pilih Penandatangan --</option>
                                         <?php foreach ($penandatangan as $p): ?>
-                                            <option value="<?php echo $p->id; ?>" <?php echo set_select('penandatangan_id', $p->id); ?>>
+                                            <option value="<?php echo $p->id; ?>" <?php echo (isset($surat) && $surat->penandatangan_id == $p->id) || set_select('penandatangan_id', $p->id) ? 'selected' : ''; ?>>
                                                 <?php echo $p->jabatan; ?> - <?php echo $p->nama; ?>
                                             </option>
                                         <?php endforeach; ?>
@@ -607,7 +645,8 @@
                             <i class="fas fa-times"></i> Batal
                         </a>
                         <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-file-pdf"></i> Generate PDF
+                            <i class="fas fa-save"></i>
+                            <?php echo isset($is_edit) && $is_edit ? 'Update & Cetak PDF' : 'Generate PDF'; ?>
                         </button>
                     </div>
 
@@ -618,8 +657,6 @@
         <!-- Footer -->
         <div style="text-align: center; padding: 30px; color: #666; font-size: 13px;">
             © 2026 <span style="color: #1e88e5; font-weight: 600;">SIMPEL AWET</span> - Kelurahan Kalinyamat Wetan
-            <br>
-            <span style="color: #1e88e5;">Sistem Informasi Pelayanan Modern</span>
         </div>
 
     </div>
