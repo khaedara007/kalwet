@@ -199,7 +199,7 @@
                                         <i class="bi bi-cloud-arrow-up"></i>
                                         <span class="file-label">Klik atau drag file</span>
                                         <span class="file-types">PDF, JPG, PNG</span>
-                                        <input type="file" id="upload_ktp" name="upload_ktp" accept=".pdf,.jpg,.jpeg,.png" required onchange="showFileName(this, 'label-ktp')">
+                                        <input type="file" id="upload_ktp" name="upload_ktp" accept=".pdf,.jpg,.jpeg,.png" onchange="showFileName(this, 'label-ktp')">
                                     </div>
                                     <small id="label-ktp" class="text-muted d-block mt-2"></small>
                                 </div>
