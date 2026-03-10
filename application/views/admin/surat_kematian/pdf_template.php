@@ -251,15 +251,13 @@
                 <td><?php echo $surat->alamat_pelapor; ?></td>
             </tr>
             <tr>
-                <td class="label">Hubungan dengan yang meninggal</td>
+                <td class="label">Hubungan Pelapor dengan yang meninggal</td>
                 <td class="separator">:</td>
                 <td><?php echo $surat->hubungan_pelapor; ?></td>
             </tr>
         </table>
 
-        <p class="indent">
-            Demikian surat keterangan ini dibuat dengan sebenarnya untuk dapat dipergunakan sebagaimana mestinya.
-        </p>
+
     </div>
 
     <table class="signature">
