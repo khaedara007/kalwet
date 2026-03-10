@@ -101,6 +101,42 @@
             flex-wrap: wrap;
         }
 
+        .btn {
+            padding: 12px 25px;
+            border-radius: 10px;
+            border: none;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: #1e88e5;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1565c0;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(30, 136, 229, 0.3);
+        }
+
+        .btn-outline {
+            background: white;
+            color: #1e88e5;
+            border: 2px solid #1e88e5;
+        }
+
+        .btn-outline:hover {
+            background: #1e88e5;
+            color: white;
+        }
+
         .btn-back {
             background: white;
             color: #1e88e5;
