@@ -73,3 +73,11 @@ $route['admin/suratkematian/edit/(:num)'] = 'suratkematian/edit/$1';
 $route['admin/suratkematian/update/(:num)'] = 'suratkematian/update/$1';
 $route['admin/suratkematian/pdf/(:num)'] = 'suratkematian/pdf/$1';
 $route['admin/suratkematian/delete/(:num)'] = 'suratkematian/delete/$1';
+// Surat Kelahiran Routes
+$route['admin/suratkelahiran'] = 'suratkelahiran/index';
+$route['admin/suratkelahiran/create'] = 'suratkelahiran/create';
+$route['admin/suratkelahiran/store'] = 'suratkelahiran/store';
+$route['admin/suratkelahiran/edit/(:num)'] = 'suratkelahiran/edit/$1';
+$route['admin/suratkelahiran/update/(:num)'] = 'suratkelahiran/update/$1';
+$route['admin/suratkelahiran/pdf/(:num)'] = 'suratkelahiran/pdf/$1';
+$route['admin/suratkelahiran/delete/(:num)'] = 'suratkelahiran/delete/$1';
