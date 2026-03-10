@@ -681,7 +681,7 @@
                 <div class="col-lg-7">
                     <div class="sambutan-content">
                         <h2 class="sambutan-title">Sambutan Lurah Kalinyamat Wetan</h2>
-                        <h2 class="sambutan-nama">MARI, S.AP</h2>
+                        <h2 class="sambutan-nama">MARI, S.AP, NL.P</h2>
 
                         <div class="sambutan-text position-relative">
                             <i class="bi bi-quote quote-icon"></i>
