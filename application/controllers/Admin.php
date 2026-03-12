@@ -58,6 +58,38 @@ class Admin extends CI_Controller
         return $response;
     }
 
+    private function send_rejection_wa($user)
+    {
+        // Load helper
+        $this->load->helper('fonnte');
+
+        // Format nomor (08xx -> 628xx)
+        $target = format_phone_wa($user->phone);
+
+        // Buat pesan
+        $message = "❌ *AKUN SIMPEL AWET DITOLAK*\n\n";
+        $message .= "Halo *{$user->name}*,\n\n";
+        $message .= "Mohon maaf, pendaftaran akun Anda *TIDAK DAPAT DISETUJUI* oleh admin.\n\n";
+        $message .= "*Detail Akun :*\n";
+        $message .= "• Nama : {$user->name}\n";
+        $message .= "• NIK : {$user->nik}\n";
+        $message .= "• Nomor Telepon : {$user->phone}\n";
+        $message .= "• Status : DITOLAK\n\n";
+        $message .= "Penolakan ini disebabkan oleh:\n";
+        $message .= "• Tidak memenuhi persyaratan pendaftaran\n";
+        $message .= "• Data NIK tidak terdaftar sebagai kependudukan di Kalinyamat Wetan\n\n";
+        $message .= "Silakan hubungi admin untuk informasi lebih lanjut.\n\n";
+        $message .= "Terima kasih atas pengertiannya. 🙏";
+
+        // Kirim ke Fonnte
+        $response = send_wa_fonnte($target, $message);
+
+        // Log untuk debug
+        log_message('info', 'WA Rejection: ' . $target . ' | Response: ' . json_encode($response));
+
+        return $response;
+    }
+
     public function verify_account($id = null)
     {
         if ($id === null) {
@@ -81,14 +113,29 @@ class Admin extends CI_Controller
             // Update status user
             $this->User_model->update_status($id, 'active');
 
-            // Kirim notifikasi WA (jika ada)
+            // Kirim notifikasi WA Sukses
             $this->send_approval_wa($user);
 
             $this->session->set_flashdata('success', 'Akun berhasil disetujui! Notifikasi WhatsApp terkirim.');
         } elseif ($action === 'reject') {
-            // Jika ada fitur reject
+            // Proses reject akun
+            $this->load->model('User_model');
+
+            // Ambil data user dulu sebelum update
+            $user = $this->User_model->get_by_id($id);
+
+            if (!$user) {
+                $this->session->set_flashdata('error', 'User tidak ditemukan!');
+                redirect('admin/dashboard');
+            }
+
+            // Update status user
             $this->User_model->update_status($id, 'rejected');
-            $this->session->set_flashdata('success', 'Akun ditolak!');
+
+            // Kirim notifikasi WA Penolakan
+            $this->send_rejection_wa($user);
+            $this->User_model->update_status($id, 'rejected');
+            $this->session->set_flashdata('success', 'Akun ditolak! Notifikasi WhatsApp terkirim');
         } else {
             $this->session->set_flashdata('error', 'Aksi tidak valid!');
         }
