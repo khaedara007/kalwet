@@ -93,6 +93,7 @@
                                             <ul class="layanan-syarat-list">
                                                 <li>Surat Pengantar RT RW</li>
                                                 <li>KTP dan Kartu Keluarga Pemohon</li>
+                                                <li>Bukti Bayar Lunas PBB Tahun Terakhir</li>
                                             </ul>
                                         </div>
                                         <a href="<?php echo site_url('service/submit/skd'); ?>" class="btn btn-layanan">
@@ -114,6 +115,7 @@
                                             <ul class="layanan-syarat-list">
                                                 <li>Surat Pengantar RT RW</li>
                                                 <li>KTP dan Kartu Keluarga Pemohon</li>
+                                                <li>Bukti Bayar Lunas PBB Tahun Terakhir</li>
                                             </ul>
                                         </div>
                                         <a href="<?php echo site_url('service/submit/skpo'); ?>" class="btn btn-layanan">
@@ -135,6 +137,7 @@
                                             <ul class="layanan-syarat-list">
                                                 <li>Surat Pengantar RT RW</li>
                                                 <li>KTP dan Kartu Keluarga Pemohon</li>
+                                                <li>Bukti Bayar Lunas PBB Tahun Terakhir</li>
                                             </ul>
                                         </div>
                                         <a href="<?php echo site_url('service/submit/skbm'); ?>" class="btn btn-layanan">
@@ -156,6 +159,7 @@
                                             <ul class="layanan-syarat-list">
                                                 <li>Surat Pengantar RT RW</li>
                                                 <li>KTP dan Kartu Keluarga Pemohon</li>
+                                                <li>Bukti Bayar Lunas PBB Tahun Terakhir</li>
                                             </ul>
                                         </div>
                                         <a href="<?php echo site_url('service/submit/skbr'); ?>" class="btn btn-layanan">
@@ -177,6 +181,7 @@
                                             <ul class="layanan-syarat-list">
                                                 <li>Surat Pengantar RT RW</li>
                                                 <li>KTP dan Kartu Keluarga Pemohon</li>
+                                                <li>Bukti Bayar Lunas PBB Tahun Terakhir</li>
                                             </ul>
                                         </div>
                                         <a href="<?php echo site_url('service/submit/sih'); ?>" class="btn btn-layanan">
@@ -198,6 +203,7 @@
                                             <ul class="layanan-syarat-list">
                                                 <li>Surat Pengantar RT RW</li>
                                                 <li>KTP dan Kartu Keluarga Pemohon</li>
+                                                <li>Bukti Bayar Lunas PBB Tahun Terakhir</li>
                                             </ul>
                                         </div>
                                         <a href="<?php echo site_url('service/submit/skck'); ?>" class="btn btn-layanan">
@@ -222,6 +228,7 @@
                                                 <li>Akta Kelahiran</li>
                                                 <li>Akta Nikah (Jika Sudah Menikah)</li>
                                                 <li>Berkas Identitas Yang Berbeda</li>
+                                                <li>Bukti Bayar Lunas PBB Tahun Terakhir</li>
                                             </ul>
                                         </div>
                                         <a href="<?php echo site_url('service/submit/sksn'); ?>" class="btn btn-layanan">
@@ -243,6 +250,7 @@
                                             <ul class="layanan-syarat-list">
                                                 <li>Surat Pengantar RT RW</li>
                                                 <li>KTP dan Kartu Keluarga Pemohon</li>
+                                                <li>Bukti Bayar Lunas PBB Tahun Terakhir</li>
                                             </ul>
                                         </div>
                                         <a href="<?php echo site_url('service/submit/spkd'); ?>" class="btn btn-layanan">

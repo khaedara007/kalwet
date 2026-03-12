@@ -252,6 +252,7 @@
                                             'upload_suratrtrw' => array('icon' => 'bi-envelope', 'label' => 'Surat Pengantar'),
                                             'upload_kk' => array('icon' => 'bi-people', 'label' => 'KK'),
                                             'upload_ktp' => array('icon' => 'bi-person-vcard', 'label' => 'KTP'),
+                                            'upload_pbb' => array('icon' => 'bi bi-house-fill', 'label' => 'PBB'),
                                             'upload_aktal' => array('icon' => 'bi-file-text', 'label' => 'Akta Lahir'),
                                             'upload_aktan' => array('icon' => 'bi-heart', 'label' => 'Akta Nikah'),
                                             'upload_identitaslain' => array('icon' => 'bi-folder', 'label' => 'Identitas Lain'),

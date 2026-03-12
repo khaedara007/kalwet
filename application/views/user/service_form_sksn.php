@@ -245,6 +245,20 @@
                                     </div>
                                     <small id="label-ktp" class="text-muted d-block mt-2"></small>
                                 </div>
+
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">
+                                        <i class="bi bi-person-vcard-fill"></i>Bukti Lunas PBB Tahun Terakhir
+                                        <span class="required-badge">*</span>
+                                    </label>
+                                    <div class="file-upload-wrapper">
+                                        <i class="bi bi-cloud-arrow-up"></i>
+                                        <span class="file-label">Klik atau drag file</span>
+                                        <span class="file-types">PDF, JPG, PNG</span>
+                                        <input type="file" id="upload_pbb" name="upload_pbb" accept=".pdf,.jpg,.jpeg,.png" onchange="showFileName(this, 'label-pbb')">
+                                    </div>
+                                    <small id="label-pbb" class="text-muted d-block mt-2"></small>
+                                </div>
                             </div>
 
                             <!-- Buttons -->

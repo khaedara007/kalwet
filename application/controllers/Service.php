@@ -79,7 +79,7 @@ class Service extends CI_Controller
             $service_type = $this->input->post('service_type');
             if (in_array($service_type, ['sktm', 'skd', 'skpo', 'skbm', 'skbr', 'sih', 'skck', 'spkd'])) {
                 $upload_errors = [];
-                $fields = ['upload_suratrtrw', 'upload_kk', 'upload_ktp'];
+                $fields = ['upload_suratrtrw', 'upload_kk', 'upload_ktp', 'upload_pbb'];
                 foreach ($fields as $field) {
                     if (!empty($_FILES[$field]['name'])) {
                         $ext = pathinfo($_FILES[$field]['name'], PATHINFO_EXTENSION);
@@ -101,7 +101,7 @@ class Service extends CI_Controller
             }
             if (in_array($service_type, ['sksn'])) {
                 $upload_errors = [];
-                $fields = ['upload_suratrtrw', 'upload_kk', 'upload_ktp', 'upload_aktal', 'upload_aktan', 'upload_identitaslain'];
+                $fields = ['upload_suratrtrw', 'upload_kk', 'upload_ktp', 'upload_pbb', 'upload_aktal', 'upload_aktan', 'upload_identitaslain'];
                 foreach ($fields as $field) {
                     if (!empty($_FILES[$field]['name'])) {
                         $ext = pathinfo($_FILES[$field]['name'], PATHINFO_EXTENSION);
