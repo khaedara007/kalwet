@@ -171,6 +171,7 @@
                                         <i class="bi bi-cloud-arrow-up"></i>
                                         <span class="file-label">Klik atau drag file</span>
                                         <span class="file-types">PDF, JPG, PNG</span>
+                                        <small class="text-muted d-block">Maksimal ukuran file 1 MB</small>
                                         <input type="file" id="upload_suratrtrw" name="upload_suratrtrw" accept=".pdf,.jpg,.jpeg,.png" required onchange="showFileName(this, 'label-rtrw')">
                                     </div>
                                     <small id="label-rtrw" class="text-muted d-block mt-2"></small>
@@ -185,6 +186,7 @@
                                         <i class="bi bi-cloud-arrow-up"></i>
                                         <span class="file-label">Klik atau drag file</span>
                                         <span class="file-types">PDF, JPG, PNG</span>
+                                        <small class="text-muted d-block">Maksimal ukuran file 1 MB</small>
                                         <input type="file" id="upload_kk" name="upload_kk" accept=".pdf,.jpg,.jpeg,.png" required onchange="showFileName(this, 'label-kk')">
                                     </div>
                                     <small id="label-kk" class="text-muted d-block mt-2"></small>
@@ -199,6 +201,7 @@
                                         <i class="bi bi-cloud-arrow-up"></i>
                                         <span class="file-label">Klik atau drag file</span>
                                         <span class="file-types">PDF, JPG, PNG</span>
+                                        <small class="text-muted d-block">Maksimal ukuran file 1 MB</small>
                                         <input type="file" id="upload_ktp" name="upload_ktp" accept=".pdf,.jpg,.jpeg,.png" required onchange="showFileName(this, 'label-ktp')">
                                     </div>
                                     <small id="label-ktp" class="text-muted d-block mt-2"></small>
@@ -213,6 +216,7 @@
                                         <i class="bi bi-cloud-arrow-up"></i>
                                         <span class="file-label">Klik atau drag file</span>
                                         <span class="file-types">PDF, JPG, PNG</span>
+                                        <small class="text-muted d-block">Maksimal ukuran file 1 MB</small>
                                         <input type="file" id="upload_aktal" name="upload_aktal" accept=".pdf,.jpg,.jpeg,.png" required onchange="showFileName(this, 'label-ktp')">
                                     </div>
                                     <small id="label-ktp" class="text-muted d-block mt-2"></small>
@@ -227,6 +231,7 @@
                                         <i class="bi bi-cloud-arrow-up"></i>
                                         <span class="file-label">Klik atau drag file</span>
                                         <span class="file-types">PDF, JPG, PNG</span>
+                                        <small class="text-muted d-block">Maksimal ukuran file 1 MB</small>
                                         <input type="file" id="upload_aktan" name="upload_aktan" accept=".pdf,.jpg,.jpeg,.png" onchange="showFileName(this, 'label-ktp')">
                                     </div>
                                     <small id="label-ktp" class="text-muted d-block mt-2"></small>
@@ -241,6 +246,7 @@
                                         <i class="bi bi-cloud-arrow-up"></i>
                                         <span class="file-label">Klik atau drag file</span>
                                         <span class="file-types">PDF, JPG, PNG</span>
+                                        <small class="text-muted d-block">Maksimal ukuran file 1 MB</small>
                                         <input type="file" id="upload_identitaslain" name="upload_identitaslain" accept=".pdf,.jpg,.jpeg,.png" required onchange="showFileName(this, 'label-ktp')">
                                     </div>
                                     <small id="label-ktp" class="text-muted d-block mt-2"></small>
@@ -255,6 +261,7 @@
                                         <i class="bi bi-cloud-arrow-up"></i>
                                         <span class="file-label">Klik atau drag file</span>
                                         <span class="file-types">PDF, JPG, PNG</span>
+                                        <small class="text-muted d-block">Maksimal ukuran file 1 MB</small>
                                         <input type="file" id="upload_pbb" name="upload_pbb" accept=".pdf,.jpg,.jpeg,.png" onchange="showFileName(this, 'label-pbb')">
                                     </div>
                                     <small id="label-pbb" class="text-muted d-block mt-2"></small>
@@ -284,8 +291,20 @@
         // Show selected filename
         function showFileName(input, labelId) {
             const label = document.getElementById(labelId);
+
             if (input.files && input.files[0]) {
-                label.textContent = '✓ ' + input.files[0].name;
+                const file = input.files[0];
+                const maxSize = 1024 * 1024; // 1 MB
+
+                if (file.size > maxSize) {
+                    alert("Ukuran file maksimal 1 MB");
+                    input.value = ""; // reset file
+                    label.textContent = "";
+                    label.classList.remove('text-success');
+                    return;
+                }
+
+                label.textContent = '✓ ' + file.name;
                 label.classList.add('text-success');
             }
         }

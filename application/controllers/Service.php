@@ -66,7 +66,7 @@ class Service extends CI_Controller
             $config = [
                 'upload_path' => FCPATH . 'assets/uploads/documents/',
                 'allowed_types' => 'pdf|jpg|jpeg|png',
-                'max_size' => 4096, // 4MB
+                'max_size' => 1024, // 1MB
             ];
 
             if (!is_dir($config['upload_path'])) {
@@ -285,7 +285,7 @@ class Service extends CI_Controller
 
             $config['upload_path'] = './assets/uploads/documents/';
             $config['allowed_types'] = 'pdf|jpg|jpeg|png';
-            $config['max_size'] = 2048;
+            $config['max_size'] = 1024;
 
             $this->load->library('upload', $config);
 
