@@ -358,25 +358,6 @@
                     <small class="text-muted">Bulan Ini</small>
                 </div>
             </div>
-            <div class="stat-card">
-                <div class="stat-icon bg-info bg-opacity-10 text-info">
-                    <i class="bi bi-stopwatch"></i>
-                </div>
-                <div>
-                    <div class="fw-bold fs-4">
-                        <?php
-                        if (count($history) > 0) {
-                            $total_days = 0;
-                            foreach ($history as $h) {
-                                $total_days += ceil((strtotime($h->completed_at) - strtotime($h->submitted_at)) / (60 * 60 * 24));
-                            }
-                            echo round($total_days / count($history), 1);
-                        } else echo 0;
-                        ?>
-                    </div>
-                    <small class="text-muted">Rata-rata Hari</small>
-                </div>
-            </div>
         </div>
 
         <!-- Table Container -->
@@ -438,7 +419,6 @@
                             <th>Jenis Layanan</th>
                             <th>Tanggal Pengajuan</th>
                             <th>Tanggal Selesai</th>
-                            <th>Durasi</th>
                             <th>Status</th>
                             <th>Berkas</th>
                         </tr>
@@ -463,7 +443,6 @@
 
                             foreach ($history as $h):
                                 $service_name = isset($service_names[$h->service_type]) ? $service_names[$h->service_type] : $h->service_type;
-                                $duration = ceil((strtotime($h->completed_at) - strtotime($h->submitted_at)) / (60 * 60 * 24));
 
                                 // Count documents
                                 $doc_count = 0;
@@ -516,9 +495,6 @@
                                             <span class="date-main"><?php echo date('d M Y', strtotime($h->completed_at)); ?></span>
                                             <span class="date-sub"><?php echo date('H:i', strtotime($h->completed_at)); ?> WIB</span>
                                         </div>
-                                    </td>
-                                    <td>
-                                        <span class="fw-bold text-success"><?php echo $duration; ?> hari</span>
                                     </td>
                                     <td>
                                         <span class="status-completed">
@@ -582,7 +558,7 @@
                             <?php endforeach; ?>
                         <?php else: ?>
                             <tr>
-                                <td colspan="8">
+                                <td colspan="7">
                                     <div class="empty-table">
                                         <i class="bi bi-inbox"></i>
                                         <h5>Belum Ada Data</h5>
