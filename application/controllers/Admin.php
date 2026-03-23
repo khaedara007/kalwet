@@ -368,6 +368,16 @@ class Admin extends CI_Controller
         redirect('admin/ratings');
     }
 
+    public function history()
+    {
+        // Ambil hanya permohonan dengan status 'completed'
+        $this->db->where('status', 'completed');
+        $this->db->order_by('completed_at', 'DESC');
+        $data['history'] = $this->db->get('service_requests')->result();
+
+        $this->load->view('admin/history', $data);
+    }
+
     public function requests()
     {
         $this->check_admin();

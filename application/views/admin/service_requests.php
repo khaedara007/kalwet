@@ -34,6 +34,9 @@
                     <a class="nav-link active" href="<?php echo site_url('admin/requests'); ?>">
                         <i class="bi bi-folder-check me-1"></i>Permohonan
                     </a>
+                    <a class="nav-link" href="<?php echo site_url('admin/history'); ?>">
+                        <i class="bi bi-clock-history me-1"></i>Riwayat
+                    </a>
                     <a class="nav-link text-danger bg-danger bg-opacity-10 rounded ms-2" href="<?php echo site_url('admin/logout'); ?>">
                         <i class="bi bi-box-arrow-right me-1"></i>Keluar
                     </a>
