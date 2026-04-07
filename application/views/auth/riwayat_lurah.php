@@ -483,20 +483,6 @@
 
         </div>
 
-        <!-- Info Card -->
-        <div class="alert alert-info mt-4" style="border-radius: 16px; border: none; background: #e3f2fd;">
-            <div class="d-flex align-items-start">
-                <i class="bi bi-info-circle-fill fs-4 me-3 text-primary"></i>
-                <div>
-                    <h6 class="fw-bold text-primary mb-2">Petunjuk Mengubah Data:</h6>
-                    <p class="mb-0 small text-muted">
-                        Untuk menambah atau mengubah data lurah, edit file <code>application/views/admin/riwayat_lurah.php</code>.
-                        Upload foto ke folder <code>assets/uploads/lurah/</code> dengan format JPG/PNG.
-                    </p>
-                </div>
-            </div>
-        </div>
-
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>

@@ -10,7 +10,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="<?php echo base_url('assets/template1/css/styles.css') ?>" rel="stylesheet" />
+    <!-- Custom CSS SIMPEL AWET -->
+    <link href="<?php echo base_url('assets/template1/css/custom.css') ?>" rel="stylesheet" />
     <!-- PDF.js CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <script>
@@ -18,6 +23,27 @@
     </script>
 
     <style>
+        /* Container untuk scroll */
+        #pdfViewerContainer iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: white;
+            min-height: 600px;
+        }
+
+        #pdfViewerContainer {
+            flex: 1;
+            overflow-y: auto;
+            overflow-x: hidden;
+            background: #525659;
+        }
+
+        #pdfViewerContainer canvas {
+            max-width: 100%;
+            height: auto;
+        }
+
         /* Warna tema SIMPEL AWET */
         :root {
             --primary-blue: #1e88e5;
@@ -589,62 +615,34 @@
 </head>
 
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background: var(--bg-gradient);">
+    <header class="header-modern">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="<?php echo site_url('auth/admin'); ?>">
-                <img src="<?php echo base_url('assets/logo.png'); ?>" alt="Logo" height="40" class="me-2">
-                <div>
-                    <small class="d-block text-warning" style="font-size: 10px; letter-spacing: 1px;">SISTEM INFORMASI PELAYANAN</small>
-                    <span class="fw-bold">KELURAHAN KALINYAMAT WETAN</span>
+            <div class="row align-items-center">
+
+                <!-- Logo & Title -->
+                <div class="col-lg-6 col-md-6 d-flex align-items-center gap-3">
+                    <a href="<?php echo site_url('/'); ?>">
+                        <img src="<?php echo base_url('assets/logo.png'); ?>" alt="SIMPEL AWET" class="header-logo">
+                    </a>
+                    <div>
+                        <div class="header-subtitle">Sistem Informasi Pelayanan</div>
+                        <h1 class="header-title">KELURAHAN KALINYAMAT WETAN</h1>
+                    </div>
                 </div>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <div class="navbar-nav ms-auto align-items-center">
-                    <a class="nav-link" href="<?php echo site_url('auth/admin'); ?>">
-                        <i class="bi bi-speedometer2 me-1"></i>Dashboard
-                    </a>
-                    <a class="nav-link" href="<?php echo site_url('auth/admin_requests'); ?>">
-                        <i class="bi bi-folder-check me-1"></i>Permohonan
-                    </a>
-                    <a class="nav-link" href="<?php echo site_url('auth/admin_history'); ?>">
-                        <i class="bi bi-clock-history me-1"></i>Riwayat
+
+                <!-- Buttons -->
+                <div class="col-lg-6 col-md-6 text-lg-end text-md-end">
+
+                    <a href="<?php echo site_url('home'); ?>" class="btn header-btn header-btn-register">
+                        <i></i> Kembali
                     </a>
 
-                    <!-- DROPDOWN DATA MASTER -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle active" href="#" data-bs-toggle="dropdown">
-                            <i class="bi bi-database me-1"></i>Data Master
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><span class="dropdown-header">Profil</span></li>
-                            <li>
-                                <a class="dropdown-item" href="<?php echo site_url('auth/riwayat_lurah'); ?>">
-                                    <i class="bi bi-person-badge text-primary"></i>Riwayat Lurah
-                                </a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><span class="dropdown-header">Dokumen</span></li>
-                            <li>
-                                <a class="dropdown-item active" href="<?php echo site_url('auth/sop_pelayanan'); ?>">
-                                    <i class="bi bi-file-earmark-text text-success"></i>SOP Pelayanan
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <a class="nav-link text-warning ms-2" href="<?php echo site_url('auth/logout'); ?>">
-                        <i class="bi bi-box-arrow-right me-1"></i>Keluar
-                    </a>
                 </div>
+
             </div>
         </div>
-    </nav>
+    </header>
+
 
     <div class="container mt-4 mb-5 animate-fade-in">
 
@@ -656,28 +654,6 @@
                         <i class="bi bi-file-earmark-text-fill me-2"></i>SOP Pelayanan
                     </h2>
                     <p class="mb-0 opacity-75">Standar Operasional Prosedur Pelayanan Kelurahan Kalinyamat Wetan</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Stats -->
-        <div class="stats-sop">
-            <div class="stat-sop-card">
-                <div class="stat-sop-icon bg-primary bg-opacity-10 text-primary">
-                    <i class="bi bi-file-earmark-text"></i>
-                </div>
-                <div>
-                    <div class="fw-bold fs-4">11</div>
-                    <small class="text-muted">Total SOP</small>
-                </div>
-            </div>
-            <div class="stat-sop-card">
-                <div class="stat-sop-icon bg-success bg-opacity-10 text-success">
-                    <i class="bi bi-check-circle"></i>
-                </div>
-                <div>
-                    <div class="fw-bold fs-4">11</div>
-                    <small class="text-muted">SOP Aktif</small>
                 </div>
             </div>
         </div>
@@ -700,322 +676,159 @@
         <div id="sopContainer">
 
             <!-- KATEGORI: SURAT KETERANGAN -->
-            <div class="category-section" data-category="surat-keterangan">
-                <div class="category-title">
-                    <div class="category-icon">
-                        <i class="bi bi-file-earmark-text"></i>
-                    </div>
-                    <h4>Surat Keterangan</h4>
-                    <span class="category-count">7 SOP</span>
-                </div>
 
-                <div class="sop-grid">
+            <div class="sop-grid">
 
-                    <!-- SOP 1: SKTM -->
-                    <div class="sop-card" onclick="previewSop('SOP-SKTM.pdf', 'SOP-SK-001', 'Surat Keterangan Tidak Mampu')" data-search="sktm surat keterangan tidak mampu">
-                        <span class="pdf-badge">
-                            <i class="bi bi-file-earmark-pdf"></i>PDF
-                        </span>
-                        <div class="sop-icon">
-                            <i class="bi bi-file-earmark-text"></i>
-                        </div>
-                        <span class="sop-code">SOP-SK-001</span>
-                        <h5 class="sop-title">Surat Keterangan Tidak Mampu (SKTM)</h5>
-                        <p class="sop-desc">
-                            Prosedur pembuatan surat keterangan tidak mampu untuk pengajuan bantuan sosial dan beasiswa.
-                        </p>
-                        <div class="sop-meta">
-                            <span class="sop-status">
-                                <i class="bi bi-check-circle-fill"></i> Aktif
-                            </span>
-                            <span class="sop-action">
-                                <i class="bi bi-eye"></i> Preview
-                            </span>
-                        </div>
-                    </div>
+                <!-- SOP 1: SKTM -->
+                <div class="sop-card" onclick="previewSop('SOP-Waris.pdf', 'SOP-SK-001', 'Surat Keterangan Tidak Mampu')" data-search="sktm surat keterangan tidak mampu">
+                    <span class="pdf-badge">
+                        <i class="bi bi-file-earmark-pdf"></i>PDF
+                    </span>
 
-                    <!-- SOP 2: SKD -->
-                    <div class="sop-card" onclick="previewSop('sop_skd.pdf', 'SOP-SK-002', 'Surat Keterangan Domisili')" data-search="skd surat keterangan domisili">
-                        <span class="pdf-badge">
-                            <i class="bi bi-file-earmark-pdf"></i>PDF
-                        </span>
-                        <div class="sop-icon">
-                            <i class="bi bi-house"></i>
-                        </div>
-                        <span class="sop-code">SOP-SK-002</span>
-                        <h5 class="sop-title">Surat Keterangan Domisili (SKD)</h5>
-                        <p class="sop-desc">
-                            Prosedur pembuatan surat keterangan domisili untuk keperluan administrasi penduduk.
-                        </p>
-                        <div class="sop-meta">
-                            <span class="sop-status">
-                                <i class="bi bi-check-circle-fill"></i> Aktif
-                            </span>
-                            <span class="sop-action">
-                                <i class="bi bi-eye"></i> Preview
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- SOP 3: SKSN -->
-                    <div class="sop-card" onclick="previewSop('sop_sksn.pdf', 'SOP-SK-003', 'Surat Keterangan Satu Nama')" data-search="sksn surat keterangan satu nama">
-                        <span class="pdf-badge">
-                            <i class="bi bi-file-earmark-pdf"></i>PDF
-                        </span>
-                        <div class="sop-icon">
-                            <i class="bi bi-person-badge"></i>
-                        </div>
-                        <span class="sop-code">SOP-SK-003</span>
-                        <h5 class="sop-title">Surat Keterangan Satu Nama (SKSN)</h5>
-                        <p class="sop-desc">
-                            Prosedur pembuatan surat keterangan satu nama untuk penyeragaman data kependudukan.
-                        </p>
-                        <div class="sop-meta">
-                            <span class="sop-status">
-                                <i class="bi bi-check-circle-fill"></i> Aktif
-                            </span>
-                            <span class="sop-action">
-                                <i class="bi bi-eye"></i> Preview
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- SOP 4: SKPO -->
-                    <div class="sop-card" onclick="previewSop('sop_skpo.pdf', 'SOP-SK-004', 'Surat Keterangan Penghasilan Orang Tua')" data-search="skpo surat keterangan penghasilan orang tua">
-                        <span class="pdf-badge">
-                            <i class="bi bi-file-earmark-pdf"></i>PDF
-                        </span>
-                        <div class="sop-icon">
-                            <i class="bi bi-cash"></i>
-                        </div>
-                        <span class="sop-code">SOP-SK-004</span>
-                        <h5 class="sop-title">Surat Keterangan Penghasilan Orang Tua (SKPO)</h5>
-                        <p class="sop-desc">
-                            Prosedur pembuatan surat keterangan penghasilan untuk keperluan beasiswa dan bantuan.
-                        </p>
-                        <div class="sop-meta">
-                            <span class="sop-status">
-                                <i class="bi bi-check-circle-fill"></i> Aktif
-                            </span>
-                            <span class="sop-action">
-                                <i class="bi bi-eye"></i> Preview
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- SOP 5: SKBM -->
-                    <div class="sop-card" onclick="previewSop('sop_skbm.pdf', 'SOP-SK-005', 'Surat Keterangan Belum Menikah')" data-search="skbm surat keterangan belum menikah">
-                        <span class="pdf-badge">
-                            <i class="bi bi-file-earmark-pdf"></i>PDF
-                        </span>
-                        <div class="sop-icon">
-                            <i class="bi bi-heart"></i>
-                        </div>
-                        <span class="sop-code">SOP-SK-005</span>
-                        <h5 class="sop-title">Surat Keterangan Belum Menikah (SKBM)</h5>
-                        <p class="sop-desc">
-                            Prosedur pembuatan surat keterangan status belum menikah untuk keperluan nikah dan lainnya.
-                        </p>
-                        <div class="sop-meta">
-                            <span class="sop-status">
-                                <i class="bi bi-check-circle-fill"></i> Aktif
-                            </span>
-                            <span class="sop-action">
-                                <i class="bi bi-eye"></i> Preview
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- SOP 6: SKBR -->
-                    <div class="sop-card" onclick="previewSop('sop_skbr.pdf', 'SOP-SK-006', 'Surat Keterangan Belum Memiliki Rumah')" data-search="skbr surat keterangan belum memiliki rumah">
-                        <span class="pdf-badge">
-                            <i class="bi bi-file-earmark-pdf"></i>PDF
-                        </span>
-                        <div class="sop-icon">
-                            <i class="bi bi-building"></i>
-                        </div>
-                        <span class="sop-code">SOP-SK-006</span>
-                        <h5 class="sop-title">Surat Keterangan Belum Memiliki Rumah (SKBR)</h5>
-                        <p class="sop-desc">
-                            Prosedur pembuatan surat keterangan belum memiliki rumah untuk pengajuan perumahan rakyat.
-                        </p>
-                        <div class="sop-meta">
-                            <span class="sop-status">
-                                <i class="bi bi-check-circle-fill"></i> Aktif
-                            </span>
-                            <span class="sop-action">
-                                <i class="bi bi-eye"></i> Preview
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- SOP 7: SKM -->
-                    <div class="sop-card" onclick="previewSop('sop_skm.pdf', 'SOP-SK-007', 'Surat Keterangan Kematian')" data-search="skm surat keterangan kematian">
-                        <span class="pdf-badge">
-                            <i class="bi bi-file-earmark-pdf"></i>PDF
-                        </span>
-                        <div class="sop-icon">
-                            <i class="bi bi-heartbreak"></i>
-                        </div>
-                        <span class="sop-code">SOP-SK-007</span>
-                        <h5 class="sop-title">Surat Keterangan Kematian (SKM)</h5>
-                        <p class="sop-desc">
-                            Prosedur pembuatan surat keterangan kematian untuk keperluan administrasi ahli waris.
-                        </p>
-                        <div class="sop-meta">
-                            <span class="sop-status">
-                                <i class="bi bi-check-circle-fill"></i> Aktif
-                            </span>
-                            <span class="sop-action">
-                                <i class="bi bi-eye"></i> Preview
-                            </span>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- KATEGORI: SURAT IZIN & PENGANTAR -->
-            <div class="category-section" data-category="surat-izin">
-                <div class="category-title">
-                    <div class="category-icon">
-                        <i class="bi bi-file-earmark-check"></i>
-                    </div>
-                    <h4>Surat Izin & Pengantar</h4>
-                    <span class="category-count">3 SOP</span>
-                </div>
-
-                <div class="sop-grid">
-
-                    <!-- SOP 8: SIH -->
-                    <div class="sop-card" onclick="previewSop('sop_sih.pdf', 'SOP-SI-001', 'Surat Izin Hajatan')" data-search="sih surat izin hajatan">
-                        <span class="pdf-badge">
-                            <i class="bi bi-file-earmark-pdf"></i>PDF
-                        </span>
-                        <div class="sop-icon">
-                            <i class="bi bi-music-note-beamed"></i>
-                        </div>
-                        <span class="sop-code">SOP-SI-001</span>
-                        <h5 class="sop-title">Surat Izin Hajatan (SIH)</h5>
-                        <p class="sop-desc">
-                            Prosedur pembuatan surat izin hajatan untuk kegiatan pernikahan dan hajatan masyarakat.
-                        </p>
-                        <div class="sop-meta">
-                            <span class="sop-status">
-                                <i class="bi bi-check-circle-fill"></i> Aktif
-                            </span>
-                            <span class="sop-action">
-                                <i class="bi bi-eye"></i> Preview
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- SOP 9: SKCK -->
-                    <div class="sop-card" onclick="previewSop('sop_skck.pdf', 'SOP-SP-001', 'Surat Pengantar SKCK')" data-search="skck surat pengantar skck">
-                        <span class="pdf-badge">
-                            <i class="bi bi-file-earmark-pdf"></i>PDF
-                        </span>
-                        <div class="sop-icon">
-                            <i class="bi bi-shield-check"></i>
-                        </div>
-                        <span class="sop-code">SOP-SP-001</span>
-                        <h5 class="sop-title">Surat Pengantar SKCK</h5>
-                        <p class="sop-desc">
-                            Prosedur pembuatan surat pengantar untuk pengurusan SKCK di Polsek/Polres.
-                        </p>
-                        <div class="sop-meta">
-                            <span class="sop-status">
-                                <i class="bi bi-check-circle-fill"></i> Aktif
-                            </span>
-                            <span class="sop-action">
-                                <i class="bi bi-eye"></i> Preview
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- SOP 10: SPKD -->
-                    <div class="sop-card" onclick="previewSop('sop_spkd.pdf', 'SOP-SP-002', 'Surat Pengantar Kehilangan Dokumen')" data-search="spkd surat pengantar kehilangan dokumen">
-                        <span class="pdf-badge">
-                            <i class="bi bi-file-earmark-pdf"></i>PDF
-                        </span>
-                        <div class="sop-icon">
-                            <i class="bi bi-file-earmark-x"></i>
-                        </div>
-                        <span class="sop-code">SOP-SP-002</span>
-                        <h5 class="sop-title">Surat Pengantar Kehilangan Dokumen (SPKD)</h5>
-                        <p class="sop-desc">
-                            Prosedur pembuatan surat pengantar kehilangan dokumen untuk laporan kepolisian.
-                        </p>
-                        <div class="sop-meta">
-                            <span class="sop-status">
-                                <i class="bi bi-check-circle-fill"></i> Aktif
-                            </span>
-                            <span class="sop-action">
-                                <i class="bi bi-eye"></i> Preview
-                            </span>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- KATEGORI: AKTA & PENCATATAN SIPIL -->
-            <div class="category-section" data-category="akta">
-                <div class="category-title">
-                    <div class="category-icon">
-                        <i class="bi bi-file-earmark-richtext"></i>
-                    </div>
-                    <h4>Akta & Pencatatan Sipil</h4>
-                    <span class="category-count">1 SOP</span>
-                </div>
-
-                <div class="sop-grid">
-
-                    <!-- SOP 11: SKL -->
-                    <div class="sop-card" onclick="previewSop('sop_skl.pdf', 'SOP-AK-001', 'Surat Keterangan Kelahiran')" data-search="skl surat keterangan kelahiran">
-                        <span class="pdf-badge">
-                            <i class="bi bi-file-earmark-pdf"></i>PDF
-                        </span>
-                        <div class="sop-icon">
-                            <i class="bi bi-balloon"></i>
-                        </div>
-                        <span class="sop-code">SOP-AK-001</span>
-                        <h5 class="sop-title">Surat Keterangan Kelahiran (SKL)</h5>
-                        <p class="sop-desc">
-                            Prosedur pembuatan surat keterangan kelahiran untuk pengurusan akta lahir di Dukcapil.
-                        </p>
-                        <div class="sop-meta">
-                            <span class="sop-status">
-                                <i class="bi bi-check-circle-fill"></i> Aktif
-                            </span>
-                            <span class="sop-action">
-                                <i class="bi bi-eye"></i> Preview
-                            </span>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Info Upload PDF -->
-        <div class="alert alert-info mt-5" style="border-radius: 16px; border: none; background: #e3f2fd;">
-            <div class="d-flex align-items-start">
-                <i class="bi bi-info-circle-fill fs-4 me-3 text-primary"></i>
-                <div>
-                    <h6 class="fw-bold text-primary mb-2">Petunjuk Upload File SOP:</h6>
-                    <p class="mb-2 small text-muted">
-                        Upload file PDF SOP ke folder berikut:
+                    <span class="sop-code">SOP-SK-001</span>
+                    <h5 class="sop-title">SOP Tata Cara Legalisasi Surat Keterangan Waris</h5>
+                    <p class="sop-desc">
+                        Prosedur pembuatan surat keterangan tidak mampu untuk pengajuan bantuan sosial dan beasiswa.
                     </p>
-                    <code class="d-block bg-white p-2 rounded mb-2" style="font-size: 12px;">
-                        assets/uploads/sop/
-                    </code>
-                    <p class="mb-0 small text-muted">
-                        Nama file harus sesuai: <strong>sop_sktm.pdf</strong>, <strong>sop_skd.pdf</strong>, dst.
-                    </p>
+                    <div class="sop-meta">
+                        <span class="sop-status">
+                            <i class="bi bi-check-circle-fill"></i> Aktif
+                        </span>
+                        <span class="sop-action">
+                            <i class="bi bi-eye"></i> Preview
+                        </span>
+                    </div>
                 </div>
+
+                <!-- SOP 2: SKD -->
+                <div class="sop-card" onclick="previewSop('SOP-Taksiran-Harga-Tanah.pdf', 'SOP-SK-002', 'Surat Keterangan Domisili')" data-search="skd surat keterangan domisili">
+                    <span class="pdf-badge">
+                        <i class="bi bi-file-earmark-pdf"></i>PDF
+                    </span>
+
+                    <span class="sop-code">SOP-SK-002</span>
+                    <h5 class="sop-title">SOP Tata Cara Penerbitan Surat Keterangan Taksiran Harga Tanah</h5>
+                    <p class="sop-desc">
+                        Prosedur pembuatan surat keterangan domisili untuk keperluan administrasi penduduk.
+                    </p>
+                    <div class="sop-meta">
+                        <span class="sop-status">
+                            <i class="bi bi-check-circle-fill"></i> Aktif
+                        </span>
+                        <span class="sop-action">
+                            <i class="bi bi-eye"></i> Preview
+                        </span>
+                    </div>
+                </div>
+
+                <!-- SOP 3: SKSN -->
+                <div class="sop-card" onclick="previewSop('SOP-Keterangan-Ghoib.pdf', 'SOP-SK-003', 'Surat Keterangan Satu Nama')" data-search="sksn surat keterangan satu nama">
+                    <span class="pdf-badge">
+                        <i class="bi bi-file-earmark-pdf"></i>PDF
+                    </span>
+
+                    <span class="sop-code">SOP-SK-003</span>
+                    <h5 class="sop-title">SOP Tata Cara Penerbitan Surat Keterangan Tidak Diketahui Keberadaannya (Ghoib)</h5>
+                    <p class="sop-desc">
+                        Prosedur pembuatan surat keterangan satu nama untuk penyeragaman data kependudukan.
+                    </p>
+                    <div class="sop-meta">
+                        <span class="sop-status">
+                            <i class="bi bi-check-circle-fill"></i> Aktif
+                        </span>
+                        <span class="sop-action">
+                            <i class="bi bi-eye"></i> Preview
+                        </span>
+                    </div>
+                </div>
+
+                <!-- SOP 4: SKPO -->
+                <div class="sop-card" onclick="previewSop('SOP-Keterangan Satu Nama.pdf', 'SOP-SK-004', 'Surat Keterangan Penghasilan Orang Tua')" data-search="skpo surat keterangan penghasilan orang tua">
+                    <span class="pdf-badge">
+                        <i class="bi bi-file-earmark-pdf"></i>PDF
+                    </span>
+                    <span class="sop-code">SOP-SK-004</span>
+                    <h5 class="sop-title">SOP Tata Cara Penerbitan Surat Keterangan Satu Nama</h5>
+                    <p class="sop-desc">
+                        Prosedur pembuatan surat keterangan penghasilan untuk keperluan beasiswa dan bantuan.
+                    </p>
+                    <div class="sop-meta">
+                        <span class="sop-status">
+                            <i class="bi bi-check-circle-fill"></i> Aktif
+                        </span>
+                        <span class="sop-action">
+                            <i class="bi bi-eye"></i> Preview
+                        </span>
+                    </div>
+                </div>
+
+                <!-- SOP 5: SKBM -->
+                <div class="sop-card" onclick="previewSop('SOP-Kesaksian-Kelahiran.pdf', 'SOP-SK-005', 'Surat Keterangan Belum Menikah')" data-search="skbm surat keterangan belum menikah">
+                    <span class="pdf-badge">
+                        <i class="bi bi-file-earmark-pdf"></i>PDF
+                    </span>
+
+                    <span class="sop-code">SOP-SK-005</span>
+                    <h5 class="sop-title">SOP Tata Cara Pelayanan Surat Keterangan Kesaksian Kelahiran</h5>
+                    <p class="sop-desc">
+                        Prosedur pembuatan surat keterangan status belum menikah untuk keperluan nikah dan lainnya.
+                    </p>
+                    <div class="sop-meta">
+                        <span class="sop-status">
+                            <i class="bi bi-check-circle-fill"></i> Aktif
+                        </span>
+                        <span class="sop-action">
+                            <i class="bi bi-eye"></i> Preview
+                        </span>
+                    </div>
+                </div>
+
+                <!-- SOP 6: SKBR -->
+                <div class="sop-card" onclick="previewSop('SOP-Kesaksian-Kematian.pdf', 'SOP-SK-006', 'Surat Keterangan Belum Memiliki Rumah')" data-search="skbr surat keterangan belum memiliki rumah">
+                    <span class="pdf-badge">
+                        <i class="bi bi-file-earmark-pdf"></i>PDF
+                    </span>
+
+                    <span class="sop-code">SOP-SK-006</span>
+                    <h5 class="sop-title">SOP Tata Cara Pelayanan Surat Keterangan Kesaksian Kematian</h5>
+                    <p class="sop-desc">
+                        Prosedur pembuatan surat keterangan belum memiliki rumah untuk pengajuan perumahan rakyat.
+                    </p>
+                    <div class="sop-meta">
+                        <span class="sop-status">
+                            <i class="bi bi-check-circle-fill"></i> Aktif
+                        </span>
+                        <span class="sop-action">
+                            <i class="bi bi-eye"></i> Preview
+                        </span>
+                    </div>
+                </div>
+
+                <!-- SOP 7: SKM -->
+                <div class="sop-card" onclick="previewSop('SOP-PBG.pdf', 'SOP-SK-007', 'Surat Keterangan Kematian')" data-search="skm surat keterangan kematian">
+                    <span class="pdf-badge">
+                        <i class="bi bi-file-earmark-pdf"></i>PDF
+                    </span>
+
+                    <span class="sop-code">SOP-SK-007</span>
+                    <h5 class="sop-title">SOP Tata Cara Legalisasi Persetujuan Bangunan Gedung (PBG)</h5>
+                    <p class="sop-desc">
+                        Prosedur pembuatan surat keterangan kematian untuk keperluan administrasi ahli waris.
+                    </p>
+                    <div class="sop-meta">
+                        <span class="sop-status">
+                            <i class="bi bi-check-circle-fill"></i> Aktif
+                        </span>
+                        <span class="sop-action">
+                            <i class="bi bi-eye"></i> Preview
+                        </span>
+                    </div>
+                </div>
+
             </div>
+
+
+
         </div>
 
     </div>
@@ -1111,18 +924,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        // Base URL untuk PDF - PASTIKAN INI BENAR
+        // Base URL untuk PDF
         const basePdfUrl = '<?php echo base_url("assets/uploads/sop/"); ?>';
         let currentPdfUrl = '';
-        let pdfDoc = null;
-        let currentPage = 1;
-        let totalPages = 0;
-        let scale = 1.5;
         let pdfModal;
-
-        // Elemen DOM
-        const canvas = document.getElementById('pdf-canvas');
-        const ctx = canvas.getContext('2d');
 
         document.addEventListener('DOMContentLoaded', function() {
             pdfModal = new bootstrap.Modal(document.getElementById('pdfModal'));
@@ -1133,28 +938,25 @@
         });
 
         function cleanupPdf() {
-            pdfDoc = null;
-            currentPage = 1;
-            totalPages = 0;
-            document.getElementById('pdfLoading').style.display = 'flex';
-            document.getElementById('pdfError').classList.remove('active');
-            document.getElementById('pdfNav').style.display = 'none';
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            canvas.style.display = 'none';
-        }
+            const container = document.getElementById('pdfViewerContainer');
+            const loading = document.getElementById('pdfLoading');
+            const error = document.getElementById('pdfError');
 
-        function retryLoadPdf() {
-            if (currentPdfUrl) {
-                loadPdf(currentPdfUrl);
-            }
+            container.innerHTML = '';
+            container.appendChild(loading);
+            container.appendChild(error);
+
+            loading.style.display = 'flex';
+            error.classList.remove('active');
         }
 
         function previewSop(filename, code, title) {
-            // BERSIHKAN URL - hapus base_url jika sudah ada
             currentPdfUrl = basePdfUrl + filename;
 
-            // Debug: cek URL di console
+            // DEBUG: Lihat URL di console browser (tekan F12)
             console.log('PDF URL:', currentPdfUrl);
+            console.log('Base URL:', basePdfUrl);
+            console.log('Filename:', filename);
 
             document.getElementById('modalSopTitle').textContent = title;
             document.getElementById('modalSopCode').textContent = code;
@@ -1165,115 +967,138 @@
 
             pdfModal.show();
 
+            // SOLUSI: Langsung pakai iframe saja (paling reliable)
             setTimeout(() => {
-                loadPdf(currentPdfUrl);
+                useIframeViewer(currentPdfUrl);
             }, 300);
         }
 
-        // FIX UTAMA: Gunakan fetch dulu untuk cek file, baru render
-        async function loadPdf(url) {
+        // SOLUSI UTAMA: Iframe Viewer (paling compatible)
+        function useIframeViewer(url) {
+            const container = document.getElementById('pdfViewerContainer');
+            const loading = document.getElementById('pdfLoading');
+            const error = document.getElementById('pdfError');
+
+            // Bersihkan container
+            container.innerHTML = '';
+            container.appendChild(loading);
+            container.appendChild(error);
+
+            loading.style.display = 'flex';
+            error.classList.remove('active');
+
+            // Buat iframe untuk PDF
+            const iframe = document.createElement('iframe');
+            iframe.src = url;
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.style.border = 'none';
+            iframe.style.background = 'white';
+
+            // Event: PDF loaded
+            iframe.onload = function() {
+                console.log('PDF loaded successfully via iframe');
+                loading.style.display = 'none';
+            };
+
+            // Event: PDF error
+            iframe.onerror = function() {
+                console.log('PDF failed to load via iframe');
+                loading.style.display = 'none';
+                error.classList.add('active');
+            };
+
+            // Insert iframe
+            container.insertBefore(iframe, loading);
+
+            // Timeout: sembunyikan loading setelah 2 detik (asumsi berhasil)
+            setTimeout(() => {
+                loading.style.display = 'none';
+            }, 2000);
+        }
+
+        // SOLUSI ALTERNATIF: PDF.js (jika iframe tidak work)
+        async function tryPdfJsViewer(url) {
             try {
                 document.getElementById('pdfLoading').style.display = 'flex';
                 document.getElementById('pdfError').classList.remove('active');
-                canvas.style.display = 'none';
 
-                // SOLUSI 1: Coba dengan PDF.js dulu (untuk file kecil)
                 const loadingTask = pdfjsLib.getDocument({
                     url: url,
-                    withCredentials: false,
-                    cMapUrl: 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/cmaps/',
-                    cMapPacked: true,
+                    withCredentials: false
                 });
 
-                pdfDoc = await loadingTask.promise;
+                const pdf = await loadingTask.promise;
+                const totalPages = pdf.numPages;
 
-                // Jika berhasil, render dengan PDF.js
-                totalPages = pdfDoc.numPages;
-                document.getElementById('totalPages').textContent = totalPages;
-                document.getElementById('currentPage').textContent = '1';
+                const container = document.getElementById('pdfViewerContainer');
+                const loading = document.getElementById('pdfLoading');
+                const error = document.getElementById('pdfError');
 
-                if (totalPages > 1) {
-                    document.getElementById('pdfNav').style.display = 'flex';
+                container.innerHTML = '';
+                container.appendChild(loading);
+                container.appendChild(error);
+
+                const wrapper = document.createElement('div');
+                wrapper.style.padding = '20px';
+                wrapper.style.display = 'flex';
+                wrapper.style.flexDirection = 'column';
+                wrapper.style.gap = '20px';
+                wrapper.style.alignItems = 'center';
+
+                for (let i = 1; i <= totalPages; i++) {
+                    const page = await pdf.getPage(i);
+                    const scale = 1.5;
+                    const viewport = page.getViewport({
+                        scale: scale
+                    });
+
+                    const canvas = document.createElement('canvas');
+                    canvas.style.boxShadow = '0 4px 20px rgba(0,0,0,0.3)';
+                    canvas.style.background = 'white';
+                    canvas.style.maxWidth = '100%';
+
+                    const context = canvas.getContext('2d');
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
+
+                    await page.render({
+                        canvasContext: context,
+                        viewport: viewport
+                    }).promise;
+
+                    const pageLabel = document.createElement('div');
+                    pageLabel.textContent = 'Halaman ' + i + ' dari ' + totalPages;
+                    pageLabel.style.textAlign = 'center';
+                    pageLabel.style.color = '#666';
+                    pageLabel.style.fontSize = '12px';
+                    pageLabel.style.marginTop = '5px';
+
+                    const pageWrapper = document.createElement('div');
+                    pageWrapper.style.display = 'flex';
+                    pageWrapper.style.flexDirection = 'column';
+                    pageWrapper.style.alignItems = 'center';
+                    pageWrapper.appendChild(canvas);
+                    pageWrapper.appendChild(pageLabel);
+
+                    wrapper.appendChild(pageWrapper);
                 }
 
-                canvas.style.display = 'block';
-                await renderPage(1);
-                document.getElementById('pdfLoading').style.display = 'none';
+                container.insertBefore(wrapper, loading);
+                loading.style.display = 'none';
+                document.getElementById('zoomLevel').textContent = '150%';
 
-            } catch (error) {
-                console.error('PDF.js error:', error);
-
-                // SOLUSI 2: Fallback ke iframe dengan Google Docs Viewer
-                console.log('Trying iframe fallback...');
+            } catch (err) {
+                console.error('PDF.js error:', err);
+                // Fallback ke iframe
                 useIframeViewer(url);
             }
         }
 
-
-
-        async function renderPage(pageNum) {
-            if (!pdfDoc) return;
-
-            try {
-                const page = await pdfDoc.getPage(pageNum);
-
-                const containerWidth = document.getElementById('pdfViewerContainer').clientWidth - 40;
-                const viewport = page.getViewport({
-                    scale: 1
-                });
-                scale = (containerWidth / viewport.width) * 1.5; // 1.5x untuk kualitas lebih baik
-
-                if (scale < 0.8) scale = 0.8;
-                if (scale > 3) scale = 3;
-
-                const scaledViewport = page.getViewport({
-                    scale: scale
-                });
-
-                canvas.height = scaledViewport.height;
-                canvas.width = scaledViewport.width;
-
-                const renderContext = {
-                    canvasContext: ctx,
-                    viewport: scaledViewport
-                };
-
-                await page.render(renderContext).promise;
-
-                currentPage = pageNum;
-                document.getElementById('currentPage').textContent = currentPage;
-                document.getElementById('zoomLevel').textContent = Math.round(scale * 100) + '%';
-
-                document.getElementById('btnPrev').disabled = currentPage <= 1;
-                document.getElementById('btnNext').disabled = currentPage >= totalPages;
-
-            } catch (error) {
-                console.error('Render error:', error);
+        function retryLoadPdf() {
+            if (currentPdfUrl) {
+                useIframeViewer(currentPdfUrl);
             }
-        }
-
-        function prevPage() {
-            if (currentPage > 1) {
-                renderPage(currentPage - 1);
-            }
-        }
-
-        function nextPage() {
-            if (currentPage < totalPages) {
-                renderPage(currentPage + 1);
-            }
-        }
-
-        function zoomIn() {
-            scale += 0.25;
-            if (scale > 3) scale = 3;
-            renderPage(currentPage);
-        }
-
-        function zoomOut() {
-            scale -= 0.25;
-            if (scale < 0.5) scale = 0.5;
-            renderPage(currentPage);
         }
 
         // Search functionality
@@ -1308,15 +1133,6 @@
 
             document.getElementById('noResult').style.display = hasResult ? 'none' : 'block';
             document.getElementById('sopContainer').style.display = hasResult ? 'block' : 'none';
-        });
-
-        // Keyboard navigation
-        document.addEventListener('keydown', function(e) {
-            if (document.getElementById('pdfModal').classList.contains('show')) {
-                if (e.key === 'ArrowLeft') prevPage();
-                if (e.key === 'ArrowRight') nextPage();
-                if (e.key === 'Escape') pdfModal.hide();
-            }
         });
     </script>
 </body>
