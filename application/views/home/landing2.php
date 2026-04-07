@@ -18,6 +18,7 @@
     <link href="<?php echo base_url('assets/template1/css/styles.css') ?>" rel="stylesheet" />
     <!-- Custom CSS SIMPEL AWET -->
     <link href="<?php echo base_url('assets/template1/css/custom.css') ?>" rel="stylesheet" />
+
 </head>
 
 <body>
@@ -27,7 +28,7 @@
             <div class="row align-items-center">
 
                 <!-- Logo & Title -->
-                <div class="col-lg-6 col-md-6 d-flex align-items-center gap-3">
+                <div class="col-lg-5 col-md-6 d-flex align-items-center gap-3">
                     <a href="<?php echo site_url('/'); ?>">
                         <img src="<?php echo base_url('assets/logo.png'); ?>" alt="SIMPEL AWET" class="header-logo">
                     </a>
@@ -38,7 +39,40 @@
                 </div>
 
                 <!-- Buttons -->
-                <div class="col-lg-6 col-md-6 text-lg-end text-md-end">
+                <div class="col-lg-2 col-md-2 text-lg-end text-md-end">
+                    <!-- DROPDOWN-->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle btn header-btn header-btn-login" href="#" role="button" data-bs-toggle="dropdown">
+                            <i></i>Profil
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="<?php echo site_url('auth/riwayat_lurah'); ?>">
+                                    <i></i>
+                                    Riwayat Lurah
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </div>
+                <div class="col-lg-2 col-md-2 text-lg-end text-md-end">
+                    <!-- DROPDOWN-->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle btn header-btn header-btn-login" href="#" role="button" data-bs-toggle="dropdown">
+                            <i></i>Pelayanan
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="<?php echo site_url('auth/sop'); ?>">
+                                    <i></i>
+                                    SOP Pelayanan
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </div>
+
+                <div class="col-lg-3 col-md- text-lg-end text-md-end">
                     <?php if ($this->session->userdata('user')): ?>
                         <!-- Jika sudah login -->
                         <?php $user = $this->session->userdata('user'); ?>

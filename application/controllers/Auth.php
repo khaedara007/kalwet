@@ -146,6 +146,17 @@ class Auth extends CI_Controller
         $this->load->view('auth/forgot_password', $data);
     }
 
+
+    public function riwayat_lurah()
+    {
+        $this->load->view('auth/riwayat_lurah');
+    }
+
+    public function sop()
+    {
+        $this->load->view('auth/sop');
+    }
+
     public function logout()
     {
         $this->session->unset_userdata('user');
