@@ -18,7 +18,7 @@
     <!-- Custom CSS SIMPEL AWET -->
     <link href="<?php echo base_url('assets/template1/css/custom.css') ?>" rel="stylesheet" />
     <style>
-        /* Warna tema SIMPEL AWET - Biru Kelurahan */
+        /* Warna tema SIMPEL AWET - Biru Kelurahann */
         :root {
             --primary-blue: #1e88e5;
             --dark-blue: #1565c0;
