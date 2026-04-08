@@ -687,9 +687,6 @@
 
                     <span class="sop-code">SOP-SK-001</span>
                     <h5 class="sop-title">SOP Tata Cara Legalisasi Surat Keterangan Waris</h5>
-                    <p class="sop-desc">
-                        Prosedur pembuatan surat keterangan tidak mampu untuk pengajuan bantuan sosial dan beasiswa.
-                    </p>
                     <div class="sop-meta">
                         <span class="sop-status">
                             <i class="bi bi-check-circle-fill"></i> Aktif
@@ -708,9 +705,6 @@
 
                     <span class="sop-code">SOP-SK-002</span>
                     <h5 class="sop-title">SOP Tata Cara Penerbitan Surat Keterangan Taksiran Harga Tanah</h5>
-                    <p class="sop-desc">
-                        Prosedur pembuatan surat keterangan domisili untuk keperluan administrasi penduduk.
-                    </p>
                     <div class="sop-meta">
                         <span class="sop-status">
                             <i class="bi bi-check-circle-fill"></i> Aktif
@@ -729,9 +723,6 @@
 
                     <span class="sop-code">SOP-SK-003</span>
                     <h5 class="sop-title">SOP Tata Cara Penerbitan Surat Keterangan Tidak Diketahui Keberadaannya (Ghoib)</h5>
-                    <p class="sop-desc">
-                        Prosedur pembuatan surat keterangan satu nama untuk penyeragaman data kependudukan.
-                    </p>
                     <div class="sop-meta">
                         <span class="sop-status">
                             <i class="bi bi-check-circle-fill"></i> Aktif
@@ -749,9 +740,6 @@
                     </span>
                     <span class="sop-code">SOP-SK-004</span>
                     <h5 class="sop-title">SOP Tata Cara Penerbitan Surat Keterangan Satu Nama</h5>
-                    <p class="sop-desc">
-                        Prosedur pembuatan surat keterangan penghasilan untuk keperluan beasiswa dan bantuan.
-                    </p>
                     <div class="sop-meta">
                         <span class="sop-status">
                             <i class="bi bi-check-circle-fill"></i> Aktif
@@ -770,9 +758,6 @@
 
                     <span class="sop-code">SOP-SK-005</span>
                     <h5 class="sop-title">SOP Tata Cara Pelayanan Surat Keterangan Kesaksian Kelahiran</h5>
-                    <p class="sop-desc">
-                        Prosedur pembuatan surat keterangan status belum menikah untuk keperluan nikah dan lainnya.
-                    </p>
                     <div class="sop-meta">
                         <span class="sop-status">
                             <i class="bi bi-check-circle-fill"></i> Aktif
@@ -791,9 +776,6 @@
 
                     <span class="sop-code">SOP-SK-006</span>
                     <h5 class="sop-title">SOP Tata Cara Pelayanan Surat Keterangan Kesaksian Kematian</h5>
-                    <p class="sop-desc">
-                        Prosedur pembuatan surat keterangan belum memiliki rumah untuk pengajuan perumahan rakyat.
-                    </p>
                     <div class="sop-meta">
                         <span class="sop-status">
                             <i class="bi bi-check-circle-fill"></i> Aktif
@@ -812,9 +794,6 @@
 
                     <span class="sop-code">SOP-SK-007</span>
                     <h5 class="sop-title">SOP Tata Cara Legalisasi Persetujuan Bangunan Gedung (PBG)</h5>
-                    <p class="sop-desc">
-                        Prosedur pembuatan surat keterangan kematian untuk keperluan administrasi ahli waris.
-                    </p>
                     <div class="sop-meta">
                         <span class="sop-status">
                             <i class="bi bi-check-circle-fill"></i> Aktif
@@ -863,14 +842,6 @@
                             <span class="pdf-badge-modal">PDF</span>
                         </div>
                         <div class="pdf-actions">
-                            <a href="#" id="btnDownload" class="btn-pdf-action btn-pdf-download" download>
-                                <i class="bi bi-download"></i>
-                                Download
-                            </a>
-                            <a href="#" id="btnNewTab" class="btn-pdf-action btn-pdf-newtab" target="_blank">
-                                <i class="bi bi-box-arrow-up-right"></i>
-                                Buka Tab Baru
-                            </a>
                             <button type="button" class="btn-pdf-action btn-pdf-close" data-bs-dismiss="modal">
                                 <i class="bi bi-x-lg"></i>
                                 Tutup
@@ -953,33 +924,23 @@
         function previewSop(filename, code, title) {
             currentPdfUrl = basePdfUrl + filename;
 
-            // DEBUG: Lihat URL di console browser (tekan F12)
-            console.log('PDF URL:', currentPdfUrl);
-            console.log('Base URL:', basePdfUrl);
-            console.log('Filename:', filename);
-
             document.getElementById('modalSopTitle').textContent = title;
             document.getElementById('modalSopCode').textContent = code;
             document.getElementById('pdfFilename').textContent = filename;
-            document.getElementById('btnDownload').href = currentPdfUrl;
-            document.getElementById('btnNewTab').href = currentPdfUrl;
-            document.getElementById('errorDownloadLink').href = currentPdfUrl;
 
             pdfModal.show();
 
-            // SOLUSI: Langsung pakai iframe saja (paling reliable)
             setTimeout(() => {
                 useIframeViewer(currentPdfUrl);
             }, 300);
         }
 
-        // SOLUSI UTAMA: Iframe Viewer (paling compatible)
+        // Viewer dengan protection (no download)
         function useIframeViewer(url) {
             const container = document.getElementById('pdfViewerContainer');
             const loading = document.getElementById('pdfLoading');
             const error = document.getElementById('pdfError');
 
-            // Bersihkan container
             container.innerHTML = '';
             container.appendChild(loading);
             container.appendChild(error);
@@ -987,41 +948,47 @@
             loading.style.display = 'flex';
             error.classList.remove('active');
 
-            // Buat iframe untuk PDF
+            // SOLUSI 1: Gunakan Google Docs Viewer (tanpa toolbar download)
+            const googleViewerUrl = 'https://docs.google.com/gview?embedded=1&url=' + encodeURIComponent(url);
+
             const iframe = document.createElement('iframe');
-            iframe.src = url;
+            iframe.src = googleViewerUrl;
             iframe.style.width = '100%';
             iframe.style.height = '100%';
             iframe.style.border = 'none';
             iframe.style.background = 'white';
 
-            // Event: PDF loaded
+            // Disable context menu (right click)
+            iframe.oncontextmenu = function() {
+                return false;
+            };
+
             iframe.onload = function() {
-                console.log('PDF loaded successfully via iframe');
                 loading.style.display = 'none';
             };
 
-            // Event: PDF error
             iframe.onerror = function() {
-                console.log('PDF failed to load via iframe');
-                loading.style.display = 'none';
-                error.classList.add('active');
+                // Fallback ke PDF.js render
+                tryPdfJsRender(url);
             };
 
-            // Insert iframe
             container.insertBefore(iframe, loading);
 
-            // Timeout: sembunyikan loading setelah 2 detik (asumsi berhasil)
             setTimeout(() => {
                 loading.style.display = 'none';
-            }, 2000);
+            }, 3000);
         }
 
-        // SOLUSI ALTERNATIF: PDF.js (jika iframe tidak work)
-        async function tryPdfJsViewer(url) {
+        // Fallback: PDF.js render ke canvas (no download button)
+        async function tryPdfJsRender(url) {
             try {
-                document.getElementById('pdfLoading').style.display = 'flex';
-                document.getElementById('pdfError').classList.remove('active');
+                const container = document.getElementById('pdfViewerContainer');
+                const loading = document.getElementById('pdfLoading');
+                const error = document.getElementById('pdfError');
+
+                container.innerHTML = '';
+                container.appendChild(loading);
+                container.appendChild(error);
 
                 const loadingTask = pdfjsLib.getDocument({
                     url: url,
@@ -1031,20 +998,15 @@
                 const pdf = await loadingTask.promise;
                 const totalPages = pdf.numPages;
 
-                const container = document.getElementById('pdfViewerContainer');
-                const loading = document.getElementById('pdfLoading');
-                const error = document.getElementById('pdfError');
-
-                container.innerHTML = '';
-                container.appendChild(loading);
-                container.appendChild(error);
-
                 const wrapper = document.createElement('div');
                 wrapper.style.padding = '20px';
                 wrapper.style.display = 'flex';
                 wrapper.style.flexDirection = 'column';
                 wrapper.style.gap = '20px';
                 wrapper.style.alignItems = 'center';
+                wrapper.oncontextmenu = function() {
+                    return false;
+                }; // Disable right click
 
                 for (let i = 1; i <= totalPages; i++) {
                     const page = await pdf.getPage(i);
@@ -1057,6 +1019,8 @@
                     canvas.style.boxShadow = '0 4px 20px rgba(0,0,0,0.3)';
                     canvas.style.background = 'white';
                     canvas.style.maxWidth = '100%';
+                    canvas.style.userSelect = 'none'; // Disable text selection
+                    canvas.style.pointerEvents = 'none'; // Disable interaction
 
                     const context = canvas.getContext('2d');
                     canvas.height = viewport.height;
@@ -1078,8 +1042,20 @@
                     pageWrapper.style.display = 'flex';
                     pageWrapper.style.flexDirection = 'column';
                     pageWrapper.style.alignItems = 'center';
+                    pageWrapper.style.position = 'relative';
                     pageWrapper.appendChild(canvas);
                     pageWrapper.appendChild(pageLabel);
+
+                    // Overlay untuk prevent download
+                    const overlay = document.createElement('div');
+                    overlay.style.position = 'absolute';
+                    overlay.style.top = '0';
+                    overlay.style.left = '0';
+                    overlay.style.width = '100%';
+                    overlay.style.height = '100%';
+                    overlay.style.zIndex = '10';
+                    overlay.style.background = 'transparent';
+                    pageWrapper.appendChild(overlay);
 
                     wrapper.appendChild(pageWrapper);
                 }
@@ -1089,9 +1065,9 @@
                 document.getElementById('zoomLevel').textContent = '150%';
 
             } catch (err) {
-                console.error('PDF.js error:', err);
-                // Fallback ke iframe
-                useIframeViewer(url);
+                console.error('PDF render error:', err);
+                document.getElementById('pdfLoading').style.display = 'none';
+                document.getElementById('pdfError').classList.add('active');
             }
         }
 
@@ -1120,11 +1096,10 @@
 
             categories.forEach(function(cat) {
                 const visibleCards = cat.querySelectorAll('.sop-card[style*="block"]');
-                const allCards = cat.querySelectorAll('.sop-card');
 
                 if (searchTerm === '') {
                     cat.style.display = 'block';
-                    allCards.forEach(c => c.style.display = 'block');
+                    cat.querySelectorAll('.sop-card').forEach(c => c.style.display = 'block');
                     hasResult = true;
                 } else {
                     cat.style.display = visibleCards.length > 0 ? 'block' : 'none';
@@ -1133,6 +1108,12 @@
 
             document.getElementById('noResult').style.display = hasResult ? 'none' : 'block';
             document.getElementById('sopContainer').style.display = hasResult ? 'block' : 'none';
+        });
+
+        // Disable right click pada modal
+        document.getElementById('pdfModal').addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
         });
     </script>
 </body>
