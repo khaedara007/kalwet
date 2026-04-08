@@ -152,6 +152,48 @@ class Auth extends CI_Controller
         $this->load->view('auth/riwayat_lurah');
     }
 
+    public function pdf_proxy($filename = null)
+    {
+        if (!$filename) {
+            show_404();
+            return;
+        }
+
+        // Decode URL encoded filename
+        $filename = urldecode($filename);
+
+        // Security: prevent directory traversal
+        $filename = str_replace(['../', '..\\', './', '.\\'], '', $filename);
+
+        $file_path = FCPATH . 'assets/uploads/sop/' . $filename;
+
+        if (!file_exists($file_path) || !is_file($file_path)) {
+            show_404();
+            return;
+        }
+
+        $file_size = filesize($file_path);
+        if ($file_size === 0) {
+            show_error('File PDF kosong');
+            return;
+        }
+
+        // Clear any previous output
+        if (ob_get_level()) {
+            ob_end_clean();
+        }
+
+        // Set headers for inline viewing
+        header('Content-Type: application/pdf');
+        header('Content-Disposition: inline; filename="' . $filename . '"');
+        header('Content-Length: ' . $file_size);
+        header('Cache-Control: public, max-age=86400');
+        header('X-Content-Type-Options: nosniff');
+
+        readfile($file_path);
+        exit;
+    }
+
     public function sop()
     {
         $this->load->view('auth/sop');

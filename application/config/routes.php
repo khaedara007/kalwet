@@ -62,6 +62,7 @@ $route['login'] = 'auth';
 $route['register'] = 'auth/register';
 $route['logout'] = 'auth/logout';
 $route['riwayat_lurah'] = 'auth/riwayat_lurah';
+$route['assets/uploads/sop/(.+)'] = 'assets/uploads/sop/$1';
 $route['sop'] = 'auth/sop';
 $route['dashboard'] = 'user/landing';
 $route['landing'] = 'home/landing2';

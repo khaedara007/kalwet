@@ -10,41 +10,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
-    <!-- Core theme CSS (includes Bootstrap)-->
     <link href="<?php echo base_url('assets/template1/css/styles.css') ?>" rel="stylesheet" />
-    <!-- Custom CSS SIMPEL AWET -->
     <link href="<?php echo base_url('assets/template1/css/custom.css') ?>" rel="stylesheet" />
-    <!-- PDF.js CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <script>
         pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
     </script>
 
     <style>
-        /* Container untuk scroll */
-        #pdfViewerContainer iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            background: white;
-            min-height: 600px;
-        }
-
-        #pdfViewerContainer {
-            flex: 1;
-            overflow-y: auto;
-            overflow-x: hidden;
-            background: #525659;
-        }
-
-        #pdfViewerContainer canvas {
-            max-width: 100%;
-            height: auto;
-        }
-
-        /* Warna tema SIMPEL AWET */
         :root {
             --primary-blue: #1e88e5;
             --dark-blue: #1565c0;
@@ -53,7 +27,6 @@
             --bg-gradient: linear-gradient(135deg, #1e88e5 0%, #1565c0 100%);
         }
 
-        /* Header */
         .page-header-custom {
             background: var(--bg-gradient);
             color: white;
@@ -75,7 +48,6 @@
             border-radius: 50%;
         }
 
-        /* Search Box */
         .search-container {
             position: relative;
             max-width: 500px;
@@ -107,49 +79,6 @@
             font-size: 20px;
         }
 
-        /* Category Section */
-        .category-section {
-            margin-bottom: 40px;
-        }
-
-        .category-title {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid #e3f2fd;
-        }
-
-        .category-icon {
-            width: 45px;
-            height: 45px;
-            background: var(--bg-gradient);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 22px;
-        }
-
-        .category-title h4 {
-            color: #1565c0;
-            font-weight: 700;
-            margin: 0;
-        }
-
-        .category-count {
-            background: #e3f2fd;
-            color: #1976d2;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-            margin-left: auto;
-        }
-
-        /* SOP Cards Grid */
         .sop-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -190,27 +119,6 @@
             opacity: 1;
         }
 
-        .sop-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 15px;
-            font-size: 28px;
-            color: var(--primary-blue);
-        }
-
-        .sop-title {
-            font-size: 16px;
-            font-weight: 700;
-            color: #212529;
-            margin-bottom: 8px;
-            line-height: 1.4;
-        }
-
         .sop-code {
             display: inline-block;
             background: #f5f5f5;
@@ -222,11 +130,12 @@
             margin-bottom: 10px;
         }
 
-        .sop-desc {
-            font-size: 13px;
-            color: #6c757d;
-            line-height: 1.5;
-            margin-bottom: 15px;
+        .sop-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #212529;
+            margin-bottom: 8px;
+            line-height: 1.4;
         }
 
         .sop-meta {
@@ -259,7 +168,6 @@
             color: var(--dark-blue);
         }
 
-        /* PDF Badge */
         .pdf-badge {
             position: absolute;
             top: 15px;
@@ -275,7 +183,6 @@
             gap: 4px;
         }
 
-        /* PDF Preview Modal - FIXED */
         .modal-pdf .modal-dialog {
             max-width: 95vw;
             width: 95vw;
@@ -317,7 +224,6 @@
             flex-direction: column;
         }
 
-        /* PDF Toolbar */
         .pdf-toolbar {
             background: white;
             padding: 10px 20px;
@@ -370,26 +276,6 @@
             cursor: pointer;
         }
 
-        .btn-pdf-download {
-            background: #28a745;
-            color: white;
-        }
-
-        .btn-pdf-download:hover {
-            background: #218838;
-            color: white;
-        }
-
-        .btn-pdf-newtab {
-            background: #6c757d;
-            color: white;
-        }
-
-        .btn-pdf-newtab:hover {
-            background: #5a6268;
-            color: white;
-        }
-
         .btn-pdf-close {
             background: #dc3545;
             color: white;
@@ -400,65 +286,39 @@
             color: white;
         }
 
-        /* PDF Viewer Container */
-        .pdf-viewer-container {
+        .pdf-scroll-container {
             flex: 1;
-            overflow: auto;
+            overflow-y: auto;
+            overflow-x: hidden;
             background: #525659;
+            padding: 20px;
             position: relative;
         }
 
-        /* PDF.js Canvas */
-        #pdf-canvas {
-            display: block;
-            margin: 20px auto;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            background: white;
-        }
-
-        /* PDF Navigation */
-        .pdf-nav {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 30px;
+        .pdf-pages-wrapper {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 15px;
-            z-index: 1000;
+            gap: 20px;
+            min-height: 100%;
         }
 
-        .pdf-nav button {
-            background: transparent;
-            border: none;
-            color: white;
-            font-size: 18px;
-            cursor: pointer;
-            padding: 5px 10px;
-            border-radius: 5px;
-            transition: background 0.2s;
+        .pdf-page-canvas {
+            display: block;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            max-width: 100%;
+            height: auto;
         }
 
-        .pdf-nav button:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .pdf-nav button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .pdf-page-info {
-            font-size: 14px;
-            min-width: 80px;
+        .pdf-page-label {
+            color: #999;
+            font-size: 12px;
             text-align: center;
+            margin-top: -10px;
+            margin-bottom: 10px;
         }
 
-        /* Loading State */
         .pdf-loading {
             position: absolute;
             top: 50%;
@@ -487,7 +347,6 @@
             }
         }
 
-        /* Error State */
         .pdf-error {
             position: absolute;
             top: 50%;
@@ -518,7 +377,6 @@
             color: #ccc;
         }
 
-        /* No Result */
         .no-result {
             text-align: center;
             padding: 60px 20px;
@@ -533,35 +391,23 @@
             margin-bottom: 15px;
         }
 
-        /* Stats Row */
-        .stats-sop {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .stat-sop-card {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        .pdf-zoom {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 10px;
+            margin-left: 20px;
         }
 
-        .stat-sop-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
+        .pdf-zoom button {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 5px;
+            cursor: pointer;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .modal-pdf .modal-dialog {
                 max-width: 100vw;
@@ -588,28 +434,13 @@
                 font-size: 12px;
             }
 
-            .pdf-nav {
-                bottom: 10px;
-                padding: 8px 15px;
+            .pdf-scroll-container {
+                padding: 10px;
             }
-        }
 
-        /* Zoom controls */
-        .pdf-zoom {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-left: 20px;
-        }
-
-        .pdf-zoom button {
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 5px;
-            cursor: pointer;
+            .pdf-pages-wrapper {
+                gap: 15px;
+            }
         }
     </style>
 </head>
@@ -618,8 +449,6 @@
     <header class="header-modern">
         <div class="container">
             <div class="row align-items-center">
-
-                <!-- Logo & Title -->
                 <div class="col-lg-6 col-md-6 d-flex align-items-center gap-3">
                     <a href="<?php echo site_url('/'); ?>">
                         <img src="<?php echo base_url('assets/logo.png'); ?>" alt="SIMPEL AWET" class="header-logo">
@@ -629,24 +458,16 @@
                         <h1 class="header-title">KELURAHAN KALINYAMAT WETAN</h1>
                     </div>
                 </div>
-
-                <!-- Buttons -->
                 <div class="col-lg-6 col-md-6 text-lg-end text-md-end">
-
                     <a href="<?php echo site_url('home'); ?>" class="btn header-btn header-btn-register">
                         <i></i> Kembali
                     </a>
-
                 </div>
-
             </div>
         </div>
     </header>
 
-
     <div class="container mt-4 mb-5 animate-fade-in">
-
-        <!-- Header -->
         <div class="page-header-custom">
             <div class="row align-items-center position-relative" style="z-index: 1;">
                 <div class="col-md-8">
@@ -658,165 +479,80 @@
             </div>
         </div>
 
-        <!-- Search -->
         <div class="search-container">
             <i class="bi bi-search search-icon"></i>
-            <input type="text" class="search-box-sop" id="searchSop"
-                placeholder="Cari SOP berdasarkan nama atau kode...">
+            <input type="text" class="search-box-sop" id="searchSop" placeholder="Cari SOP berdasarkan nama atau kode...">
         </div>
 
-        <!-- No Result Message -->
         <div class="no-result" id="noResult">
             <i class="bi bi-search"></i>
             <h5>Tidak ditemukan</h5>
             <p class="text-muted">SOP yang Anda cari tidak ditemukan.</p>
         </div>
 
-        <!-- SOP Categories -->
         <div id="sopContainer">
-
-            <!-- KATEGORI: SURAT KETERANGAN -->
-
             <div class="sop-grid">
+                <?php
+                // Array SOP dengan nama file yang benar
+                $sop_files = array(
+                    array('file' => 'SOP-Waris.pdf', 'code' => '', 'title' => 'SOP Tata Cara Legalisasi Surat Keterangan Waris', 'search' => 'waris surat keterangan waris'),
+                    array('file' => 'SOP-Taksiran-Harga-Tanah.pdf', 'code' => '', 'title' => 'SOP Tata Cara Penerbitan Surat Keterangan Taksiran Harga Tanah', 'search' => 'taksiran harga tanah'),
+                    array('file' => 'SOP-Keterangan-Ghoib.pdf', 'code' => '', 'title' => 'SOP Tata Cara Penerbitan Surat Keterangan Tidak Diketahui Keberadaannya (Ghoib)', 'search' => 'ghoib tidak diketahui'),
+                    array('file' => 'SOP-Keterangan Satu Nama.pdf', 'code' => '', 'title' => 'SOP Tata Cara Penerbitan Surat Keterangan Satu Nama', 'search' => 'satu nama'),
+                    array('file' => 'SOP-Kesaksian-Kelahiran.pdf', 'code' => '', 'title' => 'SOP Tata Cara Pelayanan Surat Keterangan Kesaksian Kelahiran', 'search' => 'kesaksian kelahiran'),
+                    array('file' => 'SOP-Kesaksian-Kematian.pdf', 'code' => '', 'title' => 'SOP Tata Cara Pelayanan Surat Keterangan Kesaksian Kematian', 'search' => 'kesaksian kematian'),
+                    array('file' => 'SOP-PBG.pdf', 'code' => '', 'title' => 'SOP Tata Cara Legalisasi Persetujuan Bangunan Gedung (PBG)', 'search' => 'pbg bangunan gedung'),
+                    // Tambahkan SOP-SKTM jika ada
+                    array('file' => 'SOP-SKTM.pdf', 'code' => '', 'title' => 'SOP Surat Keterangan Tidak Mampu (SKTM)', 'search' => 'sktm tidak mampu'),
+                    array('file' => 'SOP-SKCK.pdf', 'code' => '', 'title' => 'SOP Tata Cara Penerbitan Surat Keterangan Catatan Kepolisian (SKCK)', 'search' => 'surat pengantar skck'),
+                    array('file' => 'SOP-Ijin-Hajatan.pdf', 'code' => '', 'title' => 'SOP Tata Cara Pelayanan Surat Pengantar ljin Keramaian/Hajatan', 'search' => 'surat ijin hajatan'),
+                    array('file' => 'SOP-Kehilangan.pdf', 'code' => '', 'title' => 'SOP Tata Cara Penerbitan Surat Pengantar Kehilangan', 'search' => 'pengantar kehilangan'),
+                    array('file' => 'SOP-Domisili-Usaha.pdf', 'code' => '', 'title' => 'SOP Tata Cara Pelayanan Surat Keterangan Domisili Tempat Usaha', 'search' => 'surat keterangan domisili usaha'),
+                    array('file' => 'SOP-Bawa-Nikah.pdf', 'code' => '', 'title' => 'SOP Tata Cara Penerbitan Surat Keterangan Bawa Nikah', 'search' => 'surat bawa nikah'),
+                    array('file' => 'SOP-Keterangan-lain.pdf', 'code' => '', 'title' => 'SOP Tata Cara Pelayanan Surat Keterangan Lain-lain', 'search' => 'surat keterangan lain'),
+                );
 
-                <!-- SOP 1: SKTM -->
-                <div class="sop-card" onclick="previewSop('SOP-Waris.pdf', 'SOP-SK-001', 'Surat Keterangan Tidak Mampu')" data-search="sktm surat keterangan tidak mampu">
-                    <span class="pdf-badge">
-                        <i class="bi bi-file-earmark-pdf"></i>PDF
-                    </span>
+                // Generate data PDF base64
+                $pdfDataStore = array();
+                foreach ($sop_files as $sop) {
+                    $file_path = FCPATH . 'assets/uploads/sop/' . $sop['file'];
+                    $base64_data = '';
 
-                    <span class="sop-code">SOP-SK-001</span>
-                    <h5 class="sop-title">SOP Tata Cara Legalisasi Surat Keterangan Waris</h5>
-                    <div class="sop-meta">
-                        <span class="sop-status">
-                            <i class="bi bi-check-circle-fill"></i> Aktif
-                        </span>
-                        <span class="sop-action">
-                            <i class="bi bi-eye"></i> Preview
-                        </span>
-                    </div>
-                </div>
+                    if (file_exists($file_path) && is_readable($file_path)) {
+                        $content = file_get_contents($file_path);
+                        if ($content !== false && strlen($content) > 0) {
+                            $base64_data = base64_encode($content);
+                        }
+                    }
 
-                <!-- SOP 2: SKD -->
-                <div class="sop-card" onclick="previewSop('SOP-Taksiran-Harga-Tanah.pdf', 'SOP-SK-002', 'Surat Keterangan Domisili')" data-search="skd surat keterangan domisili">
-                    <span class="pdf-badge">
-                        <i class="bi bi-file-earmark-pdf"></i>PDF
-                    </span>
+                    $pdfDataStore[$sop['file']] = $base64_data;
 
-                    <span class="sop-code">SOP-SK-002</span>
-                    <h5 class="sop-title">SOP Tata Cara Penerbitan Surat Keterangan Taksiran Harga Tanah</h5>
-                    <div class="sop-meta">
-                        <span class="sop-status">
-                            <i class="bi bi-check-circle-fill"></i> Aktif
-                        </span>
-                        <span class="sop-action">
-                            <i class="bi bi-eye"></i> Preview
-                        </span>
-                    </div>
-                </div>
-
-                <!-- SOP 3: SKSN -->
-                <div class="sop-card" onclick="previewSop('SOP-Keterangan-Ghoib.pdf', 'SOP-SK-003', 'Surat Keterangan Satu Nama')" data-search="sksn surat keterangan satu nama">
-                    <span class="pdf-badge">
-                        <i class="bi bi-file-earmark-pdf"></i>PDF
-                    </span>
-
-                    <span class="sop-code">SOP-SK-003</span>
-                    <h5 class="sop-title">SOP Tata Cara Penerbitan Surat Keterangan Tidak Diketahui Keberadaannya (Ghoib)</h5>
-                    <div class="sop-meta">
-                        <span class="sop-status">
-                            <i class="bi bi-check-circle-fill"></i> Aktif
-                        </span>
-                        <span class="sop-action">
-                            <i class="bi bi-eye"></i> Preview
-                        </span>
-                    </div>
-                </div>
-
-                <!-- SOP 4: SKPO -->
-                <div class="sop-card" onclick="previewSop('SOP-Keterangan Satu Nama.pdf', 'SOP-SK-004', 'Surat Keterangan Penghasilan Orang Tua')" data-search="skpo surat keterangan penghasilan orang tua">
-                    <span class="pdf-badge">
-                        <i class="bi bi-file-earmark-pdf"></i>PDF
-                    </span>
-                    <span class="sop-code">SOP-SK-004</span>
-                    <h5 class="sop-title">SOP Tata Cara Penerbitan Surat Keterangan Satu Nama</h5>
-                    <div class="sop-meta">
-                        <span class="sop-status">
-                            <i class="bi bi-check-circle-fill"></i> Aktif
-                        </span>
-                        <span class="sop-action">
-                            <i class="bi bi-eye"></i> Preview
-                        </span>
-                    </div>
-                </div>
-
-                <!-- SOP 5: SKBM -->
-                <div class="sop-card" onclick="previewSop('SOP-Kesaksian-Kelahiran.pdf', 'SOP-SK-005', 'Surat Keterangan Belum Menikah')" data-search="skbm surat keterangan belum menikah">
-                    <span class="pdf-badge">
-                        <i class="bi bi-file-earmark-pdf"></i>PDF
-                    </span>
-
-                    <span class="sop-code">SOP-SK-005</span>
-                    <h5 class="sop-title">SOP Tata Cara Pelayanan Surat Keterangan Kesaksian Kelahiran</h5>
-                    <div class="sop-meta">
-                        <span class="sop-status">
-                            <i class="bi bi-check-circle-fill"></i> Aktif
-                        </span>
-                        <span class="sop-action">
-                            <i class="bi bi-eye"></i> Preview
-                        </span>
-                    </div>
-                </div>
-
-                <!-- SOP 6: SKBR -->
-                <div class="sop-card" onclick="previewSop('SOP-Kesaksian-Kematian.pdf', 'SOP-SK-006', 'Surat Keterangan Belum Memiliki Rumah')" data-search="skbr surat keterangan belum memiliki rumah">
-                    <span class="pdf-badge">
-                        <i class="bi bi-file-earmark-pdf"></i>PDF
-                    </span>
-
-                    <span class="sop-code">SOP-SK-006</span>
-                    <h5 class="sop-title">SOP Tata Cara Pelayanan Surat Keterangan Kesaksian Kematian</h5>
-                    <div class="sop-meta">
-                        <span class="sop-status">
-                            <i class="bi bi-check-circle-fill"></i> Aktif
-                        </span>
-                        <span class="sop-action">
-                            <i class="bi bi-eye"></i> Preview
-                        </span>
-                    </div>
-                </div>
-
-                <!-- SOP 7: SKM -->
-                <div class="sop-card" onclick="previewSop('SOP-PBG.pdf', 'SOP-SK-007', 'Surat Keterangan Kematian')" data-search="skm surat keterangan kematian">
-                    <span class="pdf-badge">
-                        <i class="bi bi-file-earmark-pdf"></i>PDF
-                    </span>
-
-                    <span class="sop-code">SOP-SK-007</span>
-                    <h5 class="sop-title">SOP Tata Cara Legalisasi Persetujuan Bangunan Gedung (PBG)</h5>
-                    <div class="sop-meta">
-                        <span class="sop-status">
-                            <i class="bi bi-check-circle-fill"></i> Aktif
-                        </span>
-                        <span class="sop-action">
-                            <i class="bi bi-eye"></i> Preview
-                        </span>
-                    </div>
-                </div>
-
+                    // Tampilkan card hanya jika file ada
+                    if (!empty($base64_data)) {
+                ?>
+                        <div class="sop-card" onclick="previewSop('<?php echo $sop['file']; ?>', '<?php echo $sop['code']; ?>', '<?php echo $sop['title']; ?>')" data-search="<?php echo $sop['search']; ?>">
+                            <span class="pdf-badge"><i class="bi bi-file-earmark-pdf"></i>PDF</span>
+                            <span class="sop-code"><?php echo $sop['code']; ?></span>
+                            <h5 class="sop-title"><?php echo $sop['title']; ?></h5>
+                            <div class="sop-meta">
+                                <span class="sop-status"><i class="bi bi-check-circle-fill"></i> Aktif</span>
+                                <span class="sop-action"><i class="bi bi-eye"></i> Preview</span>
+                            </div>
+                        </div>
+                <?php
+                    } else {
+                        // Debug: tampilkan error di console
+                        echo '<script>console.error("File tidak ditemukan: ' . $sop['file'] . ' (path: ' . $file_path . ')");</script>';
+                    }
+                }
+                ?>
             </div>
-
-
-
         </div>
-
     </div>
 
-    <!-- PDF PREVIEW MODAL dengan PDF.js -->
     <div class="modal fade modal-pdf" id="pdfModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <!-- Header -->
                 <div class="modal-header">
                     <div class="modal-title">
                         <i class="bi bi-file-earmark-pdf-fill"></i>
@@ -833,258 +569,239 @@
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <!-- Body -->
                 <div class="modal-body">
-                    <!-- Toolbar -->
                     <div class="pdf-toolbar">
                         <div class="pdf-info">
                             <span class="pdf-filename" id="pdfFilename">document.pdf</span>
                             <span class="pdf-badge-modal">PDF</span>
+                            <span id="pageCount" style="color: #666; font-size: 13px; margin-left: 10px;"></span>
                         </div>
                         <div class="pdf-actions">
                             <button type="button" class="btn-pdf-action btn-pdf-close" data-bs-dismiss="modal">
-                                <i class="bi bi-x-lg"></i>
-                                Tutup
+                                <i class="bi bi-x-lg"></i> Tutup
                             </button>
                         </div>
                     </div>
 
-                    <!-- PDF Viewer dengan PDF.js -->
-                    <div class="pdf-viewer-container" id="pdfViewerContainer">
-                        <!-- Loading -->
+                    <div class="pdf-scroll-container" id="pdfScrollContainer">
                         <div class="pdf-loading" id="pdfLoading">
                             <i class="bi bi-arrow-repeat"></i>
                             <p>Memuat PDF...</p>
                         </div>
 
-                        <!-- Error -->
                         <div class="pdf-error" id="pdfError">
                             <i class="bi bi-file-earmark-x"></i>
-                            <h5>PDF Tidak Ditemukan</h5>
-                            <p>File PDF mungkin belum diupload atau telah dihapus.</p>
+                            <h5>Gagal Memuat PDF</h5>
+                            <p id="errorMessage">File PDF tidak dapat dimuat.</p>
                             <button class="btn btn-primary mt-2" onclick="retryLoadPdf()">
                                 <i class="bi bi-arrow-clockwise me-2"></i>Coba Lagi
                             </button>
-                            <br><br>
-                            <a href="#" id="errorDownloadLink" class="btn btn-success" download>
-                                <i class="bi bi-download me-2"></i>Download Langsung
-                            </a>
                         </div>
 
-                        <!-- Canvas untuk render PDF -->
-                        <canvas id="pdf-canvas"></canvas>
+                        <div class="pdf-pages-wrapper" id="pdfPagesWrapper"></div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Navigation Fixed -->
-        <div class="pdf-nav" id="pdfNav" style="display: none;">
-            <button onclick="prevPage()" id="btnPrev" title="Halaman Sebelumnya">
-                <i class="bi bi-chevron-left"></i>
-            </button>
-            <span class="pdf-page-info">
-                <span id="currentPage">1</span> / <span id="totalPages">1</span>
-            </span>
-            <button onclick="nextPage()" id="btnNext" title="Halaman Selanjutnya">
-                <i class="bi bi-chevron-right"></i>
-            </button>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        // Base URL untuk PDF
-        const basePdfUrl = '<?php echo base_url("assets/uploads/sop/"); ?>';
-        let currentPdfUrl = '';
+        // Data PDF dari PHP
+        const pdfDataStore = <?php echo json_encode($pdfDataStore); ?>;
+
+        let currentPdfBase64 = '';
+        let currentFilename = '';
         let pdfModal;
+        let currentPdf = null;
+        let currentScale = 1.5;
+        let totalPages = 0;
 
         document.addEventListener('DOMContentLoaded', function() {
             pdfModal = new bootstrap.Modal(document.getElementById('pdfModal'));
+            document.getElementById('pdfModal').addEventListener('hidden.bs.modal', cleanupPdf);
 
-            document.getElementById('pdfModal').addEventListener('hidden.bs.modal', function() {
-                cleanupPdf();
+            document.addEventListener('keydown', function(e) {
+                if (document.getElementById('pdfModal').classList.contains('show')) {
+                    if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'p')) {
+                        e.preventDefault();
+                        return false;
+                    }
+                }
             });
         });
 
         function cleanupPdf() {
-            const container = document.getElementById('pdfViewerContainer');
-            const loading = document.getElementById('pdfLoading');
-            const error = document.getElementById('pdfError');
+            currentPdf = null;
+            currentScale = 1.5;
+            totalPages = 0;
 
-            container.innerHTML = '';
-            container.appendChild(loading);
-            container.appendChild(error);
+            const wrapper = document.getElementById('pdfPagesWrapper');
+            wrapper.innerHTML = '';
 
-            loading.style.display = 'flex';
-            error.classList.remove('active');
+            document.getElementById('pdfLoading').style.display = 'flex';
+            document.getElementById('pdfError').classList.remove('active');
+            document.getElementById('pageCount').textContent = '';
+            document.getElementById('zoomLevel').textContent = '100%';
         }
 
         function previewSop(filename, code, title) {
-            currentPdfUrl = basePdfUrl + filename;
+            currentFilename = filename;
+            currentPdfBase64 = pdfDataStore[filename];
+
+            // Debug info
+            console.log('Preview file:', filename);
+            console.log('Data exists:', !!currentPdfBase64);
+            console.log('Data length:', currentPdfBase64 ? currentPdfBase64.length : 0);
+
+            if (!currentPdfBase64 || currentPdfBase64 === '') {
+                alert('File PDF tidak ditemukan atau kosong: ' + filename + '\n\nPastikan file ada di folder assets/uploads/sop/');
+                return;
+            }
 
             document.getElementById('modalSopTitle').textContent = title;
             document.getElementById('modalSopCode').textContent = code;
             document.getElementById('pdfFilename').textContent = filename;
 
             pdfModal.show();
-
-            setTimeout(() => {
-                useIframeViewer(currentPdfUrl);
-            }, 300);
+            setTimeout(() => loadPdfAllPages(currentPdfBase64), 300);
         }
 
-        // Viewer dengan protection (no download)
-        function useIframeViewer(url) {
-            const container = document.getElementById('pdfViewerContainer');
+        async function loadPdfAllPages(base64Data) {
             const loading = document.getElementById('pdfLoading');
             const error = document.getElementById('pdfError');
-
-            container.innerHTML = '';
-            container.appendChild(loading);
-            container.appendChild(error);
+            const wrapper = document.getElementById('pdfPagesWrapper');
 
             loading.style.display = 'flex';
             error.classList.remove('active');
+            wrapper.innerHTML = '';
 
-            // SOLUSI 1: Gunakan Google Docs Viewer (tanpa toolbar download)
-            const googleViewerUrl = 'https://docs.google.com/gview?embedded=1&url=' + encodeURIComponent(url);
-
-            const iframe = document.createElement('iframe');
-            iframe.src = googleViewerUrl;
-            iframe.style.width = '100%';
-            iframe.style.height = '100%';
-            iframe.style.border = 'none';
-            iframe.style.background = 'white';
-
-            // Disable context menu (right click)
-            iframe.oncontextmenu = function() {
-                return false;
-            };
-
-            iframe.onload = function() {
-                loading.style.display = 'none';
-            };
-
-            iframe.onerror = function() {
-                // Fallback ke PDF.js render
-                tryPdfJsRender(url);
-            };
-
-            container.insertBefore(iframe, loading);
-
-            setTimeout(() => {
-                loading.style.display = 'none';
-            }, 3000);
-        }
-
-        // Fallback: PDF.js render ke canvas (no download button)
-        async function tryPdfJsRender(url) {
             try {
-                const container = document.getElementById('pdfViewerContainer');
-                const loading = document.getElementById('pdfLoading');
-                const error = document.getElementById('pdfError');
-
-                container.innerHTML = '';
-                container.appendChild(loading);
-                container.appendChild(error);
-
-                const loadingTask = pdfjsLib.getDocument({
-                    url: url,
-                    withCredentials: false
-                });
-
-                const pdf = await loadingTask.promise;
-                const totalPages = pdf.numPages;
-
-                const wrapper = document.createElement('div');
-                wrapper.style.padding = '20px';
-                wrapper.style.display = 'flex';
-                wrapper.style.flexDirection = 'column';
-                wrapper.style.gap = '20px';
-                wrapper.style.alignItems = 'center';
-                wrapper.oncontextmenu = function() {
-                    return false;
-                }; // Disable right click
-
-                for (let i = 1; i <= totalPages; i++) {
-                    const page = await pdf.getPage(i);
-                    const scale = 1.5;
-                    const viewport = page.getViewport({
-                        scale: scale
-                    });
-
-                    const canvas = document.createElement('canvas');
-                    canvas.style.boxShadow = '0 4px 20px rgba(0,0,0,0.3)';
-                    canvas.style.background = 'white';
-                    canvas.style.maxWidth = '100%';
-                    canvas.style.userSelect = 'none'; // Disable text selection
-                    canvas.style.pointerEvents = 'none'; // Disable interaction
-
-                    const context = canvas.getContext('2d');
-                    canvas.height = viewport.height;
-                    canvas.width = viewport.width;
-
-                    await page.render({
-                        canvasContext: context,
-                        viewport: viewport
-                    }).promise;
-
-                    const pageLabel = document.createElement('div');
-                    pageLabel.textContent = 'Halaman ' + i + ' dari ' + totalPages;
-                    pageLabel.style.textAlign = 'center';
-                    pageLabel.style.color = '#666';
-                    pageLabel.style.fontSize = '12px';
-                    pageLabel.style.marginTop = '5px';
-
-                    const pageWrapper = document.createElement('div');
-                    pageWrapper.style.display = 'flex';
-                    pageWrapper.style.flexDirection = 'column';
-                    pageWrapper.style.alignItems = 'center';
-                    pageWrapper.style.position = 'relative';
-                    pageWrapper.appendChild(canvas);
-                    pageWrapper.appendChild(pageLabel);
-
-                    // Overlay untuk prevent download
-                    const overlay = document.createElement('div');
-                    overlay.style.position = 'absolute';
-                    overlay.style.top = '0';
-                    overlay.style.left = '0';
-                    overlay.style.width = '100%';
-                    overlay.style.height = '100%';
-                    overlay.style.zIndex = '10';
-                    overlay.style.background = 'transparent';
-                    pageWrapper.appendChild(overlay);
-
-                    wrapper.appendChild(pageWrapper);
+                // Validasi base64
+                if (!base64Data || base64Data.length === 0) {
+                    throw new Error('Data PDF kosong');
                 }
 
-                container.insertBefore(wrapper, loading);
+                // Convert base64 to Uint8Array
+                let uint8Array;
+                try {
+                    const raw = window.atob(base64Data);
+                    uint8Array = new Uint8Array(raw.length);
+                    for (let i = 0; i < raw.length; i++) {
+                        uint8Array[i] = raw.charCodeAt(i);
+                    }
+                } catch (e) {
+                    throw new Error('Gagal decode base64: ' + e.message);
+                }
+
+                // Load PDF
+                const loadingTask = pdfjsLib.getDocument({
+                    data: uint8Array,
+                    cMapUrl: 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/cmaps/',
+                    cMapPacked: true,
+                    useSystemFonts: false
+                });
+
+                currentPdf = await loadingTask.promise;
+
+                if (!currentPdf || currentPdf.numPages === 0) {
+                    throw new Error('PDF kosong atau tidak valid (0 halaman)');
+                }
+
+                totalPages = currentPdf.numPages;
+                document.getElementById('pageCount').textContent = '(' + totalPages + ' halaman)';
+
+                // Render SEMUA halaman
+                for (let pageNum = 1; pageNum <= totalPages; pageNum++) {
+                    await renderPageToWrapper(pageNum, wrapper);
+                }
+
                 loading.style.display = 'none';
-                document.getElementById('zoomLevel').textContent = '150%';
+                document.getElementById('zoomLevel').textContent = Math.round(currentScale * 100) + '%';
 
             } catch (err) {
-                console.error('PDF render error:', err);
-                document.getElementById('pdfLoading').style.display = 'none';
-                document.getElementById('pdfError').classList.add('active');
+                console.error('PDF Error:', err);
+                loading.style.display = 'none';
+                document.getElementById('errorMessage').textContent = 'Error: ' + (err.message || 'Gagal memuat PDF');
+                error.classList.add('active');
+            }
+        }
+
+        async function renderPageToWrapper(pageNum, wrapper) {
+            try {
+                const page = await currentPdf.getPage(pageNum);
+                const viewport = page.getViewport({
+                    scale: currentScale
+                });
+
+                const pageContainer = document.createElement('div');
+                pageContainer.style.display = 'flex';
+                pageContainer.style.flexDirection = 'column';
+                pageContainer.style.alignItems = 'center';
+
+                const canvas = document.createElement('canvas');
+                canvas.className = 'pdf-page-canvas';
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                const ctx = canvas.getContext('2d');
+
+                await page.render({
+                    canvasContext: ctx,
+                    viewport: viewport
+                }).promise;
+
+                const label = document.createElement('div');
+                label.className = 'pdf-page-label';
+                label.textContent = 'Halaman ' + pageNum + ' dari ' + totalPages;
+
+                pageContainer.appendChild(canvas);
+                pageContainer.appendChild(label);
+                wrapper.appendChild(pageContainer);
+
+            } catch (err) {
+                console.error('Error rendering page ' + pageNum, err);
+            }
+        }
+
+        function zoomIn() {
+            if (currentScale < 3.0) {
+                currentScale += 0.25;
+                reRenderAllPages();
+                document.getElementById('zoomLevel').textContent = Math.round(currentScale * 100) + '%';
+            }
+        }
+
+        function zoomOut() {
+            if (currentScale > 0.5) {
+                currentScale -= 0.25;
+                reRenderAllPages();
+                document.getElementById('zoomLevel').textContent = Math.round(currentScale * 100) + '%';
+            }
+        }
+
+        async function reRenderAllPages() {
+            if (!currentPdf) return;
+
+            const wrapper = document.getElementById('pdfPagesWrapper');
+            wrapper.innerHTML = '';
+
+            for (let pageNum = 1; pageNum <= totalPages; pageNum++) {
+                await renderPageToWrapper(pageNum, wrapper);
             }
         }
 
         function retryLoadPdf() {
-            if (currentPdfUrl) {
-                useIframeViewer(currentPdfUrl);
-            }
+            if (currentPdfBase64) loadPdfAllPages(currentPdfBase64);
         }
 
-        // Search functionality
         document.getElementById('searchSop').addEventListener('input', function(e) {
             const searchTerm = e.target.value.toLowerCase();
             const cards = document.querySelectorAll('.sop-card');
-            const categories = document.querySelectorAll('.category-section');
             let hasResult = false;
 
-            cards.forEach(function(card) {
+            cards.forEach(card => {
                 const searchData = card.getAttribute('data-search');
                 if (searchData.includes(searchTerm)) {
                     card.style.display = 'block';
@@ -1094,24 +811,10 @@
                 }
             });
 
-            categories.forEach(function(cat) {
-                const visibleCards = cat.querySelectorAll('.sop-card[style*="block"]');
-
-                if (searchTerm === '') {
-                    cat.style.display = 'block';
-                    cat.querySelectorAll('.sop-card').forEach(c => c.style.display = 'block');
-                    hasResult = true;
-                } else {
-                    cat.style.display = visibleCards.length > 0 ? 'block' : 'none';
-                }
-            });
-
             document.getElementById('noResult').style.display = hasResult ? 'none' : 'block';
-            document.getElementById('sopContainer').style.display = hasResult ? 'block' : 'none';
         });
 
-        // Disable right click pada modal
-        document.getElementById('pdfModal').addEventListener('contextmenu', function(e) {
+        document.getElementById('pdfModal').addEventListener('contextmenu', e => {
             e.preventDefault();
             return false;
         });
