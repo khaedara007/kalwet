@@ -52,6 +52,12 @@
                                     Riwayat Lurah
                                 </a>
                             </li>
+                            <li>
+                                <a class="dropdown-item" href="<?php echo site_url('auth/sejarah'); ?>">
+                                    <i></i>
+                                    Sejarah Kalinyamat
+                                </a>
+                            </li>
                         </ul>
                     </li>
                 </div>
@@ -790,15 +796,15 @@
                                         <i class="bi bi-clock-fill"></i>
                                     </div>
                                     <div>
-                                        <h5 class="fw-bold text-primary mb-2">Jam Layanan Selama Ramadhan</h5>
+                                        <h5 class="fw-bold text-primary mb-2">Jam Layanan</h5>
                                         <div class="text-muted">
                                             <div class="d-flex justify-content-between mb-1">
                                                 <span>Senin - Kamis</span>
-                                                <span class="fw-semibold text-primary bg-light px-3 py-1 rounded-pill small">08:00 - 15:00 WIB</span>
+                                                <span class="fw-semibold text-primary bg-light px-3 py-1 rounded-pill small">07:30 - 17:30 WIB</span>
                                             </div>
                                             <div class="d-flex justify-content-between">
                                                 <span>Jum'at</span>
-                                                <span class="fw-semibold text-primary bg-light px-3 py-1 rounded-pill small">08:00 - 15:30 WIB</span>
+                                                <span class="fw-semibold text-primary bg-light px-3 py-1 rounded-pill small">07:30 - 14:30 WIB</span>
                                             </div>
                                         </div>
                                     </div>

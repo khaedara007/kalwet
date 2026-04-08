@@ -485,6 +485,135 @@
 
     </div>
 
+    <!-- Page Header -->
+    <div class="container mt-4 mb-5 animate-fade-in">
+        <div class="page-header-custom">
+            <div class="row align-items-center position-relative" style="z-index: 1;">
+                <div class="col-md-8">
+                    <h2 class="fw-bold mb-2">
+                        <i class="bi bi-person-badge-fill me-2"></i>Riwayat Kepala Desa Kalinyamat Wetan
+                    </h2>
+                    <p class="mb-0 opacity-75">Daftar Kepala Desa Kalinyamat Wetan sebelum perubahan status menjadi Kelurahan</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-4 mb-5 animate-fade-in">
+        <!-- Lurah Cards - DATA HARDCODED DI SINI -->
+        <div class="lurah-grid">
+            <div class="lurah-card">
+                <div class="lurah-image-container">
+                    <!-- GANTI FOTO: Upload ke assets/uploads/lurah/ dan ubah nama file di bawah -->
+                    <img src="<?php echo base_url('assets/kepdes.jpeg'); ?>"
+                        alt="H. MUKHLIS, S.Pd" class="lurah-image"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+
+                    <div class="lurah-image-placeholder" style="display: none;">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+                </div>
+
+                <div class="lurah-info">
+                    <h4 class="lurah-name">H. WASMAD EDI SUSILO, SH</h4>
+
+                    <div class="lurah-period">
+                        <i class="bi bi-calendar3"></i>
+                        1998 - 2002
+                    </div>
+                </div>
+            </div>
+            <div class="lurah-card">
+                <div class="lurah-image-container">
+                    <!-- GANTI FOTO: Upload ke assets/uploads/lurah/ dan ubah nama file di bawah -->
+
+                    <!-- Jika tidak ada foto, gunakan placeholder icon -->
+                    <div class="lurah-image-placeholder" style="display: flex; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <i class="bi bi-person-fill" style="font-size: 80px; color: white;"></i>
+                    </div>
+                    <div class="lurah-image-placeholder" style="display: none;">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+                </div>
+
+                <div class="lurah-info">
+                    <h4 class="lurah-name">MUAWIYAH GUFRON</h4>
+
+                    <div class="lurah-period">
+                        <i class="bi bi-calendar3"></i>
+                        1993 - 1997
+                    </div>
+                </div>
+            </div>
+            <div class="lurah-card">
+                <div class="lurah-image-container">
+                    <!-- GANTI FOTO: Upload ke assets/uploads/lurah/ dan ubah nama file di bawah -->
+
+                    <!-- Jika tidak ada foto, gunakan placeholder icon -->
+                    <div class="lurah-image-placeholder" style="display: flex; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <i class="bi bi-person-fill" style="font-size: 80px; color: white;"></i>
+                    </div>
+                    <div class="lurah-image-placeholder" style="display: none;">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+                </div>
+
+                <div class="lurah-info">
+                    <h4 class="lurah-name">SUHARI</h4>
+
+                    <div class="lurah-period">
+                        <i class="bi bi-calendar3"></i>
+                        1982 - 1992
+                    </div>
+                </div>
+            </div>
+            <div class="lurah-card">
+                <div class="lurah-image-container">
+                    <!-- GANTI FOTO: Upload ke assets/uploads/lurah/ dan ubah nama file di bawah -->
+
+                    <!-- Jika tidak ada foto, gunakan placeholder icon -->
+                    <div class="lurah-image-placeholder" style="display: flex; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <i class="bi bi-person-fill" style="font-size: 80px; color: white;"></i>
+                    </div>
+                    <div class="lurah-image-placeholder" style="display: none;">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+                </div>
+
+                <div class="lurah-info">
+                    <h4 class="lurah-name">WARTONO</h4>
+
+                    <div class="lurah-period">
+                        <i class="bi bi-calendar3"></i>
+                        1972 - 1982
+                    </div>
+                </div>
+            </div>
+            <div class="lurah-card">
+                <div class="lurah-image-container">
+                    <!-- GANTI FOTO: Upload ke assets/uploads/lurah/ dan ubah nama file di bawah -->
+
+                    <!-- Jika tidak ada foto, gunakan placeholder icon -->
+                    <div class="lurah-image-placeholder" style="display: flex; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <i class="bi bi-person-fill" style="font-size: 80px; color: white;"></i>
+                    </div>
+                    <div class="lurah-image-placeholder" style="display: none;">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+                </div>
+
+                <div class="lurah-info">
+                    <h4 class="lurah-name">SUDARYO</h4>
+
+                    <div class="lurah-period">
+                        <i class="bi bi-calendar3"></i>
+                        Kepala Desa Pertama - 1971
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

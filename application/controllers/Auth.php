@@ -199,6 +199,11 @@ class Auth extends CI_Controller
         $this->load->view('auth/sop');
     }
 
+    public function sejarah()
+    {
+        $this->load->view('auth/sejarah');
+    }
+
     public function logout()
     {
         $this->session->unset_userdata('user');

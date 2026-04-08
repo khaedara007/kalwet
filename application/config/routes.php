@@ -64,6 +64,7 @@ $route['logout'] = 'auth/logout';
 $route['riwayat_lurah'] = 'auth/riwayat_lurah';
 $route['assets/uploads/sop/(.+)'] = 'assets/uploads/sop/$1';
 $route['sop'] = 'auth/sop';
+$route['sejarah'] = 'auth/sejarah';
 $route['dashboard'] = 'user/landing';
 $route['landing'] = 'home/landing2';
 $route['service/submit'] = 'service/submit';
