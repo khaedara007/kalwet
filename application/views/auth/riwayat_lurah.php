@@ -304,7 +304,7 @@
                 </div>
 
                 <div class="lurah-info">
-                    <h4 class="lurah-name">MARI, S.AP</h4>
+                    <h4 class="lurah-name">MARI, S.AP., N.LP</h4>
 
                     <div class="lurah-period">
                         <i class="bi bi-calendar3"></i>
@@ -327,7 +327,7 @@
                 </div>
 
                 <div class="lurah-info">
-                    <h4 class="lurah-name">TRI PRASETYO YUDHI UTOMO, S.STP, MM </h4>
+                    <h4 class="lurah-name">TRI PRASETYO YUDHI UTOMO, S.STP., MM. </h4>
 
                     <div class="lurah-period">
                         <i class="bi bi-calendar3"></i>
@@ -446,7 +446,7 @@
                 </div>
 
                 <div class="lurah-info">
-                    <h4 class="lurah-name">ARIS SUROSO, SH., MM</h4>
+                    <h4 class="lurah-name">ARIS SUROSO, SH., MM.</h4>
 
                     <div class="lurah-period">
                         <i class="bi bi-calendar3"></i>
