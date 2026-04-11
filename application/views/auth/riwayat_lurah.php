@@ -504,7 +504,7 @@
             <div class="lurah-card">
                 <div class="lurah-image-container">
                     <!-- GANTI FOTO: Upload ke assets/uploads/lurah/ dan ubah nama file di bawah -->
-                    <img src="<?php echo base_url('assets/kepdes.jpeg'); ?>"
+                    <img src="<?php echo base_url('assets/kepdes5.png'); ?>"
                         alt="H. MUKHLIS, S.Pd" class="lurah-image"
                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
 
