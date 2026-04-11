@@ -514,7 +514,7 @@
                 </div>
 
                 <div class="lurah-info">
-                    <h4 class="lurah-name">H. WASMAD EDI SUSILO, SH</h4>
+                    <h4 class="lurah-name">WASMAD EDI SUSILO</h4>
 
                     <div class="lurah-period">
                         <i class="bi bi-calendar3"></i>
