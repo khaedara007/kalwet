@@ -525,33 +525,10 @@
             <div class="lurah-card">
                 <div class="lurah-image-container">
                     <!-- GANTI FOTO: Upload ke assets/uploads/lurah/ dan ubah nama file di bawah -->
+                    <img src="<?php echo base_url('assets/kepdes4.png'); ?>"
+                        alt="H. MUKHLIS, S.Pd" class="lurah-image"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
 
-                    <!-- Jika tidak ada foto, gunakan placeholder icon -->
-                    <div class="lurah-image-placeholder" style="display: flex; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                        <i class="bi bi-person-fill" style="font-size: 80px; color: white;"></i>
-                    </div>
-                    <div class="lurah-image-placeholder" style="display: none;">
-                        <i class="bi bi-person-fill"></i>
-                    </div>
-                </div>
-
-                <div class="lurah-info">
-                    <h4 class="lurah-name">MUAWIYAH GUFRON</h4>
-
-                    <div class="lurah-period">
-                        <i class="bi bi-calendar3"></i>
-                        1993 - 1997
-                    </div>
-                </div>
-            </div>
-            <div class="lurah-card">
-                <div class="lurah-image-container">
-                    <!-- GANTI FOTO: Upload ke assets/uploads/lurah/ dan ubah nama file di bawah -->
-
-                    <!-- Jika tidak ada foto, gunakan placeholder icon -->
-                    <div class="lurah-image-placeholder" style="display: flex; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                        <i class="bi bi-person-fill" style="font-size: 80px; color: white;"></i>
-                    </div>
                     <div class="lurah-image-placeholder" style="display: none;">
                         <i class="bi bi-person-fill"></i>
                     </div>
@@ -562,18 +539,38 @@
 
                     <div class="lurah-period">
                         <i class="bi bi-calendar3"></i>
-                        1982 - 1992
+                        1989 - 1997
                     </div>
                 </div>
             </div>
             <div class="lurah-card">
                 <div class="lurah-image-container">
                     <!-- GANTI FOTO: Upload ke assets/uploads/lurah/ dan ubah nama file di bawah -->
+                    <img src="<?php echo base_url('assets/kepdes3.png'); ?>"
+                        alt="H. MUKHLIS, S.Pd" class="lurah-image"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
 
-                    <!-- Jika tidak ada foto, gunakan placeholder icon -->
-                    <div class="lurah-image-placeholder" style="display: flex; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                        <i class="bi bi-person-fill" style="font-size: 80px; color: white;"></i>
+                    <div class="lurah-image-placeholder" style="display: none;">
+                        <i class="bi bi-person-fill"></i>
                     </div>
+                </div>
+
+                <div class="lurah-info">
+                    <h4 class="lurah-name">MUAWIYAH GUFRON</h4>
+
+                    <div class="lurah-period">
+                        <i class="bi bi-calendar3"></i>
+                        1988
+                    </div>
+                </div>
+            </div>
+            <div class="lurah-card">
+                <div class="lurah-image-container">
+                    <!-- GANTI FOTO: Upload ke assets/uploads/lurah/ dan ubah nama file di bawah -->
+                    <img src="<?php echo base_url('assets/kepdes2.jpeg'); ?>"
+                        alt="H. MUKHLIS, S.Pd" class="lurah-image"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+
                     <div class="lurah-image-placeholder" style="display: none;">
                         <i class="bi bi-person-fill"></i>
                     </div>
@@ -591,11 +588,10 @@
             <div class="lurah-card">
                 <div class="lurah-image-container">
                     <!-- GANTI FOTO: Upload ke assets/uploads/lurah/ dan ubah nama file di bawah -->
+                    <img src="<?php echo base_url('assets/kepdes1.png'); ?>"
+                        alt="H. MUKHLIS, S.Pd" class="lurah-image"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
 
-                    <!-- Jika tidak ada foto, gunakan placeholder icon -->
-                    <div class="lurah-image-placeholder" style="display: flex; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                        <i class="bi bi-person-fill" style="font-size: 80px; color: white;"></i>
-                    </div>
                     <div class="lurah-image-placeholder" style="display: none;">
                         <i class="bi bi-person-fill"></i>
                     </div>

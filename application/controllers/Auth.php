@@ -152,6 +152,11 @@ class Auth extends CI_Controller
         $this->load->view('auth/riwayat_lurah');
     }
 
+    public function lkk()
+    {
+        $this->load->view('auth/lkk');
+    }
+
     public function pdf_proxy($filename = null)
     {
         if (!$filename) {

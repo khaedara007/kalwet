@@ -58,6 +58,12 @@
                                     Sejarah Kalinyamat
                                 </a>
                             </li>
+                            <li>
+                                <a class="dropdown-item" href="<?php echo site_url('auth/lkk'); ?>">
+                                    <i></i>
+                                    Data Struktur LKK
+                                </a>
+                            </li>
                         </ul>
                     </li>
                 </div>
