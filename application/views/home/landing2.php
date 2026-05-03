@@ -49,13 +49,13 @@
                             <li>
                                 <a class="dropdown-item" href="<?php echo site_url('auth/riwayat_lurah'); ?>">
                                     <i></i>
-                                    Riwayat Lurah
+                                    Kepala Desa & Lurah
                                 </a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="<?php echo site_url('auth/sejarah'); ?>">
                                     <i></i>
-                                    Sejarah Kalinyamat
+                                    Sejarah
                                 </a>
                             </li>
                             <li>
