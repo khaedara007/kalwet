@@ -89,6 +89,197 @@
             font-size: 1rem;
         }
 
+        /* ===== PENGERTIAN & FUNGSI TUGAS SECTION ===== */
+        .pengertian-section {
+            padding: 40px 0 20px;
+        }
+
+        .pengertian-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: none;
+            height: 100%;
+            position: relative;
+        }
+
+        .pengertian-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(25, 118, 210, 0.15);
+        }
+
+        /* Header card dengan gradient berbeda per jenis */
+        .pengertian-card-header {
+            padding: 25px 20px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .pengertian-card-header.rw {
+            background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+        }
+
+        .pengertian-card-header.rt {
+            background: linear-gradient(135deg, #00b4db 0%, #0083b0 100%);
+        }
+
+        .pengertian-card-header.lpmk {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .pengertian-card-header.katar {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .pengertian-icon-circle {
+            width: 70px;
+            height: 70px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .pengertian-icon-circle i {
+            font-size: 1.8rem;
+        }
+
+        .pengertian-card-header.rw .pengertian-icon-circle i {
+            color: #1976d2;
+        }
+
+        .pengertian-card-header.rt .pengertian-icon-circle i {
+            color: #0083b0;
+        }
+
+        .pengertian-card-header.lpmk .pengertian-icon-circle i {
+            color: #667eea;
+        }
+
+        .pengertian-card-header.katar .pengertian-icon-circle i {
+            color: #f5576c;
+        }
+
+        .pengertian-card-header h3 {
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .pengertian-card-body {
+            padding: 25px;
+        }
+
+        .pengertian-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+        }
+
+        .pengertian-label.pengertian {
+            background: #e3f2fd;
+            color: var(--primary-blue);
+        }
+
+        .pengertian-label.fungsi {
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        .pengertian-text {
+            color: #495057;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .fungsi-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .fungsi-list li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 10px;
+            color: #495057;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .fungsi-list li::before {
+            content: '\F26B';
+            font-family: 'bootstrap-icons';
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--primary-blue);
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .pengertian-card-header.rw~.pengertian-card-body .fungsi-list li::before {
+            color: #1976d2;
+        }
+
+        .pengertian-card-header.rt~.pengertian-card-body .fungsi-list li::before {
+            color: #0083b0;
+        }
+
+        .pengertian-card-header.lpmk~.pengertian-card-body .fungsi-list li::before {
+            color: #667eea;
+        }
+
+        .pengertian-card-header.katar~.pengertian-card-body .fungsi-list li::before {
+            color: #f5576c;
+        }
+
+        /* Accordion untuk mobile */
+        .pengertian-accordion .accordion-item {
+            border: none;
+            border-radius: 16px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .pengertian-accordion .accordion-button {
+            padding: 20px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            background: white;
+        }
+
+        .pengertian-accordion .accordion-button:not(.collapsed) {
+            background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+            color: white;
+            box-shadow: none;
+        }
+
+        .pengertian-accordion .accordion-button:focus {
+            box-shadow: none;
+        }
+
+        .pengertian-accordion .accordion-body {
+            padding: 25px;
+            background: white;
+        }
+
         /* RW Cards Grid - Sesuai kartu lurah */
         .rw-section {
             padding: 20px 0 60px;
@@ -401,9 +592,242 @@
             <div class="hero-content">
                 <h1><i class="bi bi-building me-2"></i>Data Resmi Struktur RT/RW , LPMK dan Karang Taruna</h1>
                 <p>Kelurahan Kalinyamat Wetan - Kecamatan Tegal Selatan - Kota Tegal<br></p>
-                <button class="btn-struktur" onclick="scrollToRW()">
+                <button class="btn-struktur" onclick="scrollToPengertian()">
+                    <i class="bi bi-info-circle"></i> Pengertian & Fungsi
+                </button>
+                <button class="btn-struktur ms-2" onclick="scrollToRW()">
                     <i class="bi bi-people-fill"></i> Lihat Struktur
                 </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PENGERTIAN & FUNGSI TUGAS SECTION -->
+    <section class="pengertian-section" id="pengertianSection">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="section-title">Pengertian & Fungsi Tugas</h2>
+                    <p class="section-subtitle">Memahami peran dan tanggung jawab RT, RW, LPMK, dan Karang Taruna</p>
+                </div>
+            </div>
+
+            <!-- Desktop: Grid Cards -->
+            <div class="row g-4 d-none d-lg-flex">
+                <!-- RW -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="pengertian-card">
+                        <div class="pengertian-card-header rw">
+                            <div class="pengertian-icon-circle">
+                                <i class="bi bi-people-fill"></i>
+                            </div>
+                            <h3>Rukun Warga (RW)</h3>
+                        </div>
+                        <div class="pengertian-card-body">
+                            <span class="pengertian-label pengertian"><i class="bi bi-book"></i> Pengertian</span>
+                            <p class="pengertian-text">
+                                RW adalah wadah pemersatu dan penyelenggara kegiatan kemasyarakatan yang beranggotakan beberapa RT, berfungsi sebagai unit administrasi terendah di tingkat kelurahan.
+                            </p>
+                            <span class="pengertian-label fungsi"><i class="bi bi-list-check"></i> Fungsi & Tugas</span>
+                            <ul class="fungsi-list">
+                                <li>Memfasilitasi koordinasi antar RT dalam wilayahnya</li>
+                                <li>Menyelenggarakan musyawarah RW secara berkala</li>
+                                <li>Mengumpulkan dan menyalurkan aspirasi warga ke kelurahan</li>
+                                <li>Membantu kelurahan dalam pelaksanaan pembangunan</li>
+                                <li>Mengawasi pelaksanaan program pemerintah di tingkat RW</li>
+                                <li>Menjaga ketertiban dan keamanan lingkungan</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RT -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="pengertian-card">
+                        <div class="pengertian-card-header rt">
+                            <div class="pengertian-icon-circle">
+                                <i class="bi bi-house-door-fill"></i>
+                            </div>
+                            <h3>Rukun Tetangga (RT)</h3>
+                        </div>
+                        <div class="pengertian-card-body">
+                            <span class="pengertian-label pengertian"><i class="bi bi-book"></i> Pengertian</span>
+                            <p class="pengertian-text">
+                                RT adalah wadah pemersatu dan penyelenggara kegiatan kemasyarakatan di tingkat terendah, beranggotakan warga yang tinggal dalam satu lingkungan geografis yang sama.
+                            </p>
+                            <span class="pengertian-label fungsi"><i class="bi bi-list-check"></i> Fungsi & Tugas</span>
+                            <ul class="fungsi-list">
+                                <li>Mencatat data kependudukan warga di lingkungannya</li>
+                                <li>Menyelenggarakan musyawarah RT secara rutin</li>
+                                <li>Membantu warga dalam pengurusan administrasi</li>
+                                <li>Mengkoordinasikan kegiatan gotong royong</li>
+                                <li>Menjaga kebersihan dan kesehatan lingkungan</li>
+                                <li>Melaporkan kondisi sosial warga ke RW</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LPMK -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="pengertian-card">
+                        <div class="pengertian-card-header lpmk">
+                            <div class="pengertian-icon-circle">
+                                <i class="bi bi-briefcase-fill"></i>
+                            </div>
+                            <h3>LPMK</h3>
+                        </div>
+                        <div class="pengertian-card-body">
+                            <span class="pengertian-label pengertian"><i class="bi bi-book"></i> Pengertian</span>
+                            <p class="pengertian-text">
+                                Lembaga Pemberdayaan Masyarakat Kelurahan (LPMK) adalah lembaga kemasyarakatan yang dibentuk untuk mewadahi partisipasi masyarakat dalam pembangunan kelurahan.
+                            </p>
+                            <span class="pengertian-label fungsi"><i class="bi bi-list-check"></i> Fungsi & Tugas</span>
+                            <ul class="fungsi-list">
+                                <li>Merencanakan program pembangunan kelurahan</li>
+                                <li>Menggerakkan swadaya gotong royong masyarakat</li>
+                                <li>Mengkoordinasikan kegiatan pemberdayaan ekonomi</li>
+                                <li>Memfasilitasi peningkatan kualitas sumber daya manusia</li>
+                                <li>Mengawasi pelaksanaan pembangunan di kelurahan</li>
+                                <li>Menjalin kerja sama dengan pihak terkait</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Karang Taruna -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="pengertian-card">
+                        <div class="pengertian-card-header katar">
+                            <div class="pengertian-icon-circle">
+                                <i class="bi bi-heart-fill"></i>
+                            </div>
+                            <h3>Karang Taruna</h3>
+                        </div>
+                        <div class="pengertian-card-body">
+                            <span class="pengertian-label pengertian"><i class="bi bi-book"></i> Pengertian</span>
+                            <p class="pengertian-text">
+                                Karang Taruna adalah organisasi kepemudaan yang bergerak di bidang kesejahteraan sosial, bertujuan mengembangkan potensi pemuda untuk kesejahteraan masyarakat.
+                            </p>
+                            <span class="pengertian-label fungsi"><i class="bi bi-list-check"></i> Fungsi & Tugas</span>
+                            <ul class="fungsi-list">
+                                <li>Mengembangkan kegiatan olahraga dan seni pemuda</li>
+                                <li>Menyelenggarakan program kesejahteraan sosial</li>
+                                <li>Memberdayakan pemuda dalam entrepreneurship</li>
+                                <li>Menjaga kelestarian lingkungan hidup</li>
+                                <li>Mengadakan pelatihan keterampilan pemuda</li>
+                                <li>Membantu korban bencana dan warga kurang mampu</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile: Accordion -->
+            <div class="accordion pengertian-accordion d-lg-none" id="accordionPengertian">
+                <!-- RW -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRW">
+                            <i class="bi bi-people-fill me-2"></i> Rukun Warga (RW)
+                        </button>
+                    </h2>
+                    <div id="collapseRW" class="accordion-collapse collapse" data-bs-parent="#accordionPengertian">
+                        <div class="accordion-body">
+                            <span class="pengertian-label pengertian"><i class="bi bi-book"></i> Pengertian</span>
+                            <p class="pengertian-text">
+                                RW adalah wadah pemersatu dan penyelenggara kegiatan kemasyarakatan yang beranggotakan beberapa RT, berfungsi sebagai unit administrasi terendah di tingkat kelurahan.
+                            </p>
+                            <span class="pengertian-label fungsi"><i class="bi bi-list-check"></i> Fungsi & Tugas</span>
+                            <ul class="fungsi-list">
+                                <li>Memfasilitasi koordinasi antar RT dalam wilayahnya</li>
+                                <li>Menyelenggarakan musyawarah RW secara berkala</li>
+                                <li>Mengumpulkan dan menyalurkan aspirasi warga ke kelurahan</li>
+                                <li>Membantu kelurahan dalam pelaksanaan pembangunan</li>
+                                <li>Mengawasi pelaksanaan program pemerintah di tingkat RW</li>
+                                <li>Menjaga ketertiban dan keamanan lingkungan</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RT -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRT">
+                            <i class="bi bi-house-door-fill me-2"></i> Rukun Tetangga (RT)
+                        </button>
+                    </h2>
+                    <div id="collapseRT" class="accordion-collapse collapse" data-bs-parent="#accordionPengertian">
+                        <div class="accordion-body">
+                            <span class="pengertian-label pengertian"><i class="bi bi-book"></i> Pengertian</span>
+                            <p class="pengertian-text">
+                                RT adalah wadah pemersatu dan penyelenggara kegiatan kemasyarakatan di tingkat terendah, beranggotakan warga yang tinggal dalam satu lingkungan geografis yang sama.
+                            </p>
+                            <span class="pengertian-label fungsi"><i class="bi bi-list-check"></i> Fungsi & Tugas</span>
+                            <ul class="fungsi-list">
+                                <li>Mencatat data kependudukan warga di lingkungannya</li>
+                                <li>Menyelenggarakan musyawarah RT secara rutin</li>
+                                <li>Membantu warga dalam pengurusan administrasi</li>
+                                <li>Mengkoordinasikan kegiatan gotong royong</li>
+                                <li>Menjaga kebersihan dan kesehatan lingkungan</li>
+                                <li>Melaporkan kondisi sosial warga ke RW</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LPMK -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLPMK">
+                            <i class="bi bi-briefcase-fill me-2"></i> LPMK
+                        </button>
+                    </h2>
+                    <div id="collapseLPMK" class="accordion-collapse collapse" data-bs-parent="#accordionPengertian">
+                        <div class="accordion-body">
+                            <span class="pengertian-label pengertian"><i class="bi bi-book"></i> Pengertian</span>
+                            <p class="pengertian-text">
+                                Lembaga Pemberdayaan Masyarakat Kelurahan (LPMK) adalah lembaga kemasyarakatan yang dibentuk untuk mewadahi partisipasi masyarakat dalam pembangunan kelurahan.
+                            </p>
+                            <span class="pengertian-label fungsi"><i class="bi bi-list-check"></i> Fungsi & Tugas</span>
+                            <ul class="fungsi-list">
+                                <li>Merencanakan program pembangunan kelurahan</li>
+                                <li>Menggerakkan swadaya gotong royong masyarakat</li>
+                                <li>Mengkoordinasikan kegiatan pemberdayaan ekonomi</li>
+                                <li>Memfasilitasi peningkatan kualitas sumber daya manusia</li>
+                                <li>Mengawasi pelaksanaan pembangunan di kelurahan</li>
+                                <li>Menjalin kerja sama dengan pihak terkait</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Karang Taruna -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseKatar">
+                            <i class="bi bi-heart-fill me-2"></i> Karang Taruna
+                        </button>
+                    </h2>
+                    <div id="collapseKatar" class="accordion-collapse collapse" data-bs-parent="#accordionPengertian">
+                        <div class="accordion-body">
+                            <span class="pengertian-label pengertian"><i class="bi bi-book"></i> Pengertian</span>
+                            <p class="pengertian-text">
+                                Karang Taruna adalah organisasi kepemudaan yang bergerak di bidang kesejahteraan sosial, bertujuan mengembangkan potensi pemuda untuk kesejahteraan masyarakat.
+                            </p>
+                            <span class="pengertian-label fungsi"><i class="bi bi-list-check"></i> Fungsi & Tugas</span>
+                            <ul class="fungsi-list">
+                                <li>Mengembangkan kegiatan olahraga dan seni pemuda</li>
+                                <li>Menyelenggarakan program kesejahteraan sosial</li>
+                                <li>Memberdayakan pemuda dalam entrepreneurship</li>
+                                <li>Menjaga kelestarian lingkungan hidup</li>
+                                <li>Mengadakan pelatihan keterampilan pemuda</li>
+                                <li>Membantu korban bencana dan warga kurang mampu</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -810,6 +1234,12 @@
     <script>
         // Data RW/RT dari PHP
         const rwData = <?php echo json_encode($data_rw); ?>;
+
+        function scrollToPengertian() {
+            document.getElementById('pengertianSection').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
 
         function scrollToRW() {
             document.getElementById('rwSection').scrollIntoView({
