@@ -109,6 +109,9 @@
             <a href="<?php echo site_url('admin/users'); ?>" class="btn btn-outline-primary btn-action me-2">
                 <i class="bi bi-people me-2"></i>Data Pengguna
             </a>
+            <a href="<?php echo site_url('admin/sk_lkk'); ?>" class="btn btn-outline-primary btn-action me-2">
+                <i class="bi bi-people me-2"></i>Data LKK
+            </a>
             <a href="<?php echo site_url('admin/ratings'); ?>" class="btn btn-warning btn-action text-dark">
                 <i class="bi bi-star-fill me-2"></i>Kelola Rating
             </a>

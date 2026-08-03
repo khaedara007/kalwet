@@ -6,7 +6,8 @@ class Auth extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('User_model');
+        $this->load->model('Sk_lkk_model', 'sk_model');
+        $this->load->model('User_model', 'user_model');
         $this->load->library(array('session', 'form_validation'));
         $this->load->helper(array('url', 'form', 'whatsapp'));
     }
@@ -154,7 +155,12 @@ class Auth extends CI_Controller
 
     public function lkk()
     {
-        $this->load->view('auth/lkk');
+        $data['title'] = 'Struktur RT/RW, LPMK dan Karang Taruna';
+
+        // Gunakan alias untuk ambil data SK
+        $data['sk_aktif_list'] = $this->sk_model->get_all();
+
+        $this->load->view('auth/lkk', $data);
     }
 
     public function pdf_proxy($filename = null)

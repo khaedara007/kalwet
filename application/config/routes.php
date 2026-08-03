@@ -86,3 +86,9 @@ $route['admin/suratkelahiran/edit/(:num)'] = 'suratkelahiran/edit/$1';
 $route['admin/suratkelahiran/update/(:num)'] = 'suratkelahiran/update/$1';
 $route['admin/suratkelahiran/pdf/(:num)'] = 'suratkelahiran/pdf/$1';
 $route['admin/suratkelahiran/delete/(:num)'] = 'suratkelahiran/delete/$1';
+// ==================== SK LKK ROUTES ====================
+$route['admin/sk_lkk'] = 'admin/sk_lkk';
+$route['admin/sk_lkk_filter/(:any)'] = 'admin/sk_lkk_filter/$1';
+$route['admin/upload_sk_lkk'] = 'admin/upload_sk_lkk';
+$route['admin/download_sk/(:num)'] = 'admin/download_sk/$1';
+$route['admin/delete_sk/(:num)'] = 'admin/delete_sk/$1';

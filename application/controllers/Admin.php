@@ -6,8 +6,9 @@ class Admin extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model(array('User_model', 'Service_model', 'Rating_model'));
-        $this->load->library('session');
+        $this->load->model(array('User_model', 'Service_model', 'Rating_model', 'Sk_lkk_model'));
+        $this->load->library('form_validation');
+        $this->load->library('session', 'upload');
         $this->load->helper(array('url', 'whatsapp'));
 
         // Load database untuk method reset_all_ratings
@@ -378,6 +379,208 @@ class Admin extends CI_Controller
         $this->load->view('admin/history', $data);
     }
 
+    /**
+     * Halaman Manajemen SK LKK
+     */
+    public function sk_lkk()
+    {
+        $data['title'] = 'Manajemen SK LKK';
+        $data['sk_list'] = $this->Sk_lkk_model->get_all();
+        $data['total_sk'] = $this->Sk_lkk_model->count_all();
+        $data['sk_aktif'] = $this->Sk_lkk_model->count_by_status('aktif');
+        $data['total_perubahan'] = $this->Sk_lkk_model->count_history();
+        $data['sk_terbaru'] = $this->Sk_lkk_model->get_latest_date();
+        $data['filter'] = 'all';
+
+        $this->load->view('admin/lkk', $data);
+    }
+
+    /**
+     * Filter SK LKK berdasarkan jenis
+     */
+    public function sk_lkk_filter($jenis = 'all')
+    {
+        $data['title'] = 'Manajemen SK LKK';
+
+        if ($jenis == 'all') {
+            $data['sk_list'] = $this->Sk_lkk_model->get_all();
+        } else {
+            $data['sk_list'] = $this->Sk_lkk_model->get_by_jenis($jenis);
+        }
+
+        $data['total_sk'] = $this->Sk_lkk_model->count_all();
+        $data['sk_aktif'] = $this->Sk_lkk_model->count_by_status('aktif');
+        $data['total_perubahan'] = $this->Sk_lkk_model->count_history();
+        $data['sk_terbaru'] = $this->Sk_lkk_model->get_latest_date();
+        $data['filter'] = $jenis;
+
+        $this->load->view('admin/lkk', $data);
+    }
+
+    /**
+     * Upload SK LKK baru
+     */
+    public function upload_sk_lkk()
+    {
+        if ($this->input->server('REQUEST_METHOD') !== 'POST') {
+            show_error('Invalid request method', 405);
+        }
+
+        $this->load->library('form_validation');
+        $this->load->library('upload');
+
+        // AMBIL USER ID DARI SESSION
+        $user_id = $this->session->userdata('user_id');
+        if (empty($user_id)) {
+            $user_id = $this->session->userdata('id');
+        }
+        if (empty($user_id)) {
+            $user_id = $this->session->userdata('admin_id');
+        }
+        if (empty($user_id)) {
+            $user_id = 1; // fallback default
+        }
+
+        // Validasi input
+        $this->form_validation->set_rules('jenis_lkk', 'Jenis LKK', 'required');
+        $this->form_validation->set_rules('nomor_sk', 'Nomor SK', 'required|max_length[100]');
+        $this->form_validation->set_rules('periode_mulai', 'Periode Mulai', 'required|numeric');
+        $this->form_validation->set_rules('periode_selesai', 'Periode Selesai', 'required|numeric');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->session->set_flashdata('error', validation_errors());
+            redirect('admin/sk_lkk');
+        }
+
+        $jenis_lkk = $this->input->post('jenis_lkk');
+        $nomor_sk = $this->input->post('nomor_sk');
+
+        $existing = $this->Sk_lkk_model->get_by_jenis_nomor($jenis_lkk, $nomor_sk);
+
+        $upload_path = './uploads/sk_lkk/';
+        if (!is_dir($upload_path)) {
+            mkdir($upload_path, 0755, true);
+        }
+
+        $config['upload_path'] = $upload_path;
+        $config['allowed_types'] = 'pdf';
+        $config['max_size'] = 10240;
+        $config['file_name'] = 'SK_' . strtoupper(str_replace('-', '_', $jenis_lkk)) . '_' . date('Y') . '_' . time();
+
+        $this->upload->initialize($config);
+
+        if (!$this->upload->do_upload('file_sk')) {
+            $this->session->set_flashdata('error', $this->upload->display_errors());
+            redirect('admin/sk_lkk');
+        }
+
+        $upload_data = $this->upload->data();
+        $file_size = $this->_format_size($upload_data['file_size']);
+
+        if ($existing) {
+            $this->Sk_lkk_model->archive_to_history($existing->id);
+
+            $data = array(
+                'nomor_sk' => $nomor_sk,
+                'periode_mulai' => $this->input->post('periode_mulai'),
+                'periode_selesai' => $this->input->post('periode_selesai'),
+                'keterangan' => $this->input->post('keterangan'),
+                'file_name' => $upload_data['file_name'],
+                'file_path' => 'uploads/sk_lkk/' . $upload_data['file_name'],
+                'file_size' => $file_size,
+                'file_type' => $upload_data['file_type'],
+                'versi' => $existing->versi + 1,
+                'status' => 'aktif',
+                'uploaded_by' => $user_id,  // <-- PAKAI VARIABEL $user_id
+                'updated_at' => date('Y-m-d H:i:s')
+            );
+
+            $this->Sk_lkk_model->update($existing->id, $data);
+            $this->session->set_flashdata('success', 'SK berhasil diperbarui! Versi baru: v' . ($existing->versi + 1));
+        } else {
+            $data = array(
+                'jenis_lkk' => $jenis_lkk,
+                'nomor_sk' => $nomor_sk,
+                'periode_mulai' => $this->input->post('periode_mulai'),
+                'periode_selesai' => $this->input->post('periode_selesai'),
+                'keterangan' => $this->input->post('keterangan'),
+                'file_name' => $upload_data['file_name'],
+                'file_path' => 'uploads/sk_lkk/' . $upload_data['file_name'],
+                'file_size' => $file_size,
+                'file_type' => $upload_data['file_type'],
+                'versi' => 1,
+                'status' => 'aktif',
+                'uploaded_by' => $user_id  // <-- PAKAI VARIABEL $user_id
+            );
+
+            $this->Sk_lkk_model->insert($data);
+            $this->session->set_flashdata('success', 'SK baru berhasil diupload!');
+        }
+
+        redirect('admin/sk_lkk');
+    }
+
+    /**
+     * Download file SK
+     */
+    public function download_sk($id)
+    {
+        $sk = $this->Sk_lkk_model->get_by_id($id);
+
+        if (!$sk) {
+            show_404();
+        }
+
+        $file_path = FCPATH . $sk->file_path;
+
+        if (!file_exists($file_path)) {
+            $this->session->set_flashdata('error', 'File tidak ditemukan!');
+            redirect('admin/sk_lkk');
+        }
+
+        force_download($file_path, NULL);
+    }
+
+    /**
+     * Hapus SK beserta history-nya
+     */
+    public function delete_sk($id)
+    {
+        $sk = $this->Sk_lkk_model->get_by_id($id);
+
+        if ($sk) {
+            // Hapus file fisik
+            $file_path = FCPATH . $sk->file_path;
+            if (file_exists($file_path)) {
+                unlink($file_path);
+            }
+
+            // Hapus history files
+            $history = $this->Sk_lkk_model->get_history($id);
+            foreach ($history as $h) {
+                $h_path = FCPATH . $h->file_path;
+                if (file_exists($h_path)) {
+                    unlink($h_path);
+                }
+            }
+
+            $this->Sk_lkk_model->delete($id);
+            $this->session->set_flashdata('success', 'SK berhasil dihapus!');
+        }
+
+        redirect('admin/sk_lkk');
+    }
+
+    /**
+     * Helper: Format ukuran file
+     */
+    private function _format_size($size)
+    {
+        $units = array('Bytes', 'KB', 'MB', 'GB');
+        $unit = floor(log($size, 1024));
+        return round($size / pow(1024, $unit), 2) . ' ' . $units[$unit];
+    }
+
     public function requests()
     {
         $this->check_admin();
@@ -390,6 +593,13 @@ class Admin extends CI_Controller
         $this->check_admin();
         $data['users'] = $this->User_model->get_all();
         $this->load->view('admin/users', $data);
+    }
+
+    public function lkk()
+    {
+        $this->check_admin();
+        $data['users'] = $this->User_model->get_all();
+        $this->load->view('admin/lkk', $data);
     }
 
     public function logout()
