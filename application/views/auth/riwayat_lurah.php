@@ -308,7 +308,7 @@
 
                     <div class="lurah-period">
                         <i class="bi bi-calendar3"></i>
-                        2023 - Sekarang
+                        2026 - Sekarang
                     </div>
                 </div>
             </div>
