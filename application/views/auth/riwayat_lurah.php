@@ -285,12 +285,36 @@
         <!-- Lurah Cards - DATA HARDCODED DI SINI -->
         <div class="lurah-grid">
 
-            <!-- LURAH 1 - AKTIF -->
+            <!-- LURAH 0 - AKTIF -->
             <div class="lurah-card">
                 <div class="current-badge">
-                    <i class="bi bi-check-circle-fill me-2"></i>LURAH AKTIF
+                    <i class="bi bi-check-circle-fill me-2"></i>Plt. LURAH AKTIF
                 </div>
 
+                <div class="lurah-image-container">
+                    <!-- GANTI FOTO: Upload ke assets/uploads/lurah/ dan ubah nama file di bawah -->
+                    <img src="<?php echo base_url('assets'); ?>"
+                        alt="H. AHMAD SYAIFUDIN, S.Sos" class="lurah-image"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+
+                    <!-- Placeholder jika foto tidak ada -->
+                    <div class="lurah-image-placeholder" style="display: none;">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+                </div>
+
+                <div class="lurah-info">
+                    <h4 class="lurah-name">HERMAWAN, SE</h4>
+
+                    <div class="lurah-period">
+                        <i class="bi bi-calendar3"></i>
+                        2023 - Sekarang
+                    </div>
+                </div>
+            </div>
+
+            <!-- LURAH 1 -->
+            <div class="lurah-card">
                 <div class="lurah-image-container">
                     <!-- GANTI FOTO: Upload ke assets/uploads/lurah/ dan ubah nama file di bawah -->
                     <img src="<?php echo base_url('assets/lurah8.png'); ?>"

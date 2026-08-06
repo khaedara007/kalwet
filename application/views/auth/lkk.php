@@ -36,9 +36,112 @@
         /* SK di dalam card pengertian */
         .sk-dalam-card {
             margin-top: 15px;
+            padding: 15px;
             padding-top: 15px;
             border-top: 2px dashed #e0e0e0;
         }
+
+        .sk-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 12px;
+        }
+
+        .sk-card {
+            background: #fff;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.25s ease;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+        }
+
+        .sk-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(13, 110, 253, 0.12);
+            border-color: #0d6efd;
+        }
+
+        .sk-card-header {
+            background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%);
+            color: #fff;
+            padding: 10px 14px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        .sk-card-header i {
+            font-size: 1rem;
+        }
+
+        .sk-card-body {
+            padding: 14px;
+        }
+
+        .sk-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            margin-bottom: 10px;
+        }
+
+        .sk-info:last-child {
+            margin-bottom: 0;
+        }
+
+        .sk-info .sk-label {
+            font-size: 0.7rem;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+
+        .sk-info .sk-value {
+            font-size: 0.9rem;
+            color: #212529;
+            font-weight: 600;
+        }
+
+        .sk-card-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            background: #f8f9fa;
+            color: #0d6efd;
+            text-decoration: none;
+            padding: 10px 14px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            border-top: 1px solid #e9ecef;
+            transition: all 0.2s;
+        }
+
+        .sk-card-btn:hover {
+            background: #0d6efd;
+            color: #fff;
+        }
+
+        .sk-card-btn i {
+            font-size: 0.9rem;
+        }
+
+        /* Responsive: 1 kolom di mobile */
+        @media (max-width: 480px) {
+            .sk-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .sk-item {
+            transition: all 0.2s ease;
+        }
+
 
         .sk-dalam-card .sk-label {
             display: inline-flex;
@@ -56,7 +159,7 @@
         }
 
         .sk-dalam-card .sk-info-small {
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             color: #495057;
             margin-bottom: 8px;
         }
@@ -73,7 +176,7 @@
             padding: 8px 16px;
             border-radius: 8px;
             font-weight: 600;
-            font-size: 0.8rem;
+            font-size: 1.0rem;
             transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
@@ -190,24 +293,24 @@
         }
 
         .pengertian-card-header.rw {
-            background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+            background: linear-gradient(135deg, #00b4db 0%, #1565c0 100%);
         }
 
         .pengertian-card-header.rt {
-            background: linear-gradient(135deg, #00b4db 0%, #0083b0 100%);
+            background: linear-gradient(135deg, #00b4db 0%, #1565c0 100%);
         }
 
         .pengertian-card-header.lpmk {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #00b4db 0%, #1565c0 100%);
         }
 
         .pengertian-card-header.katar {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            background: linear-gradient(135deg, #00b4db 0%, #1565c0 100%);
         }
 
         /* SK Card Header - Dynamic Colors */
         .pengertian-card-header.sk-rt {
-            background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+            background: linear-gradient(135deg, #00b4db 0%, #1565c0 100%);
         }
 
         .pengertian-card-header.sk-rw {
@@ -223,15 +326,22 @@
         }
 
         .pengertian-card-header.sk-pkk {
-            background: linear-gradient(135deg, #80ffff 0%, #008B8B 100%);
+            background: linear-gradient(135deg, #00b4db 0%, #1565c0 100%);
         }
 
         .pengertian-card-header.pkk {
-            background: linear-gradient(135deg, #74ecec 0%, #008B8B 100%);
+            background: linear-gradient(135deg, #00b4db 0%, #1565c0 100%);
         }
 
         .pengertian-card-header.pkk .pengertian-icon-circle i {
             color: #008B8B;
+        }
+
+        .logo-icon {
+            width: 60px;
+            /* Sesuaikan ukuran logo */
+            height: 70px;
+            object-fit: contain;
         }
 
         .pengertian-card-header.pkk~.pengertian-card-body .fungsi-list li::before {
@@ -239,8 +349,8 @@
         }
 
         .pengertian-icon-circle {
-            width: 70px;
-            height: 70px;
+            width: 85px;
+            height: 85px;
             background: white;
             border-radius: 50%;
             display: flex;
@@ -528,6 +638,15 @@
         }
 
         .rw-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .lpmk-card {
             background: var(--card-bg);
             border-radius: 16px;
             overflow: hidden;
@@ -829,7 +948,7 @@
     <section class="hero-section">
         <div class="container">
             <div class="hero-content">
-                <h1><i class="bi bi-building me-2"></i>Data Resmi Struktur RT/RW, LPMK dan Karang Taruna</h1>
+                <h1><i class="bi bi-building me-2"></i>DATA RESMI STRUKTUR RT/RW, LPMK, Karang Taruna DAN PKK</h1>
                 <p>Kelurahan Kalinyamat Wetan - Kecamatan Tegal Selatan - Kota Tegal<br></p>
                 <button class="btn-struktur" onclick="scrollToPengertian()">
                     <i class="bi bi-info-circle"></i> Pengertian & Fungsi
@@ -859,7 +978,7 @@
                     <div class="pengertian-card">
                         <div class="pengertian-card-header rw">
                             <div class="pengertian-icon-circle">
-                                <i class="bi bi-people-fill"></i>
+                                <img src="<?php echo base_url('assets/tegal.png'); ?>" alt="Logo RT & RW" class="logo-icon">
                             </div>
                             <h3>RT & RW</h3>
                         </div>
@@ -891,28 +1010,58 @@
                             <!-- SK RT/RW -->
                             <div class="sk-dalam-card">
                                 <?php
-                                $sk_rtrw = isset($sk_per_jenis['rt']) ? $sk_per_jenis['rt'] : (isset($sk_per_jenis['rw']) ? $sk_per_jenis['rw'] : null);
-                                if ($sk_rtrw && is_object($sk_rtrw)):
-                                    $nomor = isset($sk_rtrw->nomor_sk) ? $sk_rtrw->nomor_sk : '-';
-                                    $pm = isset($sk_rtrw->periode_mulai) ? $sk_rtrw->periode_mulai : '-';
-                                    $ps = isset($sk_rtrw->periode_selesai) ? $sk_rtrw->periode_selesai : '-';
-                                    $fp = isset($sk_rtrw->file_path) ? $sk_rtrw->file_path : '';
-                                    $ver = isset($sk_rtrw->versi) ? $sk_rtrw->versi : '1';
+                                $all_sk = isset($sk_aktif_list) ? $sk_aktif_list : [];
+
+                                $sk_aktif = [];
+                                foreach ($all_sk as $sk) {
+                                    $jenis = isset($sk->jenis_lkk) ? $sk->jenis_lkk : '';
+                                    $status = isset($sk->status) ? $sk->status : '';
+                                    if ($status == 'aktif' && in_array($jenis, ['rt', 'rw'])) {
+                                        $sk_aktif[] = $sk;
+                                    }
+                                }
+
+                                usort($sk_aktif, function ($a, $b) {
+                                    $pa = isset($a->periode_mulai) ? (int)$a->periode_mulai : 0;
+                                    $pb = isset($b->periode_mulai) ? (int)$b->periode_mulai : 0;
+                                    return $pb <=> $pa;
+                                });
+
+                                if (!empty($sk_aktif)):
                                 ?>
-                                    <span class="sk-label"><i class="bi bi-file-earmark-text"></i> SK Aktif</span>
-                                    <div class="sk-info-small"><strong>Nomor:</strong> <?php echo $nomor; ?></div>
-                                    <div class="sk-info-small"><strong>Periode:</strong> <?php echo $pm; ?> - <?php echo $ps; ?></div>
-                                    <?php if (!empty($fp)): ?>
-                                        <a href="<?php echo base_url($fp); ?>" target="_blank" class="btn-sk-small w-100">
-                                            <i class="bi bi-eye"></i> Lihat SK
-                                        </a>
-                                    <?php endif; ?>
-                                    <div class="mt-2 text-center">
-                                        <span class="badge-sk-aktif"><i class="bi bi-check-circle-fill"></i> v<?php echo $ver; ?></span>
+                                    <div class="sk-grid">
+                                        <?php foreach ($sk_aktif as $sk_rtrw):
+                                            $nomor = isset($sk_rtrw->nomor_sk) ? $sk_rtrw->nomor_sk : '-';
+                                            $pm = isset($sk_rtrw->periode_mulai) ? $sk_rtrw->periode_mulai : '-';
+                                            $ps = isset($sk_rtrw->periode_selesai) ? $sk_rtrw->periode_selesai : '-';
+                                            $fp = isset($sk_rtrw->file_path) ? $sk_rtrw->file_path : '';
+                                            $jenis = isset($sk_rtrw->jenis_lkk) ? strtoupper($sk_rtrw->jenis_lkk) : 'RT/RW';
+                                        ?>
+                                            <div class="sk-card">
+                                                <div class="sk-card-header">
+                                                    <i class="bi bi-file-earmark-text"></i>
+                                                    <span>SK <?php echo $jenis; ?> AKTIF</span>
+                                                </div>
+                                                <div class="sk-card-body">
+                                                    <div class="sk-info">
+                                                        <span class="sk-label">Nomor</span>
+                                                        <span class="sk-value"><?php echo $nomor; ?></span>
+                                                    </div>
+                                                    <div class="sk-info">
+                                                        <span class="sk-label">Periode</span>
+                                                        <span class="sk-value"><?php echo $pm; ?> – <?php echo $ps; ?></span>
+                                                    </div>
+                                                </div>
+                                                <?php if (!empty($fp)): ?>
+                                                    <a href="<?php echo base_url($fp); ?>" target="_blank" class="sk-card-btn">
+                                                        <i class="bi bi-eye"></i> Lihat SK
+                                                    </a>
+                                                <?php endif; ?>
+                                            </div>
+                                        <?php endforeach; ?>
                                     </div>
                                 <?php else: ?>
-                                    <span class="sk-label"><i class="bi bi-file-earmark-text"></i> SK Aktif</span>
-                                    <p class="sk-tidak-ada">Belum ada SK yang diupload</p>
+                                    <p class="text-muted text-center py-3">Belum ada SK RT/RW yang aktif</p>
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -924,7 +1073,7 @@
                     <div class="pengertian-card">
                         <div class="pengertian-card-header lpmk">
                             <div class="pengertian-icon-circle">
-                                <i class="bi bi-briefcase-fill"></i>
+                                <img src="<?php echo base_url('assets/lpmk.png'); ?>" alt="Logo RT & RW" class="logo-icon">
                             </div>
                             <h3>LPMK</h3>
                         </div>
@@ -945,28 +1094,61 @@
 
                             <!-- SK LPMK -->
                             <div class="sk-dalam-card">
-                                <?php if (isset($sk_per_jenis['lpmk']) && is_object($sk_per_jenis['lpmk'])):
-                                    $sk = $sk_per_jenis['lpmk'];
-                                    $nomor = isset($sk->nomor_sk) ? $sk->nomor_sk : '-';
-                                    $pm = isset($sk->periode_mulai) ? $sk->periode_mulai : '-';
-                                    $ps = isset($sk->periode_selesai) ? $sk->periode_selesai : '-';
-                                    $fp = isset($sk->file_path) ? $sk->file_path : '';
-                                    $ver = isset($sk->versi) ? $sk->versi : '1';
+                                <?php
+                                $all_sk = isset($sk_aktif_list) ? $sk_aktif_list : [];
+
+                                $sk_lpmk = [];
+                                foreach ($all_sk as $sk) {
+                                    $jenis = isset($sk->jenis_lkk) ? $sk->jenis_lkk : '';
+                                    $status = isset($sk->status) ? $sk->status : '';
+                                    if ($status == 'aktif' && $jenis == 'lpmk') {
+                                        $sk_lpmk[] = $sk;
+                                    }
+                                }
+
+                                usort($sk_lpmk, function ($a, $b) {
+                                    $pa = isset($a->periode_mulai) ? (int)$a->periode_mulai : 0;
+                                    $pb = isset($b->periode_mulai) ? (int)$b->periode_mulai : 0;
+                                    return $pb <=> $pa;
+                                });
+
+                                if (!empty($sk_lpmk)):
                                 ?>
-                                    <span class="sk-label"><i class="bi bi-file-earmark-text"></i> SK Aktif</span>
-                                    <div class="sk-info-small"><strong>Nomor:</strong> <?php echo $nomor; ?></div>
-                                    <div class="sk-info-small"><strong>Periode:</strong> <?php echo $pm; ?> - <?php echo $ps; ?></div>
-                                    <?php if (!empty($fp)): ?>
-                                        <a href="<?php echo base_url($fp); ?>" target="_blank" class="btn-sk-small w-100">
-                                            <i class="bi bi-eye"></i> Lihat SK
-                                        </a>
-                                    <?php endif; ?>
-                                    <div class="mt-2 text-center">
-                                        <span class="badge-sk-aktif"><i class="bi bi-check-circle-fill"></i> v<?php echo $ver; ?></span>
+                                    <div class="sk-grid">
+                                        <?php foreach ($sk_lpmk as $sk):
+                                            $nomor = isset($sk->nomor_sk) ? $sk->nomor_sk : '-';
+                                            $pm = isset($sk->periode_mulai) ? $sk->periode_mulai : '-';
+                                            $ps = isset($sk->periode_selesai) ? $sk->periode_selesai : '-';
+                                            $fp = isset($sk->file_path) ? $sk->file_path : '';
+                                        ?>
+                                            <div class="sk-card">
+                                                <div class="sk-card-header">
+                                                    <i class="bi bi-file-earmark-text"></i>
+                                                    <span>SK LPMK AKTIF</span>
+                                                </div>
+                                                <div class="sk-card-body">
+                                                    <div class="sk-info">
+                                                        <span class="sk-label">Nomor</span>
+                                                        <span class="sk-value"><?php echo $nomor; ?></span>
+                                                    </div>
+                                                    <div class="sk-info">
+                                                        <span class="sk-label">Periode</span>
+                                                        <span class="sk-value"><?php echo $pm; ?> – <?php echo $ps; ?></span>
+                                                    </div>
+                                                </div>
+                                                <?php if (!empty($fp)): ?>
+                                                    <a href="<?php echo base_url($fp); ?>" target="_blank" class="sk-card-btn">
+                                                        <i class="bi bi-eye"></i> Lihat SK
+                                                    </a>
+                                                <?php endif; ?>
+                                            </div>
+                                        <?php endforeach; ?>
                                     </div>
                                 <?php else: ?>
-                                    <span class="sk-label"><i class="bi bi-file-earmark-text"></i> SK Aktif</span>
-                                    <p class="sk-tidak-ada">Belum ada SK yang diupload</p>
+                                    <div class="sk-empty">
+                                        <span class="sk-label"><i class="bi bi-file-earmark-text"></i> SK Aktif</span>
+                                        <p class="sk-tidak-ada">Belum ada SK yang diupload</p>
+                                    </div>
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -978,7 +1160,7 @@
                     <div class="pengertian-card">
                         <div class="pengertian-card-header katar">
                             <div class="pengertian-icon-circle">
-                                <i class="bi bi-heart-fill"></i>
+                                <img src="<?php echo base_url('assets/katar.png'); ?>" alt="Logo RT & RW" class="logo-icon">
                             </div>
                             <h3>Karang Taruna</h3>
                         </div>
@@ -999,28 +1181,61 @@
 
                             <!-- SK Karang Taruna -->
                             <div class="sk-dalam-card">
-                                <?php if (isset($sk_per_jenis['karang-taruna']) && is_object($sk_per_jenis['karang-taruna'])):
-                                    $sk = $sk_per_jenis['karang-taruna'];
-                                    $nomor = isset($sk->nomor_sk) ? $sk->nomor_sk : '-';
-                                    $pm = isset($sk->periode_mulai) ? $sk->periode_mulai : '-';
-                                    $ps = isset($sk->periode_selesai) ? $sk->periode_selesai : '-';
-                                    $fp = isset($sk->file_path) ? $sk->file_path : '';
-                                    $ver = isset($sk->versi) ? $sk->versi : '1';
+                                <?php
+                                $all_sk = isset($sk_aktif_list) ? $sk_aktif_list : [];
+
+                                $sk_kt = [];
+                                foreach ($all_sk as $sk) {
+                                    $jenis = isset($sk->jenis_lkk) ? $sk->jenis_lkk : '';
+                                    $status = isset($sk->status) ? $sk->status : '';
+                                    if ($status == 'aktif' && $jenis == 'karang-taruna') {
+                                        $sk_kt[] = $sk;
+                                    }
+                                }
+
+                                usort($sk_kt, function ($a, $b) {
+                                    $pa = isset($a->periode_mulai) ? (int)$a->periode_mulai : 0;
+                                    $pb = isset($b->periode_mulai) ? (int)$b->periode_mulai : 0;
+                                    return $pb <=> $pa;
+                                });
+
+                                if (!empty($sk_kt)):
                                 ?>
-                                    <span class="sk-label"><i class="bi bi-file-earmark-text"></i> SK Aktif</span>
-                                    <div class="sk-info-small"><strong>Nomor:</strong> <?php echo $nomor; ?></div>
-                                    <div class="sk-info-small"><strong>Periode:</strong> <?php echo $pm; ?> - <?php echo $ps; ?></div>
-                                    <?php if (!empty($fp)): ?>
-                                        <a href="<?php echo base_url($fp); ?>" target="_blank" class="btn-sk-small w-100">
-                                            <i class="bi bi-eye"></i> Lihat SK
-                                        </a>
-                                    <?php endif; ?>
-                                    <div class="mt-2 text-center">
-                                        <span class="badge-sk-aktif"><i class="bi bi-check-circle-fill"></i> v<?php echo $ver; ?></span>
+                                    <div class="sk-grid">
+                                        <?php foreach ($sk_kt as $sk):
+                                            $nomor = isset($sk->nomor_sk) ? $sk->nomor_sk : '-';
+                                            $pm = isset($sk->periode_mulai) ? $sk->periode_mulai : '-';
+                                            $ps = isset($sk->periode_selesai) ? $sk->periode_selesai : '-';
+                                            $fp = isset($sk->file_path) ? $sk->file_path : '';
+                                        ?>
+                                            <div class="sk-card">
+                                                <div class="sk-card-header">
+                                                    <i class="bi bi-file-earmark-text"></i>
+                                                    <span>SK KARANG TARUNA AKTIF</span>
+                                                </div>
+                                                <div class="sk-card-body">
+                                                    <div class="sk-info">
+                                                        <span class="sk-label">Nomor</span>
+                                                        <span class="sk-value"><?php echo $nomor; ?></span>
+                                                    </div>
+                                                    <div class="sk-info">
+                                                        <span class="sk-label">Periode</span>
+                                                        <span class="sk-value"><?php echo $pm; ?> – <?php echo $ps; ?></span>
+                                                    </div>
+                                                </div>
+                                                <?php if (!empty($fp)): ?>
+                                                    <a href="<?php echo base_url($fp); ?>" target="_blank" class="sk-card-btn">
+                                                        <i class="bi bi-eye"></i> Lihat SK
+                                                    </a>
+                                                <?php endif; ?>
+                                            </div>
+                                        <?php endforeach; ?>
                                     </div>
                                 <?php else: ?>
-                                    <span class="sk-label"><i class="bi bi-file-earmark-text"></i> SK Aktif</span>
-                                    <p class="sk-tidak-ada">Belum ada SK yang diupload</p>
+                                    <div class="sk-empty">
+                                        <span class="sk-label"><i class="bi bi-file-earmark-text"></i> SK Aktif</span>
+                                        <p class="sk-tidak-ada">Belum ada SK yang diupload</p>
+                                    </div>
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -1032,7 +1247,7 @@
                     <div class="pengertian-card">
                         <div class="pengertian-card-header pkk">
                             <div class="pengertian-icon-circle">
-                                <i class="bi bi-person-hearts"></i>
+                                <img src="<?php echo base_url('assets/pkk.png'); ?>" alt="Logo RT & RW" class="logo-icon">
                             </div>
                             <h3>PKK</h3>
                         </div>
@@ -1053,28 +1268,61 @@
 
                             <!-- SK PKK -->
                             <div class="sk-dalam-card">
-                                <?php if (isset($sk_per_jenis['pkk']) && is_object($sk_per_jenis['pkk'])):
-                                    $sk = $sk_per_jenis['pkk'];
-                                    $nomor = isset($sk->nomor_sk) ? $sk->nomor_sk : '-';
-                                    $pm = isset($sk->periode_mulai) ? $sk->periode_mulai : '-';
-                                    $ps = isset($sk->periode_selesai) ? $sk->periode_selesai : '-';
-                                    $fp = isset($sk->file_path) ? $sk->file_path : '';
-                                    $ver = isset($sk->versi) ? $sk->versi : '1';
+                                <?php
+                                $all_sk = isset($sk_aktif_list) ? $sk_aktif_list : [];
+
+                                $sk_pkk = [];
+                                foreach ($all_sk as $sk) {
+                                    $jenis = isset($sk->jenis_lkk) ? $sk->jenis_lkk : '';
+                                    $status = isset($sk->status) ? $sk->status : '';
+                                    if ($status == 'aktif' && $jenis == 'pkk') {
+                                        $sk_pkk[] = $sk;
+                                    }
+                                }
+
+                                usort($sk_pkk, function ($a, $b) {
+                                    $pa = isset($a->periode_mulai) ? (int)$a->periode_mulai : 0;
+                                    $pb = isset($b->periode_mulai) ? (int)$b->periode_mulai : 0;
+                                    return $pb <=> $pa;
+                                });
+
+                                if (!empty($sk_pkk)):
                                 ?>
-                                    <span class="sk-label"><i class="bi bi-file-earmark-text"></i> SK Aktif</span>
-                                    <div class="sk-info-small"><strong>Nomor:</strong> <?php echo $nomor; ?></div>
-                                    <div class="sk-info-small"><strong>Periode:</strong> <?php echo $pm; ?> - <?php echo $ps; ?></div>
-                                    <?php if (!empty($fp)): ?>
-                                        <a href="<?php echo base_url($fp); ?>" target="_blank" class="btn-sk-small w-100">
-                                            <i class="bi bi-eye"></i> Lihat SK
-                                        </a>
-                                    <?php endif; ?>
-                                    <div class="mt-2 text-center">
-                                        <span class="badge-sk-aktif"><i class="bi bi-check-circle-fill"></i> v<?php echo $ver; ?></span>
+                                    <div class="sk-grid">
+                                        <?php foreach ($sk_pkk as $sk):
+                                            $nomor = isset($sk->nomor_sk) ? $sk->nomor_sk : '-';
+                                            $pm = isset($sk->periode_mulai) ? $sk->periode_mulai : '-';
+                                            $ps = isset($sk->periode_selesai) ? $sk->periode_selesai : '-';
+                                            $fp = isset($sk->file_path) ? $sk->file_path : '';
+                                        ?>
+                                            <div class="sk-card">
+                                                <div class="sk-card-header">
+                                                    <i class="bi bi-file-earmark-text"></i>
+                                                    <span>SK PKK AKTIF</span>
+                                                </div>
+                                                <div class="sk-card-body">
+                                                    <div class="sk-info">
+                                                        <span class="sk-label">Nomor</span>
+                                                        <span class="sk-value"><?php echo $nomor; ?></span>
+                                                    </div>
+                                                    <div class="sk-info">
+                                                        <span class="sk-label">Periode</span>
+                                                        <span class="sk-value"><?php echo $pm; ?> – <?php echo $ps; ?></span>
+                                                    </div>
+                                                </div>
+                                                <?php if (!empty($fp)): ?>
+                                                    <a href="<?php echo base_url($fp); ?>" target="_blank" class="sk-card-btn">
+                                                        <i class="bi bi-eye"></i> Lihat SK
+                                                    </a>
+                                                <?php endif; ?>
+                                            </div>
+                                        <?php endforeach; ?>
                                     </div>
                                 <?php else: ?>
-                                    <span class="sk-label"><i class="bi bi-file-earmark-text"></i> SK Aktif</span>
-                                    <p class="sk-tidak-ada">Belum ada SK yang diupload</p>
+                                    <div class="sk-empty">
+                                        <span class="sk-label"><i class="bi bi-file-earmark-text"></i> SK Aktif</span>
+                                        <p class="sk-tidak-ada">Belum ada SK yang diupload</p>
+                                    </div>
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -1161,7 +1409,7 @@
                     ],
                     [
                         'rw' => 'RW 2',
-                        'ketua_rw' => 'KUSNADI',
+                        'ketua_rw' => 'RATIM',
                         'sekretaris_rw' => 'AGUNG NUGROHO S',
                         'bendahara_rw' => 'GILANG LIDYAHATLAND',
                         'periode' => '2026-2030',
@@ -1248,64 +1496,70 @@
 
             <div class="row mb-5">
                 <div class="col-12 text-center">
-                    <h2 class="section-title">Struktur LPMK dan Karang Taruna</h2>
+                    <h2 class="section-title">Struktur LPMK, Karang Taruna dan PKK</h2>
                     <p class="section-subtitle">Kelurahan Kalinyamat Wetan - Kecamatan Tegal Selatan</p>
                 </div>
             </div>
 
             <div class="rw-grid">
                 <?php
-                $data_lpmk = [
+                $data_organisasi = [
+                    // LPMK
                     [
-                        'lpmk' => 'LPMK',
-                        'ketua_lpmk' => 'EDI MARJONI, S.Pd',
-                        'sekretaris_lpmk' => 'DIYAH EMININGSIH',
-                        'bendahara_lpmk' => 'SUHARTI',
-                        'periode' => '2026-2030'
+                        'nama' => 'LPMK',
+                        'periode' => '2026-2030',
+                        'anggota' => [
+                            'Ketua' => 'EDI MARJONI, S.Pd',
+                            'Sekretaris' => 'DIYAH EMININGSIH',
+                            'Bendahara' => 'SUHARTI',
+                        ]
                     ],
                     [
-                        'lpmk' => 'KARANG TARUNA',
-                        'ketua_lpmk' => 'PANGGARJITO DWI CAHYO',
-                        'sekretaris_lpmk' => 'ZAENAL ARIFIN',
-                        'bendahara_lpmk' => 'BUNGA AMELIA WINDASARI',
-                        'periode' => '2026-2030'
-                    ]
+                        'nama' => 'KARANG TARUNA',
+                        'periode' => '2026-2030',
+                        'anggota' => [
+                            'Ketua' => 'PANGGARJITO DWI CAHYO',
+                            'Sekretaris' => 'ZAENAL ARIFIN',
+                            'Bendahara' => 'BUNGA AMELIA WINDASARI',
+                        ]
+                    ],
+                    // PKK
+                    [
+                        'nama' => 'PKK',
+                        'periode' => '2026-2030',
+                        'anggota' => [
+                            'Ketua' => 'BU WAWAN',
+                            'Wakil Ketua' => 'DWI RAKHMAWATI',
+                            'Sekretaris' => 'DIAH EMININGSIH',
+                            'Wakil Sekretaris' => 'ROSHDHEES',
+                            'Bendahara' => 'ENI KUSDIYANTI',
+                            'Wakil Bendahara' => 'ULPATUN NAYIROH',
+                        ]
+                    ],
                 ];
 
-                foreach ($data_lpmk as $lpmk) {
+                foreach ($data_organisasi as $org) {
                 ?>
                     <div class="rw-card">
                         <div class="rw-card-header">
                             <div class="rw-icon-circle">
                                 <i class="bi bi-people-fill"></i>
                             </div>
-                            <h3><?php echo $lpmk['lpmk']; ?></h3>
+                            <h3><?php echo $org['nama']; ?></h3>
                         </div>
                         <div class="rw-card-body">
-                            <div class="rw-info">
-                                <i class="bi bi-person-fill"></i>
-                                <div>
-                                    <strong>Ketua</strong>
-                                    <?php echo $lpmk['ketua_lpmk']; ?>
+                            <?php foreach ($org['anggota'] as $jabatan => $nama) { ?>
+                                <div class="rw-info">
+                                    <i class="bi bi-person-fill"></i>
+                                    <div>
+                                        <strong><?php echo $jabatan; ?></strong>
+                                        <?php echo $nama; ?>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="rw-info">
-                                <i class="bi bi-person-fill"></i>
-                                <div>
-                                    <strong>Sekretaris</strong>
-                                    <?php echo $lpmk['sekretaris_lpmk']; ?>
-                                </div>
-                            </div>
-                            <div class="rw-info">
-                                <i class="bi bi-person-fill"></i>
-                                <div>
-                                    <strong>Bendahara</strong>
-                                    <?php echo $lpmk['bendahara_lpmk']; ?>
-                                </div>
-                            </div>
+                            <?php } ?>
                             <div class="rw-periode">
                                 <i class="bi bi-calendar3"></i>
-                                <span><?php echo $lpmk['periode']; ?></span>
+                                <span><?php echo $org['periode']; ?></span>
                             </div>
                         </div>
                     </div>
