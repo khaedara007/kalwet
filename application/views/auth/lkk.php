@@ -230,7 +230,7 @@
         }
 
         .hero-content p {
-            font-size: 2rem;
+            font-size: 3rem;
             opacity: 1;
             max-width: 1290px;
             margin: 0 auto 20px;
