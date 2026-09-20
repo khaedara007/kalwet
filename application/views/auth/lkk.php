@@ -230,9 +230,9 @@
         }
 
         .hero-content p {
-            font-size: 1rem;
-            opacity: 0.9;
-            max-width: 600px;
+            font-size: 2rem;
+            opacity: 1;
+            max-width: 1290px;
             margin: 0 auto 20px;
         }
 
@@ -887,6 +887,93 @@
             border-radius: 4px;
         }
 
+        .hero-section {
+            background: #1976d2;
+            color: #fff;
+            padding: 30px 20px 35px;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+        }
+
+        /* =========================================
+   LOGO SIAP LKK
+   ========================================= */
+
+        .hero-section .hero-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 15px;
+            width: 100%;
+            height: 75px;
+        }
+
+        .hero-section .hero-logo img {
+            display: block !important;
+
+            /* Ukuran logo */
+            width: 300px !important;
+            max-width: 300px !important;
+
+            /* Batasi tinggi */
+            height: 100px !important;
+            max-height: 100px !important;
+
+            /* Jangan mengikuti CSS img global */
+            object-fit: contain !important;
+
+            /* Jangan diperbesar */
+            margin: 0 auto !important;
+            padding: 0 !important;
+        }
+
+        /* =========================================
+   JUDUL
+   ========================================= */
+
+        .hero-content h1 {
+            margin: 0 0 10px;
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 1.3;
+            color: #fff;
+        }
+
+        /* =========================================
+   SUBJUDUL
+   ========================================= */
+
+        .hero-content p {
+            margin: 0 0 18px;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        /* =========================================
+   BUTTON
+   ========================================= */
+
+        .btn-struktur {
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+
+            padding: 9px 20px;
+            border-radius: 25px;
+
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-struktur:hover {
+            background: #fff;
+            color: #1976d2;
+        }
+
+
         @media (max-width: 768px) {
             .hero-section {
                 height: 240px;
@@ -905,6 +992,31 @@
                 margin: 10px;
                 max-width: 100%;
             }
+
+            .hero-section {
+                padding: 30px 15px 40px;
+            }
+
+            .hero-logo {
+                width: 210px;
+                max-width: 80%;
+            }
+
+            .hero-content h1 {
+                font-size: 21px;
+            }
+
+            .hero-content p {
+                font-size: 13px;
+                line-height: 1.5;
+            }
+
+            .btn-struktur {
+                font-size: 13px;
+                padding: 9px 16px;
+                margin-top: 5px;
+            }
+
         }
     </style>
 </head>
@@ -948,14 +1060,32 @@
     <section class="hero-section">
         <div class="container">
             <div class="hero-content">
-                <h1><i class="bi bi-building me-2"></i>DATA RESMI STRUKTUR RT/RW, LPMK, Karang Taruna DAN PKK</h1>
-                <p>Kelurahan Kalinyamat Wetan - Kecamatan Tegal Selatan - Kota Tegal<br></p>
+
+                <!-- Logo SIAP LKK -->
+                <br>
+                <div class="hero-logo">
+                    <img src="<?php echo base_url('assets/lkk.png'); ?>"
+                        alt="SIAP LKK">
+                </div>
+                <br>
+                <h1>
+                    <i class="bi bi-building me-2"></i>
+                    DATA RESMI STRUKTUR RT/RW, LPMK, Karang Taruna DAN PKK
+                </h1>
+
+                <p align="center">
+                    Kelurahan Kalinyamat Wetan - Kecamatan Tegal Selatan - Kota Tegal
+                </p>
+
                 <button class="btn-struktur" onclick="scrollToPengertian()">
                     <i class="bi bi-info-circle"></i> Pengertian & Fungsi
                 </button>
+
                 <button class="btn-struktur ms-2" onclick="scrollToRW()">
                     <i class="bi bi-people-fill"></i> Lihat Struktur
                 </button>
+
+
             </div>
         </div>
     </section>
