@@ -1136,9 +1136,18 @@
                                 <li>Menjaga kebersihan dan kesehatan lingkungan</li>
                                 <li>Melaporkan kondisi sosial warga ke RW</li>
                             </ul>
+                            <br>
+                            <span class="pengertian-label fungsi"><i class="bi bi-list-check"></i> Dokumentasi Kegiatan</span>
+                            <!-- Kegiatan -->
+                            <div class="col-lg-12 col-md-6 text-lg-center text-md-center">
+                                <a href="<?php echo site_url('auth/kegrt'); ?>" class="btn header-btn header-btn-register w-100 text-center">
+                                    <i></i> Lihat Kegiatan
+                                </a>
+                            </div>
 
                             <!-- SK RT/RW -->
                             <div class="sk-dalam-card">
+                                <span class="pengertian-label fungsi"><i class="bi bi-list-check"></i> Surat Keputusan</span>
                                 <?php
                                 $all_sk = isset($sk_aktif_list) ? $sk_aktif_list : [];
 
@@ -1221,9 +1230,17 @@
                                 <li>Mengawasi pelaksanaan pembangunan di kelurahan</li>
                                 <li>Menjalin kerja sama dengan pihak terkait</li>
                             </ul>
-
+                            <br>
+                            <span class="pengertian-label fungsi"><i class="bi bi-list-check"></i> Dokumentasi Kegiatan</span>
+                            <!-- Kegiatan -->
+                            <div class="col-lg-12 col-md-6 text-lg-center text-md-center">
+                                <a href="<?php echo site_url('auth/keglpmk'); ?>" class="btn header-btn header-btn-register w-100 text-center">
+                                    <i></i> Lihat Kegiatan
+                                </a>
+                            </div>
                             <!-- SK LPMK -->
                             <div class="sk-dalam-card">
+                                <span class="pengertian-label fungsi"><i class="bi bi-list-check"></i> Surat Keputusan</span>
                                 <?php
                                 $all_sk = isset($sk_aktif_list) ? $sk_aktif_list : [];
 
@@ -1308,9 +1325,17 @@
                                 <li>Mengadakan pelatihan keterampilan pemuda</li>
                                 <li>Membantu korban bencana dan warga kurang mampu</li>
                             </ul>
-
+                            <br>
+                            <span class="pengertian-label fungsi"><i class="bi bi-list-check"></i> Dokumentasi Kegiatan</span>
+                            <!-- Kegiatan -->
+                            <div class="col-lg-12 col-md-6 text-lg-center text-md-center">
+                                <a href="<?php echo site_url('auth/kegkatar'); ?>" class="btn header-btn header-btn-register w-100 text-center">
+                                    <i></i> Lihat Kegiatan
+                                </a>
+                            </div>
                             <!-- SK Karang Taruna -->
                             <div class="sk-dalam-card">
+                                <span class="pengertian-label fungsi"><i class="bi bi-list-check"></i> Surat Keputusan</span>
                                 <?php
                                 $all_sk = isset($sk_aktif_list) ? $sk_aktif_list : [];
 
@@ -1395,9 +1420,17 @@
                                 <li>Mengembangkan kegiatan usaha ekonomi keluarga</li>
                                 <li>Menjaga kelestarian lingkungan hidup</li>
                             </ul>
-
+                            <br>
+                            <span class="pengertian-label fungsi"><i class="bi bi-list-check"></i> Dokumentasi Kegiatan</span>
+                            <!-- Kegiatan -->
+                            <div class="col-lg-12 col-md-6 text-lg-center text-md-center">
+                                <a href="<?php echo site_url('auth/kegpkk'); ?>" class="btn header-btn header-btn-register w-100 text-center">
+                                    <i></i> Lihat Kegiatan
+                                </a>
+                            </div>
                             <!-- SK PKK -->
                             <div class="sk-dalam-card">
+                                <span class="pengertian-label fungsi"><i class="bi bi-list-check"></i> Surat Keputusan</span>
                                 <?php
                                 $all_sk = isset($sk_aktif_list) ? $sk_aktif_list : [];
 

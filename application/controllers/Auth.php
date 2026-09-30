@@ -163,6 +163,27 @@ class Auth extends CI_Controller
         $this->load->view('auth/lkk', $data);
     }
 
+    // halaman daftar kegiatan
+    public function kegrt()
+    {
+        $this->load->view('auth/kegrt');
+    }
+
+    public function keglpmk()
+    {
+        $this->load->view('auth/keglpmk');
+    }
+
+    public function kegpkk()
+    {
+        $this->load->view('auth/kegpkk');
+    }
+
+    public function kegkatar()
+    {
+        $this->load->view('auth/kegkatar');
+    }
+
     public function pdf_proxy($filename = null)
     {
         if (!$filename) {

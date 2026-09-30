@@ -759,9 +759,6 @@
                                 <a href="<?php echo site_url('admin/sk_lkk_filter/rt'); ?>" class="filter-tab <?php echo isset($filter) && $filter == 'rt' ? 'active' : ''; ?>">
                                     <i class="bi bi-house-door me-1"></i>RT dan RW
                                 </a>
-                                <a href="<?php echo site_url('admin/sk_lkk_filter/rw'); ?>" class="filter-tab <?php echo isset($filter) && $filter == 'rw' ? 'active' : ''; ?>">
-                                    <i class="bi bi-people me-1"></i>RW
-                                </a>
                                 <a href="<?php echo site_url('admin/sk_lkk_filter/karang-taruna'); ?>" class="filter-tab <?php echo isset($filter) && $filter == 'karang-taruna' ? 'active' : ''; ?>">
                                     <i class="bi bi-heart me-1"></i>Karang Taruna
                                 </a>
