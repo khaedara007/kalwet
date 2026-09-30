@@ -7,7 +7,7 @@ class Auth extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Sk_lkk_model', 'sk_model');
-        $this->load->model('User_model', 'user_model');
+        $this->load->model('User_model');
         $this->load->library(array('session', 'form_validation'));
         $this->load->helper(array('url', 'form', 'whatsapp'));
     }
@@ -54,7 +54,7 @@ class Auth extends CI_Controller
 
         $nik = $this->input->post('nik', TRUE);
         $phone = $this->input->post('phone', TRUE);
-        $existing_nik = $this->user_model->get_by_nik($nik);
+        $existing_nik = $this->User_model->get_by_nik($nik);
         if ($existing_nik) {
             $data['error'] = 'NIK sudah terdaftar! Silakan login atau gunakan NIK lain.';
             $this->load->view('auth/register', $data);
