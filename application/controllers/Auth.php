@@ -54,7 +54,7 @@ class Auth extends CI_Controller
 
         $nik = $this->input->post('nik', TRUE);
         $phone = $this->input->post('phone', TRUE);
-        $existing_nik = $this->User_model->get_by_nik($nik);
+        $existing_nik = $this->user_model->get_by_nik($nik);
         if ($existing_nik) {
             $data['error'] = 'NIK sudah terdaftar! Silakan login atau gunakan NIK lain.';
             $this->load->view('auth/register', $data);
